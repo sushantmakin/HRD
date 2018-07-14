@@ -1,0 +1,96 @@
+									/* ------------------------===============================================----------------------------- */
+															/* ---------------->>> COLOR CSS <<<------------- */
+									/* ------------------------================================================---------------------------- */ 
+									
+							
+/*--------------------------------------------------------------------
+						GENERAL
+----------------------------------------------------------------------*/
+.theme-bg {
+	background-color:#16B6EA;
+}
+a:hover,a:focus,.typo-white a:hover,.typo-white a:focus,.typo-grey a:hover,.typo-grey a:focus {
+	color:#16B6EA;
+}
+.text-color,.typo-white .text-color {
+	color:#16B6EA;
+}
+.theme-overlay {
+	background:rgba(22, 182, 234,0.8);
+}
+/*--------------------------------------------------------------------
+						NAVIGATION
+----------------------------------------------------------------------*/
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #16B6EA;
+}
+.navbar-default.navbar-transparent .navbar-nav > li > a:focus, .navbar-default.navbar-transparent .navbar-nav > li > a:hover,
+.navbar-default.navbar-transparent .navbar-nav > .open > a, 
+.navbar-default.navbar-transparent .navbar-nav > .open > a:focus, 
+.navbar-default.navbar-transparent .navbar-nav > .open > a:hover, 
+.navbar-default.navbar-transparent .navbar-nav > li:hover > a {
+	color: #16B6EA;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #16B6EA!important;
+}
+/* ------------------------------------------------------------------ 
+						ACCORDIONS
+----------------------------------------------------------------------*/
+.panel-title > a {
+	background-color: #16B6EA;
+	box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-webkit-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-moz-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-ms-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-o-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+}
+.list-icon > li:before {
+	color: #16B6EA;
+}
+/*--------------------------------------------------------------------
+						BUTTON
+----------------------------------------------------------------------*/
+.btn.btn-default:hover,.btn.btn-default:focus,
+.isotope-filters .nav-tabs > li > a:hover,.isotope-filters .nav-tabs > li > a:focus,.isotope-filters .nav-tabs > li > a.active,
+.panel-toggle {
+	box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-webkit-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-moz-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-ms-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+	-o-box-shadow: 0 5px 11px 0 rgba(22, 182, 234, 0.3);
+}
+.btn-outline {
+	border-color: #16B6EA;
+}
+.btn-theme,.btn-default:hover,.btn-default.focus, .btn-default:focus,.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
+    background-color: #16B6EA!important;
+}		
+.btn-default.focus, .btn-default:focus,.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
+	border-color: #16B6EA;
+}
+.btn.hv-right::after, .btn.hv-left::after, .btn.hv-top::after, .btn.hv-bottom::after {
+    background: #16B6EA;
+}	
+.btn.btn-white:hover,.btn.btn-white:focus,
+.btn.btn-white.btn-outline:hover,.btn.btn-white.btn-outline:focus {
+	background: #16B6EA;
+	border-color: #16B6EA;
+}
+.widget .widget-menu > li.phone:before,
+.widget .widget-menu > li.mail:before {
+	color: #16B6EA;
+}
+.owl-theme .owl-nav > div:hover {
+    background: #16B6EA;
+}
+/*--------------------------------------------------------------------
+						ISOTOPE GRID
+----------------------------------------------------------------------*/
+.isotope-filters .nav-tabs > li > a:hover,.isotope-filters .nav-tabs > li > a:focus,.isotope-filters .nav-tabs > li > a.active {
+	background:#16B6EA;
+}
+
+.panel-toggle {
+	background:#16B6EA;
+}

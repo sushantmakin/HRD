@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hita Ras Dhara</title>
+    <meta name="description" content="">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")  
+    @Styles.Render("~/Content/cssjqryUi")  
+    @*@Styles.Render("~/Sunil/css")*@  
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+<div id="preloader"></div>
+@*<header class="header-two">
+        <!-- Start top bar -->
+        <div class="topbar-area topbar-area-2 fix hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-6 col-sm-6">
+                        <div class="topbar-left">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-envelope"></i> hitarasdhara@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="topbar-right">
+                            <div class="quote-button"> <a href="registration.html" class="quote-btn">Registration Form</a> </div>
+                            <div class="top-social">
+                                <ul>
+                                    <li><a href="https://facebook.com/ShreeHitaAmbrishJi" target="_blank"><i class="fa fa-facebook" style="font-size:15px;"></i></a></li>
+                                    <li><a href="https://www.youtube.com/channel/UC3gnhko-qhwOdUDh_DcZaAw" target="_blank"><i class="fa fa-youtube" style="font-size:15px;"></i></a></li>
+                                    <li><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank"><img src="img/gaana_icon.png" border="0" alt=""></a></li>
+                                    <li><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank"><img src="img/saavn_icon.png" border="0" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>*@
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Hita Ras Dhara</p>
+    </footer>
+</div>
+
+@RenderSection("scripts", required: false)
+</body>
+</html>

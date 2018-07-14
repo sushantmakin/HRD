@@ -1,0 +1,72 @@
+﻿@model HitaRasDhara.Models.MobileVerificationViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal" id="ReprintForm">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="SubmitBtnOfReprintForm" value="Reprint" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function reprintNow(formData) {
+        debugger;
+            $.ajax({
+                type: "POST",
+                url: "/Home/Reprint",
+                data: formData,
+                success: function (result) {
+                    console.log('data is : ' + result.Code);
+                    showPopup(result.Code);
+                },
+                error: function (data) {
+                    console.log('error : data code is : ' + data.Code);
+                }
+            });
+            return false;
+    }
+   
+    $('#SubmitBtnOfReprintForm').click(function () {
+        var $form = $('#ReprintForm');
+        if (!$form.valid()) {
+            return false;
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/Home/SemiFilledForm2",
+                data: $('#ReprintForm').serialize(),
+                success: function (result) {
+                    console.log("OTP :" + result.OTPCode);
+                    swal("Please enter the OTP sent to your mobile", {
+                        content: "input"
+                    })
+                        .then((value) => {
+                            if (result.OTPCode === `${value}`) {
+                                reprintNow($('#ReprintForm').serialize());
+                            } else {
+                                swal("Failure!", "The OTP you entered is invalid", "error");
+                            }
+                        });
+                },
+                error: function (data) {
+                    console.log('error : data code is : ' + data.Code);
+                }
+            });
+        }
+        return false;
+    });
+
+</script>
