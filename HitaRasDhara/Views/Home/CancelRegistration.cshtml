@@ -23,7 +23,6 @@
 
 <script>
     function cancelNow(formData) {
-        debugger;
             $.ajax({
                 type: "POST",
                 url: "/Home/CancelRegistration",
@@ -49,8 +48,7 @@
                 url: "/Home/SemiFilledForm2",
                 data: $('#CancelForm').serialize(),
                 success: function (result) {
-                    console.log("OTP :" + result.OTPCode);
-                    swal("Please enter the OTP sent to your mobile", {
+                   swal("Please enter the OTP sent to your mobile", {
                         content: "input"
                     })
                         .then((value) => {

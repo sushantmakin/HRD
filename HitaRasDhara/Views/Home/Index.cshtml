@@ -74,9 +74,7 @@
                 data: formData,
                 dataType: 'binary',
                 success: function (result) {
-                    debugger;
-                    console.log(result);
-                    if (result.type === "application/pdf") {
+                   if (result.type === "application/pdf") {
                         console.log('File downloaded');
                         saveAs(result, "Registration Pass.pdf");
                         showPopup(5);
@@ -106,8 +104,7 @@
                     url: "/Home/SemiFilledForm",
                     data: $('#NewEntryForm').serialize(),
                     success: function (result) {
-                        console.log("OTP :" + result.OTPCode);
-                        swal("Please enter the OTP sent to your mobile",
+                       swal("Please enter the OTP sent to your mobile",
                                 {
                                     content: "input"
                                 })

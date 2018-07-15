@@ -23,14 +23,12 @@
 
 <script>
     function reprintNow(formData) {
-        debugger;
         $.ajax({
             type: "POST",
             url: "/Home/Reprint",
             data: formData,
             dataType: 'binary',
             success: function (result) {
-                debugger;
                 if (result.type === "application/pdf") {
                     console.log('File downloaded');
                     saveAs(result, "Registration Pass.pdf");
@@ -57,17 +55,16 @@
                 url: "/Home/SemiFilledForm2",
                 data: $('#ReprintForm').serialize(),
                 success: function (result) {
-                    console.log("OTP :" + result.OTPCode);
                     swal("Please enter the OTP sent to your mobile", {
                         content: "input"
                     })
-                        .then((value) => {
-                            if (result.OTPCode === `${value}`) {
-                                reprintNow($('#ReprintForm').serialize());
-                            } else {
-                                swal("Failure!", "The OTP you entered is invalid", "error");
-                            }
-                        });
+                            .then((value) => {
+                                if (result.OTPCode === `${value}`) {
+                                    reprintNow($('#ReprintForm').serialize());
+                                } else {
+                                    swal("Failure!", "The OTP you entered is invalid", "error");
+                                }
+                            });
                 },
                 error: function (data) {
                     console.log('error : data code is : ' + data.Code);

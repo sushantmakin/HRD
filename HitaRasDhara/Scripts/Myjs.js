@@ -1,5 +1,4 @@
 ﻿var showPopup = function (code) {
-    debugger;
     switch (code) {
         case 0:
             swal('Duplicate Mobile Number!',
