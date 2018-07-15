@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Web;
 using System.Web.Mvc;
 using HitaRasDhara.Models;
 using iTextSharp.text;
@@ -20,6 +23,7 @@ namespace HitaRasDhara.Controllers
         public ActionResult Index(UserResponse5Aug input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
+            BinaryFormatter bf = new BinaryFormatter();
             try
             {
                 var userDetails = _dbContext.UserResponse5Aug.Find(input.Phone);
@@ -31,14 +35,15 @@ namespace HitaRasDhara.Controllers
                     string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,
                         input.Name);
                     bool smsSent = sendSMS(input.Phone, smsData);
-                    return Json(new { Code = 5 }, JsonRequestBehavior.AllowGet); // Success
-
+                    return PrintPDF(input.Phone);
                 }
-                return Json(new { Code = 1 }, JsonRequestBehavior.AllowGet); // Already Exists
+                byte[] content = { 1, 2 };
+                return File(content, "text/html");
             }
             catch (Exception ex)
             {
-                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet); //Tech Error
+                byte[] content = { 3 };
+                return File(content, "text/html");
             }
         }
 
@@ -55,10 +60,10 @@ namespace HitaRasDhara.Controllers
             var userDetails = _dbContext.UserResponse5Aug.Find(input.Phone);
             if (userDetails == null || !userDetails.SeatStatus.Equals("Registered"))
             {
-                return Json(new { Code = 7 }, JsonRequestBehavior.AllowGet); //user Does not exists or already cancelled
+                byte[] content = { 7 };
+                return File(content, "text/html");
             }
-            bool generated = GeneratePDF(input.Phone);
-            return Json(generated ? new { Code = 9 } : new { Code = 3 }, JsonRequestBehavior.AllowGet);//9 - success 3- tech error
+            return PrintPDF(input.Phone);//9 - success
         }
 
         public string GenerateOtp(int otpLength)
@@ -76,12 +81,18 @@ namespace HitaRasDhara.Controllers
             return sOTP;
         }
 
-        public bool GeneratePDF(string mobileNumber)
+        [HttpPost]
+        public ActionResult PrintPDF(string phone)
+        {
+            byte[] doc = GeneratePDF(phone);
+            return File(doc, "application/pdf", phone + ".pdf");
+        }
+
+        [HttpPost]
+        public byte[] GeneratePDF(string mobile)
         {
             try
             {
-                ApplicationDbContext _dbContext = new ApplicationDbContext();
-                var userDetails = _dbContext.UserResponse5Aug.Find(mobileNumber);
                 using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
                 {
                     Document document = new Document(PageSize.A4, 10, 10, 10, 10);
@@ -89,7 +100,7 @@ namespace HitaRasDhara.Controllers
                     PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
                     document.Open();
 
-                    Chunk chunk = new Chunk("This is from chunk.");
+                    Chunk chunk = new Chunk("This is from chunk." + mobile);
                     document.Add(chunk);
 
                     Phrase phrase = new Phrase("This is from Phrase.");
@@ -106,7 +117,6 @@ namespace HitaRasDhara.Controllers
                     paragraph.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f, BaseColor.GREEN);
                     paragraph.Add(text);
                     document.Add(paragraph);
-
                     document.Close();
                     byte[] bytes = memoryStream.ToArray();
                     memoryStream.Close();
@@ -114,19 +124,12 @@ namespace HitaRasDhara.Controllers
                     Response.ContentType = "application/pdf";
 
                     string pdfName = "User";
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + pdfName + ".pdf");
-                    Response.ContentType = "application/pdf";
-                    Response.Buffer = true;
-                    Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
-                    Response.BinaryWrite(bytes);
-                    Response.End();
-                    Response.Close();
-                    return true;
+                    return memoryStream.ToArray();
                 }
             }
             catch (Exception ex)
             {
-                return false;
+                throw ex;
             }
 
         }

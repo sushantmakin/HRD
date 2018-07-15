@@ -31,6 +31,8 @@ namespace HitaRasDhara
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/sweetalert.js",
                       "~/Scripts/Myjs.js",
+                      "~/Scripts/FileSaver.min.js",
+                      "~/Scripts/jquery.binarytransport.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

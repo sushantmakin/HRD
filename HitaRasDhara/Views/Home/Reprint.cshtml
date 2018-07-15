@@ -24,21 +24,29 @@
 <script>
     function reprintNow(formData) {
         debugger;
-            $.ajax({
-                type: "POST",
-                url: "/Home/Reprint",
-                data: formData,
-                success: function (result) {
-                    console.log('data is : ' + result.Code);
-                    showPopup(result.Code);
-                },
-                error: function (data) {
-                    console.log('error : data code is : ' + data.Code);
+        $.ajax({
+            type: "POST",
+            url: "/Home/Reprint",
+            data: formData,
+            dataType: 'binary',
+            success: function (result) {
+                debugger;
+                if (result.type === "application/pdf") {
+                    console.log('File downloaded');
+                    saveAs(result, "Registration Pass.pdf");
+                    showPopup(9);
+                } else {
+                    showPopup(7);
+                    console.log('Duplicate');
                 }
-            });
-            return false;
+            },
+            error: function (result) {
+                console.log('error : data code is : ' + data.Code);
+            }
+        });
+        return false;
     }
-   
+
     $('#SubmitBtnOfReprintForm').click(function () {
         var $form = $('#ReprintForm');
         if (!$form.valid()) {
