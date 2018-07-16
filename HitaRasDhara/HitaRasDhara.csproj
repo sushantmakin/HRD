@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201807141647370_hi.Designer.cs">
       <DependentUpon>201807141647370_hi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807160535219_timestamp.cs" />
+    <Compile Include="Migrations\201807160535219_timestamp.Designer.cs">
+      <DependentUpon>201807160535219_timestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MobileVerificationViewModel.cs" />
@@ -273,6 +277,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\MyCss.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -362,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807141647370_hi.resx">
       <DependentUpon>201807141647370_hi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807160535219_timestamp.resx">
+      <DependentUpon>201807160535219_timestamp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

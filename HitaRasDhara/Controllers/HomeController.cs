@@ -30,6 +30,7 @@ namespace HitaRasDhara.Controllers
                 if (userDetails == null)
                 {
                     input.SeatStatus = "Registered";
+                    input.TimeStamp = DateTime.Now;
                     _dbContext.UserResponse5Aug.Add(input);
                     _dbContext.SaveChanges();
                     string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,

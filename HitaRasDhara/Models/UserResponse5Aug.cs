@@ -38,9 +38,12 @@ namespace HitaRasDhara.Models
         [Required]
         public string SeatStatus { get; set; }
 
-
         [Display(Name = "Question from the master (if any)")]
         public string Question { get; set; }
+
+        [Required]
+        [Display(Name = "TimeStamp")]
+        public DateTime TimeStamp { get; set; }
 
 
     }

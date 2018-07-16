@@ -1,7 +1,7 @@
 ﻿@model HitaRasDhara.Models.UserResponse5Aug
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal" id="NewEntryForm">
+        <form class="form-horizontal visibleBlock" id="NewEntryForm">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -52,10 +52,11 @@
                 </div>
             </div>
         </form>
+        <iframe id="RegPass" class="HiddenBlock" width="100%" height="1200px" allowfullscreen src="" style="position: absolute; border:none"></iframe>
     </div>
-</div>
+   </div>
 <script>
-
+    
     $(document).ready(function () {
         $('input[type=datetime]').datepicker({
             format: 'YY-MM-DD',
@@ -74,10 +75,18 @@
                 data: formData,
                 dataType: 'binary',
                 success: function (result) {
+                    debugger;
                    if (result.type === "application/pdf") {
-                        console.log('File downloaded');
-                        saveAs(result, "Registration Pass.pdf");
-                        showPopup(5);
+                       console.log('File downloaded');
+                       if (!is_touch_device()) {
+                           $('#RegPass').attr('src', window.URL.createObjectURL(result));
+                           $("#RegPass").removeClass("HiddenBlock");
+                           $("#RegPass").addClass("visibleBlock");
+                           $("#NewEntryForm").removeClass("visibleBlock");
+                           $("#NewEntryForm").addClass("HiddenBlock");
+                       }
+                       saveAs(result, "Registration Pass.pdf");
+                       showPopup(5);
                     } else {
                         if (result.size === 2) {
                             showPopup(1);

@@ -37,6 +37,7 @@ namespace HitaRasDhara
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/MyCss.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Sunil/css").Include(

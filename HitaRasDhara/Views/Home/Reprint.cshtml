@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal" id="ReprintForm">
+        <form class="form-horizontal visibleBlock" id="ReprintForm">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -18,6 +18,7 @@
                 </div>
             </div>
         </form>
+        <iframe id="RegPass" class="HiddenBlock" width="100%" height="1200px" allowfullscreen src="" style="position: absolute; border:none"></iframe>
     </div>
 </div>
 
@@ -29,8 +30,16 @@
             data: formData,
             dataType: 'binary',
             success: function (result) {
+                debugger;
                 if (result.type === "application/pdf") {
                     console.log('File downloaded');
+                    if (!is_touch_device()) {
+                        $('#RegPass').attr('src', window.URL.createObjectURL(result));
+                        $("#RegPass").removeClass("HiddenBlock");
+                        $("#RegPass").addClass("visibleBlock");
+                        $("#ReprintForm").removeClass("visibleBlock");
+                        $("#ReprintForm").addClass("HiddenBlock");
+                    }
                     saveAs(result, "Registration Pass.pdf");
                     showPopup(9);
                 } else {
