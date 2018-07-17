@@ -23,7 +23,6 @@ namespace HitaRasDhara.Controllers
         public ActionResult Index(UserResponse5Aug input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            BinaryFormatter bf = new BinaryFormatter();
             try
             {
                 var userDetails = _dbContext.UserResponse5Aug.Find(input.Phone);
@@ -38,6 +37,22 @@ namespace HitaRasDhara.Controllers
                     bool smsSent = sendSMS(input.Phone, smsData);
                     return PrintPDF(input.Phone);
                 }
+                if (userDetails.SeatStatus.Equals("Cancelled"))
+                {
+                    userDetails.City = input.City;
+                    userDetails.DateOfBirth = input.DateOfBirth;
+                    userDetails.Name = input.Name;
+                    userDetails.SeatStatus = "Registered";
+                    userDetails.TimeStamp=DateTime.Now;
+                    userDetails.Question = input.Question;
+                    userDetails.Email = input.Email;
+                    _dbContext.SaveChanges();
+                    string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,
+                        input.Name);
+                    bool smsSent = sendSMS(input.Phone, smsData);
+                    return PrintPDF(input.Phone);
+                }
+
                 byte[] content = { 1, 2 };
                 return File(content, "text/html");
             }
@@ -149,44 +164,9 @@ namespace HitaRasDhara.Controllers
                     pdfDoc.Add(jpgLower);
 
                     #endregion
-
-
-
-
-                    ////Create a single column table
-                    //var t = new PdfPTable(1);
-
-                    ////Tell it to fill the page horizontally
-                    //t.WidthPercentage = 100;
-
-                    ////Create a single cell
-                    //var c = new PdfPCell();
-
-                    ////Tell the cell to vertically align in the middle
-                    //c.VerticalAlignment = Element.ALIGN_MIDDLE;
-
-                    ////Tell the cell to fill the page vertically
-                    //c.MinimumHeight = pdfDoc.PageSize.Height - (pdfDoc.BottomMargin + pdfDoc.TopMargin);
-
-                    ////Create a test paragraph
-                    //var p = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis sem diam, quis accumsan ipsum venenatis ac. Pellentesque nec gravida tortor. Suspendisse dapibus quis quam sed sollicitudin.");
-
-                    ////Add it a couple of times
-                    //c.AddElement(p);
-                    //c.AddElement(p);
-
-                    ////Add the cell to the paragraph
-                    //t.AddCell(c);
-
-                    ////Add the table to the document
-                    //pdfDoc.Add(t);
-
                     pdfDoc.Close();
-
                     Response.Write(pdfDoc);
-
                     Response.End();
-
                     string pdfName = "User";
                     return memoryStream.ToArray();
                 }
