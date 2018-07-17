@@ -30,7 +30,6 @@
             data: formData,
             dataType: 'binary',
             success: function (result) {
-                debugger;
                 if (result.type === "application/pdf") {
                     console.log('File downloaded');
                     if (!is_touch_device()) {

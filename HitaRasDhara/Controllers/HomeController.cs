@@ -94,35 +94,98 @@ namespace HitaRasDhara.Controllers
         {
             try
             {
-                using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                UserResponse5Aug UserDetails = _dbContext.UserResponse5Aug.Find(mobile);
+                using (MemoryStream memoryStream = new MemoryStream())
                 {
-                    Document document = new Document(PageSize.A4, 10, 10, 10, 10);
 
-                    PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
-                    document.Open();
-
-                    Chunk chunk = new Chunk("This is from chunk." + mobile);
-                    document.Add(chunk);
-
-                    Phrase phrase = new Phrase("This is from Phrase.");
-                    document.Add(phrase);
-
-                    Paragraph para = new Paragraph("This is from paragraph.");
-                    document.Add(para);
-
-                    string text = @"you are successfully created PDF file.";
-                    Paragraph paragraph = new Paragraph();
-                    paragraph.SpacingBefore = 10;
-                    paragraph.SpacingAfter = 10;
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    paragraph.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f, BaseColor.GREEN);
-                    paragraph.Add(text);
-                    document.Add(paragraph);
-                    document.Close();
-                    byte[] bytes = memoryStream.ToArray();
-                    memoryStream.Close();
-                    Response.Clear();
+                    #region documentDefinitionStart
+                    Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
                     Response.ContentType = "application/pdf";
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                    Response.AddHeader("content-disposition", "attachment;filename=test.pdf");
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+                    #endregion
+
+                    #region ImageHeaderStart
+                    string imageFilePath = Server.MapPath("~") + "/form-bg-Upper.jpg";
+                    Image jpgUpper = Image.GetInstance(imageFilePath);
+                    jpgUpper.ScaleAbsoluteWidth(PageSize.A4.Width);
+                    jpgUpper.ScaleAbsoluteHeight(PageSize.A4.Height/3);
+                    #endregion
+
+                    #region TextStarts
+
+                    PdfPTable table = new PdfPTable(2);
+                    table.DefaultCell.FixedHeight = 25f;
+                    table.DefaultCell.Padding = 5f;
+                    table.AddCell("Name");
+                    table.AddCell(UserDetails.Name);
+                    table.AddCell("Date Of Birth");
+                    table.AddCell(UserDetails.DateOfBirth.ToString("dd/MM/yyyy"));
+                    table.AddCell("City");
+                    table.AddCell(UserDetails.City);
+                    table.AddCell("Contact No.");
+                    table.AddCell(UserDetails.Phone);
+                    table.AddCell("Registration Time");
+                    table.AddCell(UserDetails.TimeStamp.ToString());
+
+                    #endregion
+
+                    #region ImageLowerStart
+                    string imageFilePathLower = Server.MapPath("~") + "/form-bg-Lower.jpg";
+                    Image jpgLower = Image.GetInstance(imageFilePathLower);
+                    jpgLower.ScaleAbsoluteWidth(PageSize.A4.Width);
+                    jpgLower.ScaleAbsoluteHeight(PageSize.A4.Height / 3);
+                    jpgLower.Alignment = Image.UNDERLYING;
+                    #endregion
+
+                    #region build
+                    pdfDoc.Open();
+                    pdfDoc.NewPage();
+                    pdfDoc.Add(jpgUpper);
+                    pdfDoc.Add(table);
+                    pdfDoc.Add(jpgLower);
+
+                    #endregion
+
+
+
+
+                    ////Create a single column table
+                    //var t = new PdfPTable(1);
+
+                    ////Tell it to fill the page horizontally
+                    //t.WidthPercentage = 100;
+
+                    ////Create a single cell
+                    //var c = new PdfPCell();
+
+                    ////Tell the cell to vertically align in the middle
+                    //c.VerticalAlignment = Element.ALIGN_MIDDLE;
+
+                    ////Tell the cell to fill the page vertically
+                    //c.MinimumHeight = pdfDoc.PageSize.Height - (pdfDoc.BottomMargin + pdfDoc.TopMargin);
+
+                    ////Create a test paragraph
+                    //var p = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis sem diam, quis accumsan ipsum venenatis ac. Pellentesque nec gravida tortor. Suspendisse dapibus quis quam sed sollicitudin.");
+
+                    ////Add it a couple of times
+                    //c.AddElement(p);
+                    //c.AddElement(p);
+
+                    ////Add the cell to the paragraph
+                    //t.AddCell(c);
+
+                    ////Add the table to the document
+                    //pdfDoc.Add(t);
+
+                    pdfDoc.Close();
+
+                    Response.Write(pdfDoc);
+
+                    Response.End();
 
                     string pdfName = "User";
                     return memoryStream.ToArray();
