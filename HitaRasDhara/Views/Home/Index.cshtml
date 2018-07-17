@@ -51,6 +51,12 @@
                     <input type="submit" id="SubmitOfNewForm" value="Register" class="btn btn-primary" />
                 </div>
             </div>
+            <button id="ReprintButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Reprint", "Home")'">
+                <span class="glyphicon glyphicon-print"></span> Reprint Entry Pass
+            </button>
+            <button id="CancelButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("CancelRegistration", "Home")'">
+                <span class="glyphicon glyphicon-remove"></span> Cancel Registration
+            </button>
         </form>
         <iframe id="RegPass" class="HiddenBlock" width="100%" height="1200px" allowfullscreen src="" style="position: absolute; border:none"></iframe>
     </div>
