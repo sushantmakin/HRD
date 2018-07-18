@@ -19,9 +19,9 @@
                 </div>
             </div>
         </form>
-        <iframe id="RegPass" class="HiddenBlock" width="100%" height="auto" allowfullscreen src="" style="position: absolute; border:none"></iframe>
+        <iframe id="RegPass" class="HiddenBlock" width="100%" height="1000px" allowfullscreen src="" style="border:none"></iframe>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" id="imgBlock">
         <img src="~/img/registration-img.jpg" border="0" alt="" />
     </div>
 </div>
@@ -42,6 +42,7 @@
                         $("#RegPass").addClass("visibleBlock");
                         $("#ReprintForm").removeClass("visibleBlock");
                         $("#ReprintForm").addClass("HiddenBlock");
+                        $("#imgBlock").addClass("HiddenBlock");
                     }
                     saveAs(result, "Registration Pass.pdf");
                     showPopup(9);
