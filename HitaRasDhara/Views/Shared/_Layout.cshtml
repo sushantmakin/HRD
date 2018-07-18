@@ -1,46 +1,32 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Hita Ras Dhara</title>
     <meta name="description" content="">
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")  
-    @Styles.Render("~/Content/cssjqryUi")  
-    @*@Styles.Render("~/Sunil/css")*@  
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-<div id="preloader"></div>
-@*<header class="header-two">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/owl.transitions.css">
+    <link rel="stylesheet" href="~/css/meanmenu.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/icon.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/magnific.min.css">
+    <link rel="stylesheet" href="~/css/venobox.css">
+    <link rel="stylesheet" href="~/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body class="home-2">
+    <!--[if lt IE 8]>
+                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+    <div id="preloader"></div>
+    <header class="header-two">
         <!-- Start top bar -->
         <div class="topbar-area topbar-area-2 fix hidden-xs">
             <div class="container">
@@ -48,6 +34,7 @@
                     <div class=" col-md-6 col-sm-6">
                         <div class="topbar-left">
                             <ul>
+                                <!--<li><a href="#"><i class="fa fa-phone"></i> Miss Call +91-7065-900-800</a></li>-->
                                 <li><a href="#"><i class="fa fa-envelope"></i> hitarasdhara@gmail.com</a></li>
                             </ul>
                         </div>
@@ -59,8 +46,8 @@
                                 <ul>
                                     <li><a href="https://facebook.com/ShreeHitaAmbrishJi" target="_blank"><i class="fa fa-facebook" style="font-size:15px;"></i></a></li>
                                     <li><a href="https://www.youtube.com/channel/UC3gnhko-qhwOdUDh_DcZaAw" target="_blank"><i class="fa fa-youtube" style="font-size:15px;"></i></a></li>
-                                    <li><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank"><img src="img/gaana_icon.png" border="0" alt=""></a></li>
-                                    <li><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank"><img src="img/saavn_icon.png" border="0" alt=""></a></li>
+                                    <li><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank"><img src="~/img/gaana_icon.png" border="0" alt=""></a></li>
+                                    <li><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank"><img src="~/img/saavn_icon.png" border="0" alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -68,15 +55,132 @@
                 </div>
             </div>
         </div>
-    </header>*@
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Hita Ras Dhara</p>
-    </footer>
-</div>
 
-@RenderSection("scripts", required: false)
+        <div id="sticker/" class="header-area header-area-2 hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="logo"> <a class="navbar-brand page-scroll sticky-logo" href="index.html"> <img src="~/img/logo.png" alt=""> </a> </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <nav class="navbar navbar-default">
+                            <div class="collapse navbar-collapse" id="navbar-example">
+                                <div class="main-menu">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <!--<li><a href="#">Home</a></li>-->
+                                        <!--<li><a class="pagess" href="#">About us</a>-->
+                                        <!--<ul class="sub-menu">
+                                            <li><a href="#">About us</a></li>
+                                            <li><a href="#">Our Vision</a></li>
+                                          </ul>
+                                        </li>-->
+                                        <!--<li><a href="#">Upcoming Katha's</a></li>
+                                        <!--<li><a href="#">Diksha</a></li>-->
+                                        <!--<li><a href="#">Gallery</a></li>-->
+                                        <!--<li><a href="#">Contact Us</a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-menu-area hidden-lg hidden-md hidden-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mobile-menu">
+                            <div class="logo"> <a href="index.html"><img src="~/img/logo.png" alt="" /></a> </div>
+                            <nav id="dropdown">
+                                <ul>
+                                    <!--<li><a href="#">Home</a></li>
+                                      <li><a class="pagess" href="#">About us</a>
+                                        <!--<ul class="sub-menu">
+                                          <li><a href="#">About us</a></li>
+                                          <li><a href="#">Our Vision</a></li>
+                                        </ul>
+                                      </li>-->
+                                    <!--<li><a href="#">Upcoming Ktha</a></li>
+                                    <!--<li><a href="#">Diksha</a></li>
+                                    <li><a href="#">Gallery</a></li>
+                                    <li><a href="#">Contact Us</a></li>-->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="intro-area intro-area-2">
+        <img src="~/img/banner2.jpg" alt="">
+    </div>
+    <div class="container" style="padding:40px 0px;">    
+        @RenderBody()
+    </div>
+
+    @RenderSection("scripts", required: false)
+    <div class="banner-area2 area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" align="center">
+                    <p style="color:#FFFFFF;font-size:22px;padding-bottom:10px;">We are available on</p>
+                    <img src="~/img/gaana-logo.png" border="0" alt="0" style="margin-right:15px;" />
+                    <img src="~/img/saavan-logo.png" border="0" alt="0" />
+
+                    <div class="banner-content text-center" style="padding-top:20px;">
+                        <h2 style="color:#FFFFFF;">Shree Hita Ambrish Ji</h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-area-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="copyright">
+                            <p>&copy; 2018, <a href="#">HITA RAS DHARA</a> All Rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="copyright" align="right"> &nbsp; </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jquery latest version -->
+    <script src="~/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- owl.carousel js -->
+    <script src="~/js/owl.carousel.min.js"></script>
+    <!-- Counter js -->
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <!-- waypoint js -->
+    <script src="~/js/waypoints.js"></script>
+    <!-- isotope js -->
+    <script src="~/js/isotope.pkgd.min.js"></script>
+    <!-- stellar js -->
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <!-- magnific js -->
+    <script src="~/js/magnific.min.js"></script>
+    <!-- venobox js -->
+    <script src="~/js/venobox.min.js"></script>
+    <!-- meanmenu js -->
+    <script src="~/js/jquery.meanmenu.js"></script>
+    <!-- Form validator js -->
+    <script src="~/js/form-validator.min.js"></script>
+    <!-- plugins js -->
+    <script src="~/js/plugins.js"></script>
+    <!-- main js -->
+    <script src="~/js/main.js"></script>
+    <script src="~/js/main.js"></script>
 </body>
 </html>

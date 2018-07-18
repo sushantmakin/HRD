@@ -1,141 +1,152 @@
 ﻿@model HitaRasDhara.Models.UserResponse5Aug
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8" style="padding-bottom:15px;">
+        <h3 style="color:#004488;">Registration Form</h3>
         <form class="form-horizontal visibleBlock" id="NewEntryForm">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
+                @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9">
                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
+                @Html.LabelFor(m => m.Phone, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9">
                     @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField" })
                     @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9">
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
+                @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9">
                     @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", placeholder = "Employee Date Of Birth", @readonly = "true" } })
                     @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
+                @Html.LabelFor(m => m.City, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9">
                     @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group" id="QuestionBlock">
-                @Html.LabelFor(m => m.Question, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
+                @Html.LabelFor(m => m.Question, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9">
                     @Html.TextAreaFor(m => m.Question, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Question, "", new { @class = "text-danger" })
                 </div>
             </div>
+
             <div class="form-group" id="ShowOtpButton">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-offset-3 col-md-9">
                     <input type="submit" id="SubmitOfNewForm" value="Register" class="btn btn-primary" />
                 </div>
             </div>
-            <button id="ReprintButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Reprint", "Home")'">
-                <span class="glyphicon glyphicon-print"></span> Reprint Entry Pass
-            </button>
-            <button id="CancelButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("CancelRegistration", "Home")'">
-                <span class="glyphicon glyphicon-remove"></span> Cancel Registration
-            </button>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button id="ReprintButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Reprint", "Home")'">
+                            <span class="fa fa-print" aria-hidden="true"></span> Reprint Entry Pass
+                        </button>
+                        <button id="CancelButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("CancelRegistration", "Home")'">
+                            <span class="fa fa-times" aria-hidden="true"></span> Cancel Registration
+                        </button>
+                    </div>
+                </div>
         </form>
-        <iframe id="RegPass" class="HiddenBlock" width="100%" height="1200px" allowfullscreen src="" style="position: absolute; border:none"></iframe>
+        <iframe id="RegPass" class="HiddenBlock" width="100%" height="auto" allowfullscreen src="" style="position: absolute; border:none"></iframe>
+
     </div>
-   </div>
-<script>
-    
-    $(document).ready(function () {
-        $('input[type=datetime]').datepicker({
-            format: 'YY-MM-DD',
-            changeMonth: true,
-            changeYear: true,
-            minDate: new Date('1983-8-5'),
-            maxDate: new Date('2002-8-5')
-        });
 
-        $("input[type=datetime]").datepicker('setDate', "2017-3-26"); //Set to min Date
+    <div class="col-md-4">
+        <img src="~/img/registration-img.jpg" border="0" alt="" />
+    </div>
+</div>
+    <script>
 
-        function registerNow(formData) {
-            $.ajax({
-                type: "POST",
-                url: "/Home/Index",
-                data: formData,
-                dataType: 'binary',
-                success: function (result) {
-                   if (result.type === "application/pdf") {
-                       console.log('File downloaded');
-                       if (!is_touch_device()) {
-                           $('#RegPass').attr('src', window.URL.createObjectURL(result));
-                           $("#RegPass").removeClass("HiddenBlock");
-                           $("#RegPass").addClass("visibleBlock");
-                           $("#NewEntryForm").removeClass("visibleBlock");
-                           $("#NewEntryForm").addClass("HiddenBlock");
-                       }
-                       saveAs(result, "Registration Pass.pdf");
-                       showPopup(5);
-                    } else {
-                        if (result.size === 2) {
-                            showPopup(1);
-                            console.log('Duplicate');
-                        } else
-                            showPopup(3);
-                        console.log("Technical Error");
-                    }
-                },
-                error: function (data) {
-                    console.log('error : data code is : ' + data.Code);
-                }
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                format: 'YY-MM-DD',
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date('1983-8-5'),
+                maxDate: new Date('2002-8-5')
             });
-            return false;
-        }
 
-        $('#SubmitOfNewForm').click(function () {
-            var $form = $('#NewEntryForm');
-            if (!$form.valid()) {
-                return false;
-            } else {
+            $("input[type=datetime]").datepicker('setDate', "2017-3-26"); //Set to min Date
+
+            function registerNow(formData) {
                 $.ajax({
                     type: "POST",
-                    url: "/Home/SemiFilledForm",
-                    data: $('#NewEntryForm').serialize(),
+                    url: "/Home/Index",
+                    data: formData,
+                    dataType: 'binary',
                     success: function (result) {
-                       swal("Please enter the OTP sent to your mobile",
-                                {
-                                    content: "input"
-                                })
-                            .then((value) => {
-                                if (result.OTPCode === `${value}`) {
-                                    registerNow($('#NewEntryForm').serialize());
-                                } else {
-                                    swal("Failure!", "The OTP you entered is invalid", "error");
-                                }
-                            });
+                        if (result.type === "application/pdf") {
+                            console.log('File downloaded');
+                            if (!is_touch_device()) {
+                                $('#RegPass').attr('src', window.URL.createObjectURL(result));
+                                $("#RegPass").removeClass("HiddenBlock");
+                                $("#RegPass").addClass("visibleBlock");
+                                $("#NewEntryForm").removeClass("visibleBlock");
+                                $("#NewEntryForm").addClass("HiddenBlock");
+                            }
+                            saveAs(result, "Registration Pass.pdf");
+                            showPopup(5);
+                        } else {
+                            if (result.size === 2) {
+                                showPopup(1);
+                                console.log('Duplicate');
+                            } else
+                                showPopup(3);
+                            console.log("Technical Error");
+                        }
                     },
                     error: function (data) {
                         console.log('error : data code is : ' + data.Code);
                     }
                 });
+                return false;
             }
-            return false;
+
+            $('#SubmitOfNewForm').click(function () {
+                var $form = $('#NewEntryForm');
+                if (!$form.valid()) {
+                    return false;
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/SemiFilledForm",
+                        data: $('#NewEntryForm').serialize(),
+                        success: function (result) {
+                            swal("Please enter the OTP sent to your mobile",
+                                {
+                                    content: "input"
+                                })
+                                .then((value) => {
+                                    if (result.OTPCode === `${value}`) {
+                                        registerNow($('#NewEntryForm').serialize());
+                                    } else {
+                                        swal("Failure!", "The OTP you entered is invalid", "error");
+                                    }
+                                });
+                        },
+                        error: function (data) {
+                            console.log('error : data code is : ' + data.Code);
+                        }
+                    });
+                }
+                return false;
+            });
         });
-    });
-</script>
+    </script>

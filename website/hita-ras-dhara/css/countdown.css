@@ -1,0 +1,87 @@
+.countdown {
+	border: 1px solid #e0e0e0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 0;
+	text-align: center;
+	margin: 20px 0 5px;
+	display: inline-block;
+	vertical-align: top;
+}
+.countdown h5 {
+	color: #666666;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	display: block;
+	border-bottom: 1px solid #e0e0e0;
+	margin: 0;
+	padding: 7px 0 3px;
+}
+.countdown .race-countdown {
+	padding: 8px 5px;
+	display: inline-block;
+}
+.countdown .race-countdown div {
+	background-color: #ebebeb;
+	display: inline-block;
+	width: 100px;
+	padding: 18px 10px 8px 10px;
+	margin: 0 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 36px;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
+}
+.countdown .race-countdown div span {
+	font-size: 12px;
+	text-transform:uppercase;
+	font-weight: bold;
+	color: #666666;
+	display: block;
+	padding-top:8px;
+}
+
+@media screen and (max-width: 960px) {
+.countdown {
+	margin: 15px 0 5px;
+}
+}
+
+@media screen and (max-width: 768px) {
+.countdown {
+	margin: 0 0 16px;
+}
+.countdown .race-countdown div {
+	width: 62px;
+}
+}
+
+@media screen and (max-width: 480px) {
+	.countdown .race-countdown div {
+	background-color: #ebebeb;
+	display: inline-block;
+	width: 46px;
+	padding: 4px 0px 0px;
+	margin: 0 1px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
+}
+.countdown .race-countdown div span {
+	font-size: 9px;
+	text-transform: none;
+	font-weight: bold;
+	color: #666666;
+	display: block;
+}
+}
