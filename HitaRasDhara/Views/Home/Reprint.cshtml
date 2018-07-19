@@ -63,11 +63,13 @@
         if (!$form.valid()) {
             return false;
         } else {
+            $('#SubmitBtnOfReprintForm').attr("disabled", "disabled");
             $.ajax({
                 type: "POST",
                 url: "/Home/SemiFilledForm2",
                 data: $('#ReprintForm').serialize(),
                 success: function (result) {
+                    $('#SubmitBtnOfReprintForm').removeAttr("disabled");
                     swal("Please enter the OTP sent to your mobile", {
                         content: "input"
                     })
@@ -80,6 +82,7 @@
                             });
                 },
                 error: function (data) {
+                    $('#SubmitBtnOfReprintForm').removeAttr("disabled");
                     console.log('error : data code is : ' + data.Code);
                 }
             });

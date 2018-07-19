@@ -40,7 +40,7 @@ namespace HitaRasDhara.Controllers
                 if (userDetails.SeatStatus.Equals("Cancelled"))
                 {
                     userDetails.City = input.City;
-                    userDetails.DateOfBirth = input.DateOfBirth;
+                    userDetails.YearOfBirth = input.YearOfBirth;
                     userDetails.Name = input.Name;
                     userDetails.SeatStatus = "Registered";
                     userDetails.TimeStamp=DateTime.Now;
@@ -137,13 +137,13 @@ namespace HitaRasDhara.Controllers
                     table.DefaultCell.Padding = 5f;
                     table.AddCell("Name");
                     table.AddCell(UserDetails.Name);
-                    table.AddCell("Date Of Birth");
-                    table.AddCell(UserDetails.DateOfBirth.ToString("dd/MM/yyyy"));
+                    table.AddCell("Year Of Birth");
+                    table.AddCell(UserDetails.YearOfBirth);
                     table.AddCell("City");
                     table.AddCell(UserDetails.City);
                     table.AddCell("Contact No.");
                     table.AddCell(UserDetails.Phone);
-                    table.AddCell("Registration Time");
+                    table.AddCell("Registration Date & Time");
                     table.AddCell(UserDetails.TimeStamp.ToString());
 
                     #endregion
@@ -230,7 +230,7 @@ namespace HitaRasDhara.Controllers
         public bool sendSMS(string mobile, string sms)
         {
             string URL =
-                "http://sms.wishsolution.com/Api.aspx?usr=HITRAS&pwd=india123&smstype=TextSMS&to={0}&msg={1}&rout=Transactional&from=HITRAS";
+                "http://sms.wishsolution.com/Api.aspx?usr=HITRASAPI&pwd=india123&smstype=TextSMS&to={0}&msg={1}&rout=Transactional&from=HITRAS";
             var urlToHit = string.Format(URL, mobile, sms);
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

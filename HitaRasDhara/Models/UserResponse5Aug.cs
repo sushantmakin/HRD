@@ -13,9 +13,8 @@ namespace HitaRasDhara.Models
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Date Of Birth")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy}")]
-        public DateTime DateOfBirth { get; set; }
+        [Display(Name = "Year Of Birth")]
+        public string YearOfBirth { get; set; }
 
         [Required]
         [Display(Name = "City")]
