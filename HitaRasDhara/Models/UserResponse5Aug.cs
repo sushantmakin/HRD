@@ -9,11 +9,11 @@ namespace HitaRasDhara.Models
     public class UserResponse5Aug
     {
         [Required]
-        [Display(Name = "Full Name")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Year Of Birth")]
+        [Display(Name = "Birth Year")]
         public string YearOfBirth { get; set; }
 
         [Required]
@@ -37,7 +37,7 @@ namespace HitaRasDhara.Models
         [Required]
         public string SeatStatus { get; set; }
 
-        [Display(Name = "Question from the master (if any)")]
+        [Display(Name = "Any query from the master")]
         public string Question { get; set; }
 
         [Required]

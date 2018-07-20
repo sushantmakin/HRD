@@ -6,7 +6,7 @@ namespace HitaRasDhara.Models
     {
         [Required]
         [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone")]
+        [Display(Name = "Mobile")]
         [RegularExpression(@"^(\d{10})$", ErrorMessage = "Entered phone format is not valid.")]
         public string Phone { get; set; }
     }

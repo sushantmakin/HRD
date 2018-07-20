@@ -29,7 +29,8 @@ namespace HitaRasDhara.Controllers
                 if (userDetails == null)
                 {
                     input.SeatStatus = "Registered";
-                    input.TimeStamp = DateTime.Now;
+                    input.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
+                        TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                     _dbContext.UserResponse5Aug.Add(input);
                     _dbContext.SaveChanges();
                     string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,
@@ -43,7 +44,8 @@ namespace HitaRasDhara.Controllers
                     userDetails.YearOfBirth = input.YearOfBirth;
                     userDetails.Name = input.Name;
                     userDetails.SeatStatus = "Registered";
-                    userDetails.TimeStamp=DateTime.Now;
+                    userDetails.TimeStamp= TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
+                        TimeZoneInfo.FindSystemTimeZoneById("India Standard Time")); 
                     userDetails.Question = input.Question;
                     userDetails.Email = input.Email;
                     _dbContext.SaveChanges();

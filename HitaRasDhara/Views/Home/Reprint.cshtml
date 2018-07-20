@@ -2,15 +2,17 @@
 
 <div class="row">
     <div class="col-md-8">
-        <h3 style="color:#004488;">Re-Print</h3>
+        <h3 style="color:#004488;">Reprint your entry pass.</h3>
         <form class="form-horizontal visibleBlock" id="ReprintForm">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Enter your registered mobile number" })
                     @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                    <p style="width: 290px"> If due to some reasons you could not save/preserve the entry pass generated at the time of registration, you can reprint the same by entering your registered mobile number above.</p>
+
                 </div>
             </div>
             <div class="form-group">
@@ -44,7 +46,7 @@
                         $("#ReprintForm").addClass("HiddenBlock");
                         $("#imgBlock").addClass("HiddenBlock");
                     }
-                    saveAs(result, "Registration Pass.pdf");
+                    saveAs(result, "Entry Pass.pdf");
                     showPopup(9);
                 } else {
                     showPopup(7);
