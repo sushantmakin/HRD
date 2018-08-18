@@ -28,10 +28,16 @@
             swal('Error !', 'No registration exists with the provided mobile number.', 'error');
             break;
         case 12:
-            swal('Already Cancelled !', 'This registration has already been cancelled in the past.', 'error');
+            swal('Registration Cancelled !', 'This registration was cancelled in the past.', 'error');
             break;
         case 13:
             swal('Success !', 'Registration has been cancelled Successfully.', 'success');
+            break;
+        case 14:
+            swal('Success !', 'Your Feedback has been successfully captured.', 'success');
+            break;
+        case 15:
+            swal('Error !', 'You have already provided your Feedback.', 'error');
             break;
     }
 }

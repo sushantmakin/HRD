@@ -1,0 +1,91 @@
+﻿@model HitaRasDhara.Models.EventFeedbackViewModel
+
+<div class="row">
+    <div class="col-md-8">
+        <h3 style="color:#004488;">Feedback regarding "Be Friends with your complications.".</h3>
+        <form class="form-horizontal visibleBlock" id="FeedbackForm">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <p> Kindly provide feedback pertaining to "Be Friends with your Complications" by Hita Ambrish Ji.</p>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Enter your registered mobile number" })
+                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Feedback, new {@class = "col-md-2 control-label"})
+                <div class="col-md-9">
+                    @Html.TextAreaFor(m => m.Feedback, new {@class = "form-control", placeholder = "If you have any feedback regarding the event, kindly enter it here."})
+                    @Html.ValidationMessageFor(m => m.Feedback, "", new {@class = "text-danger"})
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="SubmitBtnOfFeedbackForm" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4" id="imgBlock">
+        <img src="~/img/registration-img.jpg" border="0" alt="" />
+    </div>
+</div>
+
+<script>
+    function FeedbackSubmitNow(formData) {
+        $.ajax({
+            type: "POST",
+            url: "/Home/EventFeedback",
+            data: formData,
+            success: function (result) {
+                $('#SubmitBtnOfFeedbackForm').val("Submit");
+                console.log('data is : ' + result.Code);
+                showPopup(result.Code);
+            },
+            error: function (data) {
+                $('#SubmitBtnOfFeedbackForm').val("Submit");
+                console.log('error : data code is : ' + data.Code);
+            }
+        });
+        return false;
+    }
+
+    $('#SubmitBtnOfFeedbackForm').click(function () {
+        var $form = $('#FeedbackForm');
+        if (!$form.valid()) {
+            return false;
+        } else {
+            $('#SubmitBtnOfFeedbackForm').attr("disabled", "disabled");
+            $('#SubmitBtnOfFeedbackForm').val("Please Wait...");
+            $.ajax({
+                type: "POST",
+                url: "/Home/SemiFilledForm3",
+                data: $('#FeedbackForm').serialize(),
+                success: function (result) {
+                    $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");
+                    swal("Please enter the OTP sent to your mobile", {
+                        content: "input"
+                    })
+                            .then((value) => {
+                                if (result.OTPCode === `${value}`) {
+                                    FeedbackSubmitNow($('#FeedbackForm').serialize());
+                                } else {
+                                    $('#SubmitBtnOfFeedbackForm').val("Submit");
+                                    swal("Failure!", "The OTP you entered is invalid", "error");
+                                }
+                            });
+                },
+                error: function (data) {
+                    $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");
+                    $('#SubmitBtnOfFeedbackForm').val("Submit");
+                    console.log('error : data code is : ' + data.Code);
+                }
+            });
+        }
+        return false;
+    });
+
+</script>

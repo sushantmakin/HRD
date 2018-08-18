@@ -204,6 +204,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,9 +228,23 @@
     <Compile Include="Migrations\201807190626149_yearofbirth.Designer.cs">
       <DependentUpon>201807190626149_yearofbirth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808051729012_Feedback.cs" />
+    <Compile Include="Migrations\201808051729012_Feedback.Designer.cs">
+      <DependentUpon>201808051729012_Feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808111052278_query.cs" />
+    <Compile Include="Migrations\201808111052278_query.Designer.cs">
+      <DependentUpon>201808111052278_query.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808151235288_PhoneCountryCode.cs" />
+    <Compile Include="Migrations\201808151235288_PhoneCountryCode.Designer.cs">
+      <DependentUpon>201808151235288_PhoneCountryCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EventFeedBackViewModel.cs" />
     <Compile Include="Models\MobileVerificationViewModel.cs" />
+    <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\SMSContent.cs" />
     <Compile Include="Models\UserResponse5Aug.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -301,18 +316,46 @@
     <Content Include="form-bg-Lower.jpg" />
     <Content Include="form-bg-Upper.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="hita-ambrish-ji.html" />
+    <Content Include="hita-ras-dhara.html" />
+    <Content Include="img\ambrish-ji.jpg" />
     <Content Include="img\banner.jpg" />
     <Content Include="img\banner2.jpg" />
+    <Content Include="img\bg1.jpg" />
     <Content Include="img\bg2.jpg" />
+    <Content Include="img\bhajan-marg.jpg" />
     <Content Include="img\favicon.ico" />
+    <Content Include="img\Feedback.png" />
     <Content Include="img\gaana-logo.png" />
     <Content Include="img\gaana_icon.png" />
+    <Content Include="img\gaana_icon2.png" />
+    <Content Include="img\gopi-geet.jpg" />
+    <Content Include="img\hita-ras-dhara.jpg" />
     <Content Include="img\hita-tas-dhara-logo.png" />
     <Content Include="img\logo.png" />
+    <Content Include="img\madhurastak.jpg" />
+    <Content Include="img\preloader-old.gif" />
     <Content Include="img\preloader.gif" />
+    <Content Include="img\prem-diwani-meera.jpg" />
+    <Content Include="img\radha-ashtami.jpg" />
+    <Content Include="img\radha-kirpa-kataksh.jpg" />
+    <Content Include="img\radha-vallabh-ji.jpg" />
+    <Content Include="img\registration-closed.jpg" />
     <Content Include="img\registration-img.jpg" />
     <Content Include="img\saavan-logo.png" />
+    <Content Include="img\saavan_icon2.png" />
     <Content Include="img\saavn_icon.png" />
+    <Content Include="img\slider1.jpg" />
+    <Content Include="img\slider1HD.jpg" />
+    <Content Include="img\slider2.jpg" />
+    <Content Include="img\slider2HD.jpg" />
+    <Content Include="img\slider3.jpg" />
+    <Content Include="img\slider3HD.jpg" />
+    <Content Include="img\tulsi-das-patiala.jpg" />
+    <Content Include="img\uddhav-sandesh.jpg" />
+    <Content Include="img\upcoming-katha01.jpg" />
+    <Content Include="img\upcoming-katha02.jpg" />
+    <Content Include="img\upcoming-katha03.jpg" />
     <Content Include="img\venubox\close.gif" />
     <Content Include="img\venubox\next.gif" />
     <Content Include="img\venubox\preload-circle.png" />
@@ -321,6 +364,7 @@
     <Content Include="img\venubox\preload-quads.png" />
     <Content Include="img\venubox\preload.png" />
     <Content Include="img\venubox\prev.gif" />
+    <Content Include="img\youtube_icon.png" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\form-validator.min.js" />
@@ -338,6 +382,7 @@
     <Content Include="js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="js\venobox.min.js" />
     <Content Include="js\waypoints.js" />
+    <Content Include="katha-gallery.html" />
     <Content Include="registration.html" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -354,18 +399,22 @@
     <Content Include="fonts\Linearicons-Free.ttf" />
     <Content Include="fonts\Linearicons-Free.woff" />
     <Content Include="fonts\Linearicons-Free.woff2" />
+    <Content Include="img\Thumbs.db" />
+    <Content Include="img\venubox\Thumbs.db" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Controllers\CountryCodes.json" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile3.pubxml" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\FileSaver.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
@@ -380,8 +429,12 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sweetalert.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="shree-radha-vallabh-ji.html" />
     <Content Include="style.css" />
-    <Content Include="Web.config" />
+    <Content Include="upcoming-katha.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -417,15 +470,16 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\Reprint.cshtml" />
     <Content Include="Views\Home\CancelRegistration.cshtml" />
+    <Content Include="Views\Home\EventFeedback.cshtml" />
+    <Content Include="Views\Admin\Feedback.cshtml" />
+    <Content Include="Views\Query\Index.cshtml" />
+    <Content Include="Views\Admin\Query.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\color\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
@@ -444,6 +498,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807190626149_yearofbirth.resx">
       <DependentUpon>201807190626149_yearofbirth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808051729012_Feedback.resx">
+      <DependentUpon>201808051729012_Feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808111052278_query.resx">
+      <DependentUpon>201808111052278_query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808151235288_PhoneCountryCode.resx">
+      <DependentUpon>201808151235288_PhoneCountryCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using HitaRasDhara.Models;
@@ -44,8 +45,8 @@ namespace HitaRasDhara.Controllers
                     userDetails.YearOfBirth = input.YearOfBirth;
                     userDetails.Name = input.Name;
                     userDetails.SeatStatus = "Registered";
-                    userDetails.TimeStamp= TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
-                        TimeZoneInfo.FindSystemTimeZoneById("India Standard Time")); 
+                    userDetails.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
+                        TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                     userDetails.Question = input.Question;
                     userDetails.Email = input.Email;
                     _dbContext.SaveChanges();
@@ -106,7 +107,7 @@ namespace HitaRasDhara.Controllers
             return File(doc, "application/pdf", phone + ".pdf");
         }
 
-        [HttpPost]
+        //[HttpPost]
         public byte[] GeneratePDF(string mobile)
         {
             try
@@ -129,7 +130,7 @@ namespace HitaRasDhara.Controllers
                     string imageFilePath = Server.MapPath("~") + "/form-bg-Upper.jpg";
                     Image jpgUpper = Image.GetInstance(imageFilePath);
                     jpgUpper.ScaleAbsoluteWidth(PageSize.A4.Width);
-                    jpgUpper.ScaleAbsoluteHeight(PageSize.A4.Height/3);
+                    jpgUpper.ScaleAbsoluteHeight(PageSize.A4.Height / 3);
                     #endregion
 
                     #region TextStarts
@@ -164,7 +165,7 @@ namespace HitaRasDhara.Controllers
                     pdfDoc.Add(jpgUpper);
                     pdfDoc.Add(table);
                     pdfDoc.Add(jpgLower);
-
+                    
                     #endregion
                     pdfDoc.Close();
                     Response.Write(pdfDoc);
@@ -206,6 +207,78 @@ namespace HitaRasDhara.Controllers
             return Json(new { Code = 13 }, JsonRequestBehavior.AllowGet);//Seat successfully cancelled.
         }
 
+        public ActionResult EventFeedback()
+        {
+            var viewModel = new EventFeedbackViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EventFeedback(EventFeedbackViewModel input)
+        {
+            try
+            {
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                var userDetails = _dbContext.UserResponse5Aug.Find(input.Phone);
+                if (userDetails == null)
+                {
+                    return Json(new { Code = 11 }, JsonRequestBehavior.AllowGet); //No seat registered.
+                }
+                if (userDetails.SeatStatus.Equals("Cancelled"))
+                {
+                    return Json(new { Code = 12 }, JsonRequestBehavior.AllowGet); //registration already cancelled.
+                }
+
+                var isFeedbackFirstTime = _dbContext.Feedback5August.Find(input.Phone) == null;
+                if (isFeedbackFirstTime)
+                {
+                    _dbContext.Feedback5August.Add(input);
+                    _dbContext.SaveChanges();
+                    string smsContent = string.Format(_dbContext.SmsContent.Find("Feedback").Value, userDetails.Name);
+                    bool smsSent = sendSMS(input.Phone, smsContent);
+                    return Json(new { Code = 14 }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { Code = 15 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        public string sendEmail()
+        {
+            try
+            {
+                MailMessage msg = new MailMessage();
+                msg.To.Add(new MailAddress("sushantmakin@gmail.com"));
+                msg.From = new MailAddress("info@hitaambrish.com");
+                msg.Subject = "subject";
+                msg.Body = "message";
+                msg.IsBodyHtml = true;
+                // msg.Attachments.Add(new Attachment(memoryStream, UserDetails.Name + ".pdf"));
+
+                SmtpClient client = new SmtpClient();
+                client.Credentials = new NetworkCredential("info@hitaambrish.com", "Sushant@123");
+                client.Port = 25;
+                client.Host = "relay-hosting.secureserver.net";
+                client.Send(msg);
+                return "true";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return e.ToString();
+            }
+            #region email
+
+            
+
+            #endregion
+
+        }
 
         [HttpPost]
         public JsonResult SemiFilledForm(UserResponse5Aug input)
@@ -220,6 +293,17 @@ namespace HitaRasDhara.Controllers
 
         [HttpPost]
         public JsonResult SemiFilledForm2(MobileVerificationViewModel input)
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            var OTP = GenerateOtp(4);
+            string smsTemplate = _dbContext.SmsContent.Find("OTP")?.Value;
+            string smsContent = string.Format(smsTemplate, OTP);
+            bool smsSent = sendSMS(input.Phone, smsContent);
+            return Json(smsSent ? new { OTPCode = OTP } : new { OTPCode = "" }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult SemiFilledForm3(EventFeedbackViewModel input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
             var OTP = GenerateOtp(4);

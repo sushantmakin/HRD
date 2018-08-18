@@ -31,6 +31,7 @@ namespace HitaRasDhara.Models
         [Required]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
         [Display(Name = "Seat Status")]

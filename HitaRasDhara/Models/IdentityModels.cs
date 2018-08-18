@@ -27,6 +27,8 @@ namespace HitaRasDhara.Models
 
         public DbSet<UserResponse5Aug> UserResponse5Aug { get; set; }
         public DbSet<SMSContent> SmsContent { get; set; }
+        public DbSet<EventFeedbackViewModel> Feedback5August { get; set; }
+        public DbSet<QueryViewModel> QueryForm { get; set; }
 
         public static ApplicationDbContext Create()
         {

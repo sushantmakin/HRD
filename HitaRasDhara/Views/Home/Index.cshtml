@@ -2,86 +2,79 @@
 <div class="row">
     <div class="col-md-8" style="padding-bottom:15px;">
         <h3 style="color:#004488;">Registration Form</h3>
-        <form class="form-horizontal visibleBlock" id="NewEntryForm">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
-                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        @*<form class="form-horizontal visibleBlock" id="NewEntryForm">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Phone, new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Phone" })
-                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Phone" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            @{
-                List<SelectListItem> AllowedYearOfBirth = new List<SelectListItem>();
-                for (int i = 1983; i <= 2002; i++)
+                @{
+            List<SelectListItem> AllowedYearOfBirth = new List<SelectListItem>();
+            for (int i = 1983; i <= 2002; i++)
+            {
+                AllowedYearOfBirth.Add(new SelectListItem
                 {
-                    AllowedYearOfBirth.Add(new SelectListItem
-                    {
-                        Text = i.ToString(),
-                        Value = i.ToString()
-                    });
-                }
+                    Text = i.ToString(),
+                    Value = i.ToString()
+                });
             }
+                }
 
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.YearOfBirth, new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                        @*@Html.EditorFor(model => model.YearOfBirth, new { htmlAttributes = new { @class = "form-control", placeholder = "Year Of Birth" } })*@
+                <div class="form-group">
+                    @Html.LabelFor(m => m.YearOfBirth, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
                         @Html.DropDownListFor(model => model.YearOfBirth, AllowedYearOfBirth, "Select Year Of Birth", new { @class = "form-control" })
                         <p style="width: 290px">This discourse is only for the age group of 16 to 35 years.</p>
                         @Html.ValidationMessageFor(m => m.YearOfBirth, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.City, new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
-                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.City, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+                        @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group" id="QuestionBlock">
-                <label class="col-md-3 control-label">Your Questions</label>
-                @*@Html.LabelFor(m => m.Question, new {@class = "col-md-3 control-label"})*@
-                <div class="col-md-9">
-                    @Html.TextAreaFor(m => m.Question, new {@class = "form-control", placeholder = "If you have any questions for Hita Ambrish ji please enter it here."})
-                    @Html.ValidationMessageFor(m => m.Question, "", new {@class = "text-danger"})
-                </div>
-            </div>
 
-            <div class="form-group" id="ShowOtpButton">
-                <div class="col-md-offset-3 col-md-9">
-                    <input type="submit" id="SubmitOfNewForm" value="Register" class="btn btn-primary" />
+                @Html.Hidden("Question", "null")
+                <div class="form-group" id="ShowOtpButton">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" id="SubmitOfNewForm" value="Register" class="btn btn-primary" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-3 col-md-9">
-                    <button id="ReprintButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Reprint", "Home")'">
-                        <span class="fa fa-print" aria-hidden="true"></span> Reprint Entry Pass
-                    </button>
-                    <button id="CancelButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("CancelRegistration", "Home")'">
-                        <span class="fa fa-times" aria-hidden="true"></span> Cancel Registration
-                    </button>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button id="ReprintButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Reprint", "Home")'">
+                            <span class="fa fa-print" aria-hidden="true"></span> Reprint Entry Pass
+                        </button>
+                        <button id="CancelButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("CancelRegistration", "Home")'">
+                            <span class="fa fa-times" aria-hidden="true"></span> Cancel Registration
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <iframe id="RegPass" class="HiddenBlock" width="100%" height="1000px" allowfullscreen src="" style="border:none"></iframe>
-
+            </form>
+            <iframe id="RegPass" class="HiddenBlock" width="100%" height="1000px" allowfullscreen src="" style="border:none"></iframe>*@
+        <img src="~/img/registration-closed.jpg" style=" display: block; margin: 0 auto;">
+        @*<a href="http://www.hitaambrish.com/Home/EventFeedback" target="_blank"><img src="~/img/Feedback.png" style="height: 75px; width: 300px; display: block; margin: 0 auto;"></a>*@
     </div>
 
     <div class="col-md-4" id="imgBlock">
@@ -89,17 +82,6 @@
     </div>
 </div>
 <script>
-
-    //$(document).ready(function () {
-    //    $('input[type=datetime]').datepicker({
-    //        format: 'YY-MM-DD',
-    //        changeMonth: true,
-    //        changeYear: true,
-    //        minDate: new Date('1983-8-5'),
-    //        maxDate: new Date('2002-8-5')
-    //    });
-
-    //    $("input[type=datetime]").datepicker('setDate', "2017-3-26"); //Set to min Date
 
     function registerNow(formData) {
         $.ajax({
