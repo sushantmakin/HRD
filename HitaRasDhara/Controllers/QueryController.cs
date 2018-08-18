@@ -61,7 +61,7 @@ namespace HitaRasDhara.Controllers
         public JsonResult getCountryCode()
         {
             var dictionary = new Dictionary<string, string>();
-
+            dictionary.Add("IN", "+91");
             dictionary.Add("AC", "+247");
             dictionary.Add("AD", "+376");
             dictionary.Add("AE", "+971");
@@ -162,7 +162,6 @@ namespace HitaRasDhara.Controllers
             dictionary.Add("IE", "+353");
             dictionary.Add("IL", "+972");
             dictionary.Add("IM", "+44");
-            dictionary.Add("IN", "+91");
             dictionary.Add("IO", "+246");
             dictionary.Add("IQ", "+964");
             dictionary.Add("IR", "+98");

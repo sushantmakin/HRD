@@ -35,11 +35,10 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.Phone, new { @class = "col-md-3 control-label" })
                     <div class="col-md-2">
-                        <select name="PhoneCountryCode" id="PhoneCodeSelect" class="form-control">
-                        </select>
+                        <select name="PhoneCountryCode" id="PhoneCodeSelect" class="form-control"></select>
                     </div>
                     <div class="col-md-7">
-                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Phone"})
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Phone" })
                         @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -106,10 +105,16 @@
                     });
             });
     });
-
     $(window).on('load', function () {
-        $('#countrySelect').val('India');
-        $('#PhoneCodeSelect').val('+91');
+        myFunction();
     });
+
+    function myFunction() {
+        setTimeout(function () {
+            $('#countrySelect').val('India');
+            $('#PhoneCodeSelect').val('+91');
+        }, 500);
+    }
+
 </script>
 

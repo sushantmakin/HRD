@@ -165,7 +165,23 @@ namespace HitaRasDhara.Controllers
                     pdfDoc.Add(jpgUpper);
                     pdfDoc.Add(table);
                     pdfDoc.Add(jpgLower);
-                    
+
+                    #region email
+                    MailMessage msg = new MailMessage();
+                    msg.To.Add(new MailAddress(UserDetails.Email));
+                    msg.From = new MailAddress("info@hitaambrish.com", "Hita Ambrish");
+                    msg.Subject = "Registration Confirmation - " + UserDetails.Name;
+                    msg.Body = "message";
+                    msg.IsBodyHtml = true;
+                    msg.Attachments.Add(new Attachment(memoryStream, UserDetails.Name + ".pdf"));
+
+                    SmtpClient client = new SmtpClient();
+                    client.Credentials = new NetworkCredential("info@hitaambrish.com", "Sushant@123");
+                    client.Port = 25;
+                    client.Host = "relay-hosting.secureserver.net";
+                    client.Send(msg);
+                    #endregion
+
                     #endregion
                     pdfDoc.Close();
                     Response.Write(pdfDoc);
@@ -245,38 +261,6 @@ namespace HitaRasDhara.Controllers
                 Console.WriteLine(e);
                 return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
             }
-
-        }
-
-        public string sendEmail()
-        {
-            try
-            {
-                MailMessage msg = new MailMessage();
-                msg.To.Add(new MailAddress("sushantmakin@gmail.com"));
-                msg.From = new MailAddress("info@hitaambrish.com");
-                msg.Subject = "subject";
-                msg.Body = "message";
-                msg.IsBodyHtml = true;
-                // msg.Attachments.Add(new Attachment(memoryStream, UserDetails.Name + ".pdf"));
-
-                SmtpClient client = new SmtpClient();
-                client.Credentials = new NetworkCredential("info@hitaambrish.com", "Sushant@123");
-                client.Port = 25;
-                client.Host = "relay-hosting.secureserver.net";
-                client.Send(msg);
-                return "true";
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return e.ToString();
-            }
-            #region email
-
-            
-
-            #endregion
 
         }
 
