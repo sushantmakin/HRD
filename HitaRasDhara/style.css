@@ -3213,7 +3213,17 @@ button.quote-btn {
 .applyNow a {font-size:22px;color:#000000;font-weight:600;}
 .applyNow a:hover {font-size:22px;color:#C20001;font-weight:600;}
 
+.langBtn {width:50%;text-align:center;padding:8px 0px;background-color:#c42121;color:#FFFFFF;font-size:18px;}
+.langBtn a {font-size:18px;color:#FFFFFF;}
+.langBtn a:hover {font-size:18px;color:#FFCC33;}
 
+
+.VisibleBlock {
+    display :  block;
+}
+.HiddenBlock {
+    display :  none;
+}
 
 /*--------------------------------*/
 /* .End CSS

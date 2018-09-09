@@ -1,5 +1,7 @@
 ﻿@model HitaRasDhara.Models.MobileVerificationViewModel
-
+@{
+    Layout = "~/Views/Shared/_LayoutEvent.cshtml";
+}
 <div class="row">
     <div class="col-md-8">
         <h3 style="color:#004488;">Reprint your entry pass.</h3>
@@ -32,7 +34,7 @@
     function reprintNow(formData) {
         $.ajax({
             type: "POST",
-            url: "/Home/Reprint",
+            url: "/Talk/Reprint",
             data: formData,
             dataType: 'binary',
             success: function (result) {
@@ -68,7 +70,7 @@
             $('#SubmitBtnOfReprintForm').attr("disabled", "disabled");
             $.ajax({
                 type: "POST",
-                url: "/Home/SemiFilledForm2",
+                url: "/Talk/SemiFilledForm2",
                 data: $('#ReprintForm').serialize(),
                 success: function (result) {
                     $('#SubmitBtnOfReprintForm').removeAttr("disabled");

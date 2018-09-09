@@ -1,89 +1,66 @@
 ﻿@model HitaRasDhara.Models.QueryViewModel
 
 <div class="container">
-    <div class="col-md-8" style="padding-bottom:15px;">
+    <div class="row">
         <h3 style="color:#004488;">Have a Query ? </h3>
         <h5> Write to us ! </h5>
-        @if (ViewBag.Code == 1)
-        {
-            <div class="alert alert-success">
-                <strong>Success!</strong> Your Query has been successfully submitted. We will get back to you soon.
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="contact-form">
+                    <div class="row">
+                        <form class="form-horizontal" id="QueryEntryForm">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", type = "text", id = "name" })
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                        <select name="PhoneCountryCode" id="PhoneCodeSelect" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: 15px;"></select>
+                                    </div>
+                                    <div class="col-md-8 col-sm-12 col-xs-12">
+                                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Mobile" })
+                                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+                                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+                                @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select name="Country" id="countrySelect" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: 15px;">
+                                    <option>Select Country</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", rows = "7", style= "margin-bottom: 15px;max-width: 100%;" })
+                                    @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 text-left" id="Submit">
+                                <input type="submit" id="SubmitOfQueryForm" class="contact-btn" value="Submit" style="width:120px;background-color:#072948;font-size:18px;padding:10px 0px;color:#FFFFFF;border:none;"/> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div style="text-align: center;">
-                <button class="btn btn-primary" onclick="location.href = '/'" style="align-self: ">
-                    <span class="glyphicon glyphicon-home"> </span> Back to Home
-                </button>
-            </div>
-        }
-        @if (ViewBag.Code == 2)
-        {
-            <div class="alert alert-danger">
-                <strong>Error! </strong>Due to a technical error your query was not submitted. Kindly try again.
-            </div>
-        }
-        @if (ViewBag.Code != 1)
-        {<form class="form-horizontal" id="NewEntryForm" method="post">
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-                    </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <img src="~/img/ask-query.png" border="0" alt="Query" />
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Phone, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-2">
-                        <select name="PhoneCountryCode" id="PhoneCodeSelect" class="form-control"></select>
-                    </div>
-                    <div class="col-md-7">
-                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Phone" })
-                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.City, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Email" })
-                        @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Country, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-9">
-                        <select name="Country" id="countrySelect" class="form-control">
-                            <option>Select Country</option>
-                        </select>
-                        @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Query, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-9">
-                        @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", rows = "3" })
-                        @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group" id="Submit">
-                    <div class="col-md-offset-3 col-md-9">
-                        <button type="submit" id="SubmitOfQueryForm" class="btn btn-primary">Submit </button>
-                    </div>
-                </div>
-            </form>
-
-        }
     </div>
 </div>
 
@@ -115,6 +92,32 @@
             $('#PhoneCodeSelect').val('+91');
         }, 500);
     }
+
+    $('#SubmitOfQueryForm').click(function () {
+        var $form = $('#QueryEntryForm');
+        if (!$form.valid()) {
+            return false;
+        } else {
+            $('#SubmitOfQueryForm').attr("disabled", "disabled");
+            $('#SubmitOfQueryForm').val("Please wait...");
+            $.ajax({
+                type: "POST",
+                url: "/Query/Index",
+                data: $('#QueryEntryForm').serialize(),
+                success: function (result) {
+                    $('#SubmitOfQueryForm').val("Submit");
+                    console.log('data is : ' + result.Code);
+                    showPopup(result.Code);
+                },
+                error: function (data) {
+                    $('#SubmitOfQueryForm').removeAttr("disabled");
+                    $('#SubmitOfQueryForm').val("Submit");
+                    console.log('error : data code is : ' + data.Code);
+                }
+            });
+        }
+        return false;
+    });
 
 </script>
 

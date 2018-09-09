@@ -35,6 +35,10 @@ namespace HitaRasDhara.Models
         public string City { get; set; }
 
         [Required]
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Required]
         [Display(Name = "Country")]
         public string Country { get; set; }
 

@@ -16,6 +16,7 @@ namespace HitaRasDhara.Controllers
             var viewModel = new DbViewForDashboard { ContentItems = _dbContext.UserResponse5Aug.Select(m => m).ToList() };
             ViewBag.TotalRegistration = _dbContext.UserResponse5Aug.Count();
             ViewBag.RegisteredUsers = _dbContext.UserResponse5Aug.Count(t => t.SeatStatus == "Registered");
+            ViewBag.CancelledUsers = ViewBag.TotalRegistration - ViewBag.RegisteredUsers;
             ViewBag.QuestionUsers = _dbContext.UserResponse5Aug.Count(x => x.Question != null);
             return View(viewModel);
         }

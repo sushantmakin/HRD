@@ -2,7 +2,7 @@
 <div class="container">
     <div class="header">
         <h2>Dashboard</h2>
-        <p>The current status of Event Registration for 5th August.</p>
+        <p>The current status of Event Registration for 2nd October.</p>
     </div>
 
     <div class="row">
@@ -12,8 +12,10 @@
                 <div id="wrap">
                     <div class="container">
                         <div class="form-group">
-                            <p> <b>Registrations : @ViewBag.RegisteredUsers / @ViewBag.TotalRegistration </b></p>
-                            <p> <b>Questions : @ViewBag.QuestionUsers </b> </p>
+                            <p> <b>Total Registrations : @ViewBag.TotalRegistration </b></p>
+                            <p> <b>Active Registrations : @ViewBag.RegisteredUsers </b></p>
+                            <p> <b>Cancelled Registrations : @ViewBag.CancelledUsers </b></p>
+                            @*<p> <b>Questions : @ViewBag.QuestionUsers </b> </p>*@
                             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search.." title="Type in a search parameter">
                             <button id="ExportButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("ExportListFromTsvDashboard", "Admin")'" style="float:right">
                                 <span class="glyphicon glyphicon-save"></span> Download
@@ -30,8 +32,8 @@
                                         <th>City&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(3)"></span></th>
                                         <th>Email&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(4)"></span></th>
                                         <th>Seat Status&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(5)"></span></th>
-                                        <th>Question&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(6)"></span></th>
-                                        <th>TimeStamp&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(7)"></span></th>
+                                        @*<th>Question&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(6)"></span></th>*@
+                                        <th>TimeStamp&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort" onclick="sortTable(6)"></span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,7 +46,7 @@
                                             <td>@item.City</td>
                                             <td>@item.Email</td>
                                             <td>@item.SeatStatus</td>
-                                            <td>@item.Question</td>
+                                            @*<td>@item.Question</td>*@
                                             <td>@item.TimeStamp</td>
                                         </tr>
                                     }

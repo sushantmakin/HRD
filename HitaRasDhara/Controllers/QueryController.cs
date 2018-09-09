@@ -30,13 +30,11 @@ namespace HitaRasDhara.Controllers
                 _dbContext.QueryForm.Add(input);
                 _dbContext.SaveChanges();
                 ModelState.Clear();
-                ViewBag.Code = 1;
-                return View(viewModel2);
+                return Json(new { Code = 16 }, JsonRequestBehavior.AllowGet); //No seat registered.
             }
             catch (Exception ex)
             {
-                ViewBag.Code = 2;
-                return View(input);
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet); //Technical Error.
             }
 
         }

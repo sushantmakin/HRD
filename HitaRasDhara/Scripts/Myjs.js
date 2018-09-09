@@ -39,6 +39,11 @@
         case 15:
             swal('Error !', 'You have already provided your Feedback.', 'error');
             break;
+        case 16:
+            swal('Success !', 'Your Query has been successfully submitted. We will get back to you soon.', 'success').then(() => {
+                window.location.href = 'http://www.hitaambrish.com';
+            });
+            break;
     }
 }
 

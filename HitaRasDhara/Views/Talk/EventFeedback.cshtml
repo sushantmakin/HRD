@@ -38,7 +38,7 @@
     function FeedbackSubmitNow(formData) {
         $.ajax({
             type: "POST",
-            url: "/Home/EventFeedback",
+            url: "/Talk/EventFeedback",
             data: formData,
             success: function (result) {
                 $('#SubmitBtnOfFeedbackForm').val("Submit");
@@ -62,7 +62,7 @@
             $('#SubmitBtnOfFeedbackForm').val("Please Wait...");
             $.ajax({
                 type: "POST",
-                url: "/Home/SemiFilledForm3",
+                url: "/Talk/SemiFilledForm3",
                 data: $('#FeedbackForm').serialize(),
                 success: function (result) {
                     $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");

@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Global.asax.cs">
@@ -240,6 +241,10 @@
     <Compile Include="Migrations\201808151235288_PhoneCountryCode.Designer.cs">
       <DependentUpon>201808151235288_PhoneCountryCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809071817374_stateinQuery.cs" />
+    <Compile Include="Migrations\201809071817374_stateinQuery.Designer.cs">
+      <DependentUpon>201809071817374_stateinQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EventFeedBackViewModel.cs" />
@@ -253,6 +258,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -319,6 +326,7 @@
     <Content Include="hita-ambrish-ji.html" />
     <Content Include="hita-ras-dhara.html" />
     <Content Include="img\ambrish-ji.jpg" />
+    <Content Include="img\ask-query.png" />
     <Content Include="img\banner.jpg" />
     <Content Include="img\banner2.jpg" />
     <Content Include="img\bg1.jpg" />
@@ -406,6 +414,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Controllers\CountryCodes.json" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
@@ -446,7 +456,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Talk\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -469,16 +479,18 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Date.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Home\Reprint.cshtml" />
-    <Content Include="Views\Home\CancelRegistration.cshtml" />
-    <Content Include="Views\Home\EventFeedback.cshtml" />
+    <Content Include="Views\Talk\Reprint.cshtml" />
+    <Content Include="Views\Talk\CancelRegistration.cshtml" />
+    <Content Include="Views\Talk\EventFeedback.cshtml" />
     <Content Include="Views\Admin\Feedback.cshtml" />
     <Content Include="Views\Query\Index.cshtml" />
     <Content Include="Views\Admin\Query.cshtml" />
+    <Content Include="Views\Shared\_LayoutEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\color\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -508,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808151235288_PhoneCountryCode.resx">
       <DependentUpon>201808151235288_PhoneCountryCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071817374_stateinQuery.resx">
+      <DependentUpon>201809071817374_stateinQuery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
