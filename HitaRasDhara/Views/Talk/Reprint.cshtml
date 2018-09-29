@@ -1,7 +1,4 @@
 ﻿@model HitaRasDhara.Models.MobileVerificationViewModel
-@{
-    Layout = "~/Views/Shared/_LayoutEvent.cshtml";
-}
 <div class="row">
     <div class="col-md-8">
         <h3 style="color:#004488;">Reprint your entry pass.</h3>
@@ -13,7 +10,7 @@
                 <div class="col-md-10">
                     @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Enter your registered mobile number" })
                     @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                    <p style="width: 290px"> If due to some reasons you could not save/preserve the entry pass generated at the time of registration, you can reprint the same by entering your registered mobile number above.</p>
+                    <p style="width: 290px"> Reprint your entry pass by entering your registered mobile number.</p>
 
                 </div>
             </div>

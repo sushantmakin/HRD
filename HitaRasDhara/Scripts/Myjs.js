@@ -14,7 +14,7 @@
             swal('Technical Error !', 'An error has occured, please try again.', 'error');
             break;
         case 5:
-            swal('Success !', 'You have successfully registered for the event and your registration pass has been successfully downloaded to your system. Kindly take a printout of the same and bring it to the event.', 'success');
+            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been successfully downloaded to your system as well as mailed to the provided email address. \n \n Kindly take a printout of the same and bring it to the event.', 'success');
             break;
         case 7:
             swal('Error !',
@@ -22,7 +22,7 @@
                 'error');
             break;
         case 9:
-            swal('Success !', 'Your registration pass has been regenerated and downloaded to your system successfully. Kindly take a printout of the same.', 'success');
+            swal('Success !', 'Your registration pass has been regenerated. \n It has been downloaded to your system as well as resent to your registered email address successfully. \n \n Kindly take a printout of the same.', 'success');
             break;
         case 11:
             swal('Error !', 'No registration exists with the provided mobile number.', 'error');
@@ -39,9 +39,23 @@
         case 15:
             swal('Error !', 'You have already provided your Feedback.', 'error');
             break;
+            //16 at last
+        case 17:
+            swal('Already entered!', 'This listener has already been allowed entry into the auditorium.', 'error');
+            break;
+        case 18:
+            swal('Success!', 'Listener has been allowed entry into the auditorium.', 'success').then(() => {
+                window.location.reload();
+            });
+            break;
         case 16:
             swal('Success !', 'Your Query has been successfully submitted. We will get back to you soon.', 'success').then(() => {
                 window.location.href = 'http://www.hitaambrish.com';
+            });
+            break;
+        case 19:
+            swal('Success !', 'You have successfully replied to the query.', 'success').then(() => {
+                window.location.href = 'http://www.hitaambrish.com/admin/query';
             });
             break;
     }

@@ -27,9 +27,11 @@ namespace HitaRasDhara.Controllers
                 input.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
                     TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                 input.QueryId = input.Phone + input.TimeStamp;
+                input.Status = "Pending";
+                input.Query = input.Query.Replace(Environment.NewLine, "<br/>");
+                input.Response = "null";
                 _dbContext.QueryForm.Add(input);
                 _dbContext.SaveChanges();
-                ModelState.Clear();
                 return Json(new { Code = 16 }, JsonRequestBehavior.AllowGet); //No seat registered.
             }
             catch (Exception ex)

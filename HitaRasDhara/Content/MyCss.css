@@ -4,3 +4,10 @@
 .HiddenBlock {
     display :  none;
 }
+
+#StatusStamp {
+    height: 100px;
+    width: 180px;
+    margin-left: -10px;
+    margin-top: 5px;
+}

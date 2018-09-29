@@ -202,6 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -245,8 +246,33 @@
     <Compile Include="Migrations\201809071817374_stateinQuery.Designer.cs">
       <DependentUpon>201809071817374_stateinQuery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809130851315_ID.cs" />
+    <Compile Include="Migrations\201809130851315_ID.Designer.cs">
+      <DependentUpon>201809130851315_ID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809130855234_Fix.cs" />
+    <Compile Include="Migrations\201809130855234_Fix.Designer.cs">
+      <DependentUpon>201809130855234_Fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809130901094_Fix2.cs" />
+    <Compile Include="Migrations\201809130901094_Fix2.Designer.cs">
+      <DependentUpon>201809130901094_Fix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271708560_statusInQuery.cs" />
+    <Compile Include="Migrations\201809271708560_statusInQuery.Designer.cs">
+      <DependentUpon>201809271708560_statusInQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271728533_newKeyQuery.cs" />
+    <Compile Include="Migrations\201809271728533_newKeyQuery.Designer.cs">
+      <DependentUpon>201809271728533_newKeyQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809291001575_ResponseInDb.cs" />
+    <Compile Include="Migrations\201809291001575_ResponseInDb.Designer.cs">
+      <DependentUpon>201809291001575_ResponseInDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\EventFeedBackViewModel.cs" />
     <Compile Include="Models\MobileVerificationViewModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
@@ -342,6 +368,7 @@
     <Content Include="img\hita-tas-dhara-logo.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\madhurastak.jpg" />
+    <Content Include="img\Pending.Jpg" />
     <Content Include="img\preloader-old.gif" />
     <Content Include="img\preloader.gif" />
     <Content Include="img\prem-diwani-meera.jpg" />
@@ -350,6 +377,7 @@
     <Content Include="img\radha-vallabh-ji.jpg" />
     <Content Include="img\registration-closed.jpg" />
     <Content Include="img\registration-img.jpg" />
+    <Content Include="img\Replied.Jpg" />
     <Content Include="img\saavan-logo.png" />
     <Content Include="img\saavan_icon2.png" />
     <Content Include="img\saavn_icon.png" />
@@ -359,11 +387,21 @@
     <Content Include="img\slider2HD.jpg" />
     <Content Include="img\slider3.jpg" />
     <Content Include="img\slider3HD.jpg" />
+    <Content Include="img\slide_mob01.jpg" />
+    <Content Include="img\slide_mob02.jpg" />
+    <Content Include="img\slide_mob03.jpg" />
+    <Content Include="img\slide_mob04.jpg" />
+    <Content Include="img\slide_mob05.jpg" />
     <Content Include="img\tulsi-das-patiala.jpg" />
     <Content Include="img\uddhav-sandesh.jpg" />
     <Content Include="img\upcoming-katha01.jpg" />
     <Content Include="img\upcoming-katha02.jpg" />
     <Content Include="img\upcoming-katha03.jpg" />
+    <Content Include="img\upcoming-katha04.jpg" />
+    <Content Include="img\upcoming-katha05.jpg" />
+    <Content Include="img\upcoming-katha06.jpg" />
+    <Content Include="img\upcoming-katha07.jpg" />
+    <Content Include="img\upcoming-katha08.jpg" />
     <Content Include="img\venubox\close.gif" />
     <Content Include="img\venubox\next.gif" />
     <Content Include="img\venubox\preload-circle.png" />
@@ -391,6 +429,30 @@
     <Content Include="js\venobox.min.js" />
     <Content Include="js\waypoints.js" />
     <Content Include="katha-gallery.html" />
+    <Content Include="lumino\css\bootstrap-table.css" />
+    <Content Include="lumino\css\bootstrap-theme.css" />
+    <Content Include="lumino\css\bootstrap-theme.min.css" />
+    <Content Include="lumino\css\bootstrap.css" />
+    <Content Include="lumino\css\bootstrap.min.css" />
+    <Content Include="lumino\css\datepicker.css" />
+    <Content Include="lumino\css\datepicker3.css" />
+    <Content Include="lumino\css\font-awesome.min.css" />
+    <Content Include="lumino\css\styles.css" />
+    <Content Include="lumino\fonts\fontawesome-webfont.svg" />
+    <Content Include="lumino\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lumino\js\bootstrap-datepicker.js" />
+    <Content Include="lumino\js\bootstrap.js" />
+    <Content Include="lumino\js\bootstrap.min.js" />
+    <Content Include="lumino\js\chart-data.js" />
+    <Content Include="lumino\js\chart.min.js" />
+    <Content Include="lumino\js\custom.js" />
+    <Content Include="lumino\js\easypiechart-data.js" />
+    <Content Include="lumino\js\easypiechart.js" />
+    <Content Include="lumino\js\html5shiv.min.js" />
+    <Content Include="lumino\js\jquery-1.11.1.min.js" />
+    <Content Include="lumino\js\lumino.glyphs.js" />
+    <Content Include="lumino\js\npm.js" />
+    <Content Include="lumino\js\respond.min.js" />
     <Content Include="registration.html" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -416,6 +478,23 @@
     <Content Include="Controllers\CountryCodes.json" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="lumino\css\bootstrap-theme.css.map" />
+    <Content Include="lumino\css\bootstrap-theme.min.css.map" />
+    <Content Include="lumino\css\bootstrap.css.map" />
+    <Content Include="lumino\css\bootstrap.min.css.map" />
+    <Content Include="lumino\fonts\fontawesome-webfont.eot" />
+    <Content Include="lumino\fonts\fontawesome-webfont.ttf" />
+    <Content Include="lumino\fonts\fontawesome-webfont.woff" />
+    <Content Include="lumino\fonts\fontawesome-webfont.woff2" />
+    <Content Include="lumino\fonts\FontAwesome.otf" />
+    <Content Include="lumino\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="lumino\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="lumino\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="lumino\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="lumino\sass\.sass-cache\deff34d1f5b7167181b556002c25068d6adc024d\styles.scssc" />
+    <Content Include="lumino\sass\styles.scss" />
+    <Content Include="lumino\tables\data1.json" />
+    <Content Include="lumino\tables\data2.json" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
@@ -439,6 +518,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sweetalert.js" />
+    <Content Include="Scripts\sweetalert2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="shree-radha-vallabh-ji.html" />
     <Content Include="style.css" />
@@ -456,7 +536,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Talk\Index.cshtml" />
+    <Content Include="Views\Talk\Register.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -478,14 +558,18 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Date.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\EventDetailed.cshtml" />
     <Content Include="Views\Talk\Reprint.cshtml" />
     <Content Include="Views\Talk\CancelRegistration.cshtml" />
     <Content Include="Views\Talk\EventFeedback.cshtml" />
     <Content Include="Views\Admin\Feedback.cshtml" />
     <Content Include="Views\Query\Index.cshtml" />
     <Content Include="Views\Admin\Query.cshtml" />
-    <Content Include="Views\Shared\_LayoutEvent.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Sample.cshtml" />
+    <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Admin\QueryReply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -523,6 +607,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809071817374_stateinQuery.resx">
       <DependentUpon>201809071817374_stateinQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130851315_ID.resx">
+      <DependentUpon>201809130851315_ID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130855234_Fix.resx">
+      <DependentUpon>201809130855234_Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130901094_Fix2.resx">
+      <DependentUpon>201809130901094_Fix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271708560_statusInQuery.resx">
+      <DependentUpon>201809271708560_statusInQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271728533_newKeyQuery.resx">
+      <DependentUpon>201809271728533_newKeyQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809291001575_ResponseInDb.resx">
+      <DependentUpon>201809291001575_ResponseInDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

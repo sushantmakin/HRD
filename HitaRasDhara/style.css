@@ -3219,11 +3219,14 @@ button.quote-btn {
 
 
 .VisibleBlock {
-    display :  block;
+    display :  block !important;
 }
 .HiddenBlock {
-    display :  none;
+    display :  none !important;
 }
+
+.desktop {display:block;}
+.mobile {display:none;}
 
 /*--------------------------------*/
 /* .End CSS

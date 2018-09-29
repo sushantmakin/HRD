@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HitaRasDhara.Models
 {
     public class QueryViewModel
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [Display(Name = "QueryId")]
         public string QueryId { get; set; }
 
@@ -49,5 +53,13 @@ namespace HitaRasDhara.Models
         [Required]
         [Display(Name = "TimeStamp")]
         public DateTime TimeStamp { get; set; }
+
+        [Required]
+        [Display(Name= "Status")]
+        public string Status { get; set; }
+
+        [Required]
+        [Display(Name = "Response")]
+        public string Response { get; set; }
     }
 }

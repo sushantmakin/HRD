@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,9 @@ namespace HitaRasDhara.Models
 {
     public class UserResponse5Aug
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int RegistrationID { get; set; }
+
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -21,8 +25,8 @@ namespace HitaRasDhara.Models
         public string City { get; set; }
 
         [Required]
-        [DataType(DataType.PhoneNumber)]
         [Key]
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone")]
         [RegularExpression(@"^(\d{10})$", ErrorMessage = "Entered phone format is not valid.")]
         public string Phone { get; set; }

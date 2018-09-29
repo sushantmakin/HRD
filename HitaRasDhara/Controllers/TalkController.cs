@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using HitaRasDhara.Models;
 using iTextSharp.text;
@@ -17,12 +18,17 @@ namespace HitaRasDhara.Controllers
     {
         public ActionResult Index()
         {
+            return RedirectToAction("Register","Talk");
+        }
+
+        public ActionResult Register()
+        {
             var viewModel = new UserResponse5Aug();
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Index(UserResponse5Aug input)
+        public ActionResult Register(UserResponse5Aug input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
             try
@@ -35,8 +41,9 @@ namespace HitaRasDhara.Controllers
                         TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                     _dbContext.UserResponse5Aug.Add(input);
                     _dbContext.SaveChanges();
+                    var UpdatedUserDetails = _dbContext.UserResponse5Aug.Find(input.Phone);
                     string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,
-                        input.Name,input.YearOfBirth);
+                        input.Name, getVisualRegistrationId(UpdatedUserDetails.RegistrationID),input.YearOfBirth);
                     bool smsSent = sendSMS(input.Phone, smsData);
                     return PrintPDF(input.Phone);
                 }
@@ -141,6 +148,8 @@ namespace HitaRasDhara.Controllers
                     PdfPTable table = new PdfPTable(2);
                     table.DefaultCell.FixedHeight = 25f;
                     table.DefaultCell.Padding = 5f;
+                    table.AddCell("Registration Number");
+                    table.AddCell(getVisualRegistrationId(UserDetails.RegistrationID));
                     table.AddCell("Name");
                     table.AddCell(UserDetails.Name);
                     table.AddCell("Year Of Birth");
@@ -178,7 +187,7 @@ namespace HitaRasDhara.Controllers
                     msg.To.Add(new MailAddress(UserDetails.Email));
                     msg.From = new MailAddress("info@hitaambrish.com", "Hita Ambrish");
                     msg.Subject = "Registration Confirmation - " + UserDetails.Name;
-                    msg.Body = "<p>Dear " + UserDetails.Name + " ,</p> <p>Thank you for your interest in \'Think HIGHER, Drill DEEPER, Be STRONGER\' - A talk by Hita Ambrish Ji designed especially for the youth. Your registration for the same is confirmed and your entry pass is attached with this mail.</p> <p>Please note that entry will only be allowed with a printed copy of this pass along with a valid government-issued ID-Card. Request you to kindly adhere to the instructions mentioned in the entry pass strictly, failing which your entry may be restricted in the auditorium.</p> <p>Thank you,</p> <p>Team Hita Ras Dhara</p> ";
+                    msg.Body = "<p>Dear " + UserDetails.Name + " ,</p> <p>Thank you for your interest in 'Think HIGHER, Drill DEEPER, Be STRONGER' - A talk by Hita Ambrish Ji designed especially for the youth.</p> <p> Your registration is <u>confirmed</u> and your entry pass is attached with this email.</p> <p> Please note that entry would only be allowed only on presenting this entry pass along with a valid government-issued ID-Card. It is our kind request that you strictly adhere to the instructions mentioned in the entry pass, to ensure your entry in the auditorium.</p><p> Thanks <br/> Team Hita Ras Dhara </p> ";
                     msg.IsBodyHtml = true;
                     msg.Attachments.Add(new Attachment(new MemoryStream(bytes), UserDetails.Name + ".pdf"));
 
@@ -188,8 +197,6 @@ namespace HitaRasDhara.Controllers
                     client.Host = "relay-hosting.secureserver.net";
                     client.Send(msg);
                     #endregion
-
-
 
                     Response.Write(pdfDoc);
                     Response.End();
@@ -315,5 +322,43 @@ namespace HitaRasDhara.Controllers
             return response.IsSuccessStatusCode;
         }
 
+        public string getVisualRegistrationId(int id)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            var prefix = "";
+            prefix = dbContext.SmsContent.Find("RegistrationTemplate")?.Value;
+            string decimatedId =String.Format("{0:D4}", id);
+            return prefix + decimatedId;
+        }
+
+        [HttpPost]
+        public ActionResult AllowEntry(string Mobile)
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            var userDetails = _dbContext.UserResponse5Aug.Find(Mobile);
+            if (userDetails == null)
+            {
+                return Json(new { Code = 11 }, JsonRequestBehavior.AllowGet); //No seat registered.
+            }
+            if (userDetails.SeatStatus.Equals("Cancelled"))
+            {
+                return Json(new { Code = 12 }, JsonRequestBehavior.AllowGet); //registration already cancelled.
+            }
+            if (userDetails.SeatStatus.Equals("Entered"))
+            {
+                return Json(new { Code = 17 }, JsonRequestBehavior.AllowGet); //registration already allowed entry.
+            }
+            userDetails.SeatStatus = "Entered";
+            _dbContext.SaveChanges();
+            string smsContent = string.Format(_dbContext.SmsContent.Find("EntrySms").Value, userDetails.Name);
+            bool smsSent = sendSMS(Mobile, smsContent);
+            return Json(new { Code = 18 }, JsonRequestBehavior.AllowGet);//Listener successfully entered.
+        }
+
+    }
+
+    public class AllowEntryViewModel
+    {
+        public string Mobile { get; set; }
     }
 }
