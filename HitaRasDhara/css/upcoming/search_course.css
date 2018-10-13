@@ -1,0 +1,227 @@
+h1, h2.row-title {
+	font-size: 46px;
+	font-weight: 300;
+	margin-top: 75px;
+	margin-bottom: 50px;
+	text-align: center
+}
+.div_PageRow {
+	max-width: 1060px;
+	margin: 0 auto
+}
+h2 {
+	font-family: "Gotham Narrow Book" !important
+}
+#course-banner-2 .PageColumn_1_of_1 .PageColumn_1_of_1 .search-container .search-radius {
+	min-width: 170px
+}
+ul.tab-container {
+	padding: 0px
+}
+ul.tab-container .course-tab a {
+	color: transparent
+}
+#course-filter {
+	cursor: pointer
+}
+#course-filter .coldata-inner {
+	position: relative
+}
+#course-filter .coldata-inner .bandai-select-p {
+	position: absolute;
+	height: 38px;
+	top: -41px;
+	width: 100%
+}
+#course-filter .coldata-inner .bandai-select-inner {
+	top: -2px !important;
+	left: 0px !important;
+	background-color: #FFFFFF !important;
+	box-shadow: 1px 4px 15px #888888
+}
+#course-filter .coldata-inner .bandai-select-inner input[type="checkbox"] {
+	display: none
+}
+#course-filter .coldata-inner .bandai-select-inner label {
+	cursor: pointer
+}
+#course-filter .coldata-inner .bandai-select-inner label.option {
+	vertical-align: top;
+	cursor: pointer
+}
+#course-filter .coldata-inner .bandai-select-inner input[type="checkbox"]+label:before {
+	border: 1px solid #DADADA;
+	content: "\00a0";
+	display: inline-block;
+	font: 16px/1em sans-serif;
+	height: 16px;
+	margin: 0 .25em 0 0;
+	padding: 0;
+	vertical-align: top;
+	width: 16px
+}
+#course-filter .coldata-inner .bandai-select-inner input[type="checkbox"]:checked+label:before {
+	background: #4C6BA1;
+	color: #FFFFFF;
+	content: "\2713";
+	text-align: center
+}
+#course-filter .coldata-inner .bandai-select-inner input[type="checkbox"]:checked+label:after {
+	font-weight: bold
+}
+#course-filter .coldata-inner .bandai-select-inner .form-checkboxes .form-item {
+	margin: 10px 0px
+}
+#course-filter .coldata-inner .bandai-select-inner h2 {
+	border-bottom: 1px solid rgba(152,149,149,0.44);
+	margin: 10px 0px
+}
+
+@media screen and (max-width: 401px) {
+#course-filter .coldata-inner .bandai-select-inner {
+	padding: 10px 40px !important
+}
+}
+#course-table .course-col-date {
+	padding-left: 35px
+}
+#course-table th {
+	padding: 0px
+}
+#course-table thead h4 a {
+	font-family: "Gotham Narrow Book"
+}
+
+@media screen and (max-width: 401px) {
+#course-banner .course-tab {
+	padding: 0px 0px !important
+}
+}
+.graduate-course-link a {
+	font-family: "Gotham Narrow Book" !important;
+	font-weight: 500
+}
+.graduate-course-link .readmore-arrow {
+	font-weight: 500;
+	font-size: 20px;
+	padding: 0px 3px
+}
+.course-input-col #edit-center-autocomplete-google {
+	width: 340px;
+	padding: 0;
+	background: #fff;
+	max-width: 100%;
+	font-size: 16px;
+	height: 45px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	padding-left: 10px
+}
+
+@media screen and (min-width: 1059px) {
+.course-input-col #edit-center-autocomplete-google {
+	margin-top: -10px;
+	width: 100%;
+	max-width: 447px
+}
+}
+.yellow-button {
+	background-color: #ffae00
+}
+.back-to-top {
+	display: none
+}
+#around-text {
+	padding-right: 14px
+}
+input.miles-text {
+	font-size: 16px;
+	height: 45px;
+	width: 110px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	padding-left: 10px;
+	margin-top: -8px
+}
+.div_PageRow {
+	max-width: 1170px;
+	margin: 0 auto
+}
+ul.tab-container {
+	padding: 0px;
+	margin: 5px 20px 0
+}
+.row-title-with-subtitle h6.sub-row-title {
+	text-align: center;
+	color: #ddd;
+	font-size: 18px;
+	margin-bottom: 50px;
+	margin-top: 0px
+}
+.row-title-with-subtitle h2.row-title {
+	margin-bottom: 0px
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+#course-banner .course-page-menu {
+	overflow: initial
+}
+}
+
+@media (max-width: 767px) {
+#course-banner .course-page-menu {
+	overflow: initial
+}
+}
+#course-banner .course-page-menu .graduate-left {
+	float: left !important;
+	max-width: 125px;
+	line-height: 18px;
+	text-transform: uppercase;
+	padding-top: 20px
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+#course-banner .course-page-menu .graduate-left {
+	top: -92%;
+	left: 5%;
+	position: absolute;
+	padding-top: 0px
+}
+}
+
+@media (max-width: 767px) {
+#course-banner .course-page-menu .graduate-left {
+	padding-top: 0px;
+	position: absolute;
+	top: -56px;
+	left: 52px
+}
+}
+#course-banner .course-page-menu .graduate-left a {
+	position: relative
+}
+#course-banner .course-page-menu .graduate-left a:after {
+	position: absolute;
+	content: "\00BB";
+	right: -28px;
+	color: #fff;
+	font-size: 20px;
+	bottom: 7px
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+#course-banner .course-page-menu .floatright {
+	top: -92%;
+	position: absolute;
+	padding-top: 0px
+}
+}
+
+@media (max-width: 767px) {
+#course-banner .course-page-menu .floatright {
+	padding-top: 0px;
+	position: absolute;
+	top: -35px
+}
+}
