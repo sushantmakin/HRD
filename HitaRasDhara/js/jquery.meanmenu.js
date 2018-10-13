@@ -25,6 +25,7 @@
 *
 */
 (function ($) {
+	"use strict";
 		$.fn.meanmenu = function (options) {
 				var defaults = {
 						meanMenuTarget: jQuery(this), // Target the current HTML markup you wish to replace
@@ -134,6 +135,7 @@
 							meanMenuExist = false;
 							jQuery(removeElements).removeClass('mean-remove');
 						};
+
 						// navigation reveal
 						var showMeanMenu = function() {
 								var meanStyles = "background:"+meanRevealColour+";color:"+meanRevealColour+";"+meanRevealPos;
