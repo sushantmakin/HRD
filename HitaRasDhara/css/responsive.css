@@ -531,6 +531,13 @@
     padding: 80px 100px 80px 100px;
 }
     
-    
+   
 }
  
+table tr td {padding:8px;} 
+ 
+@media (max-width: 480px) {
+	table tr td {font-size:12px !important;padding:2px;} 
+	.desktop {display:none;}
+	.mobile {display:block;}
+}
