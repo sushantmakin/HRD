@@ -3209,9 +3209,9 @@ button.quote-btn {
 	border-radius: 2px;
 }
 
-.applyNow {background-color:#FFFFFF;width:70%;padding:12px 0px;text-align:center;}
-.applyNow a {font-size:22px;color:#000000;font-weight:600;}
-.applyNow a:hover {font-size:22px;color:#C20001;font-weight:600;}
+.applyNow {width:100%;text-align:center;padding-top:15px;}
+.applyNow a {font-size:20px;color:#000000;font-weight:600;background-color:#FFFFFF;padding:8px 12px;}
+.applyNow a:hover {font-size:20px;color:#FFFFFF;font-weight:600;background-color:#C20001;}
 
 .langBtn {width:50%;text-align:center;padding:8px 0px;background-color:#c42121;color:#FFFFFF;font-size:18px;}
 .langBtn a {font-size:18px;color:#FFFFFF;}

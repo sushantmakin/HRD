@@ -26,7 +26,6 @@ namespace HitaRasDhara.Controllers
                 ApplicationDbContext _dbContext = new ApplicationDbContext();
                 input.TimeStamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
                     TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
-                input.QueryId = input.Phone + input.TimeStamp;
                 input.Status = "Pending";
                 input.Query = input.Query.Replace(Environment.NewLine, "<br/>");
                 input.Response = "null";

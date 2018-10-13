@@ -55,8 +55,16 @@
             break;
         case 19:
             swal('Success !', 'You have successfully replied to the query.', 'success').then(() => {
-                window.location.href = 'http://www.hitaambrish.com/admin/query';
+                window.history.back();
             });
+            break;
+        case 20:
+            swal('Success !', 'You have successfully cancelled the query.', 'success').then(() => {
+                window.location.reload();
+            });
+            break;
+        case 21:
+            swal('Error !', 'Query is already cancelled.', 'error');
             break;
     }
 }

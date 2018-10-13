@@ -1,123 +1,140 @@
-﻿@model HitaRasDhara.Models.QueryViewModel
+﻿﻿@model HitaRasDhara.Models.QueryViewModel
 
 <div class="container">
     <div class="row">
         <h3 style="color:#004488;">Have a Query ? </h3>
         <h5> Write to us ! </h5>
-            <div class="col-md-8 col-sm-8 col-xs-12">
-                <div class="contact-form">
-                    <div class="row">
-                        <form class="form-horizontal" id="QueryEntryForm">
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", type = "text", id = "name" })
-                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-                                        <select name="PhoneCountryCode" id="PhoneCodeSelect" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: 15px;"></select>
-                                    </div>
-                                    <div class="col-md-8 col-sm-12 col-xs-12">
-                                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "MobileField", placeholder = "Mobile" })
-                                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
-                                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
-                            </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="contact-form">
+                <div class="row">
+                    <form class="form-horizontal" id="QueryEntryForm">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", type = "text", style = "margin-bottom: unset;", id = "name" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "margin-bottom: unset;", placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
+                            <input id="phone" type="tel">
+                            @*@Html.TextBoxFor(m => m.Phone, new {@class = "form-control", style="margin-bottom: unset;", id = "phone", placeholder = "Mobile", type = "tel"})
+                                @Html.ValidationMessageFor(m => m.Phone, "", new {@class = "text-danger"})*@
+                        </div>
+                        @Html.HiddenFor(m => m.Phone, new { id = "ActualPhoneValue" })
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
+                            @Html.TextBoxFor(m => m.City, new { @class = "form-control", style = "margin-bottom: unset;", placeholder = "City" })
+                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                        </div>
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+                        @*<div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
+                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", style="margin-bottom: unset;", placeholder = "State" })
                                 @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
-                            </div>
+                            </div>*@
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select name="Country" id="countrySelect" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: 15px;">
-                                    <option>Select Country</option>
-                                </select>
+                        @*<div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
+                                <select name="Country" id="address-country" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: unset;"></select>
                                 @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
-                            </div>
+                            </div>*@
+                        @Html.HiddenFor(m => m.Country, new { id = "address-country" })
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
+                            @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", rows = "7", style = "margin-bottom: unset;max-width: 100%;" })
+                            @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
+                        </div>
 
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                    @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", rows = "7", style= "margin-bottom: 15px;max-width: 100%;" })
-                                    @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
-                            </div>
-
-                            <div class="col-md-12 col-sm-12 col-xs-12 text-left" id="Submit">
-                                <input type="submit" id="SubmitOfQueryForm" class="contact-btn" value="Submit" style="width:120px;background-color:#072948;font-size:18px;padding:10px 0px;color:#FFFFFF;border:none;"/> 
-                            </div>
-                        </form>
-                    </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-left" id="Submit">
+                            <input type="submit" id="SubmitOfQueryForm" class="contact-btn" value="Submit" style="width:120px;background-color:#072948;font-size:18px;padding:10px 0px;color:#FFFFFF;border:none;" />
+                        </div>
+                    </form>
                 </div>
             </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <img src="~/img/ask-query.png" border="0" alt="Query" />
-                </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <img src="~/img/ask-query.png" border="0" alt="Query" />
+        </div>
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
-        $.get('/Query/GetAllCountries',
-            function (data) {
-                $.each(data,
-                    function (index, value) {
-                        $('<option>').val(value).text(value).appendTo('#countrySelect');
-                    });
-            });
+        var input = document.querySelector("#phone"),
+            output = document.querySelector("#ActualPhoneValue");
 
-        $.get('/Query/getCountryCode',
-            function (data2) {
-                $.each(data2,
-                    function (index, value) {
-                        $('<option>').val(value).text(value).appendTo('#PhoneCodeSelect');
-                    });
-            });
-    });
-    $(window).on('load', function () {
-        myFunction();
-    });
+        var iti = window.intlTelInput(input, {
+            nationalMode: true,
+            initialCountry: "auto",
+            //separateDialCode: true,
+            geoIpLookup: function (callback) {
+                $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+            utilsScript: "../../../Scripts/utils.js" // just for formatting/placeholders etc
+        });
 
-    function myFunction() {
-        setTimeout(function () {
-            $('#countrySelect').val('India');
-            $('#PhoneCodeSelect').val('+91');
-        }, 500);
-    }
+        var handleChange = function () {
+            var text = (iti.isValidNumber()) ? iti.getNumber() : input.value;
+            output.value = text;
+        };
 
-    $('#SubmitOfQueryForm').click(function () {
-        var $form = $('#QueryEntryForm');
-        if (!$form.valid()) {
-            return false;
-        } else {
-            $('#SubmitOfQueryForm').attr("disabled", "disabled");
-            $('#SubmitOfQueryForm').val("Please wait...");
-            $.ajax({
-                type: "POST",
-                url: "/Query/Index",
-                data: $('#QueryEntryForm').serialize(),
-                success: function (result) {
-                    $('#SubmitOfQueryForm').val("Submit");
-                    console.log('data is : ' + result.Code);
-                    showPopup(result.Code);
-                },
-                error: function (data) {
-                    $('#SubmitOfQueryForm').removeAttr("disabled");
-                    $('#SubmitOfQueryForm').val("Submit");
-                    console.log('error : data code is : ' + data.Code);
-                }
-            });
+        input.addEventListener('change', handleChange);
+        input.addEventListener('keyup', handleChange);
+
+        // get the country data from the plugin
+        var countryData = window.intlTelInputGlobals.getCountryData(),
+            addressDropdown = document.querySelector("#address-country");
+
+        // populate the country dropdown
+        for (var i = 0; i < countryData.length; i++) {
+            var country = countryData[i];
+            var optionNode = document.createElement("option");
+            optionNode.value = country.iso2;
+            var textNode = document.createTextNode(country.name);
+            optionNode.appendChild(textNode);
+            addressDropdown.appendChild(optionNode);
         }
-        return false;
+        // set it's initial value
+        addressDropdown.value = iti.getSelectedCountryData().iso2;
+
+        // listen to the telephone input for changes
+        input.addEventListener('countrychange',
+            function (e) {
+                addressDropdown.value = iti.getSelectedCountryData().iso2;
+            });
+
+        // listen to the address dropdown for changes
+        addressDropdown.addEventListener('change',
+            function () {
+                iti.setCountry(this.value);
+            });
+
+        $('#SubmitOfQueryForm').click(function () {
+            var $form = $('#QueryEntryForm');
+            if (!$form.valid()) {
+                return false;
+            } else {
+                $('#SubmitOfQueryForm').attr("disabled", "disabled");
+                $('#SubmitOfQueryForm').val("Please wait...");
+                $.ajax({
+                    type: "POST",
+                    url: "/Query/Index",
+                    data: $('#QueryEntryForm').serialize(),
+                    success: function (result) {
+                        $('#SubmitOfQueryForm').val("Submit");
+                        console.log('data is : ' + result.Code);
+                        showPopup(result.Code);
+                    },
+                    error: function (data) {
+                        $('#SubmitOfQueryForm').removeAttr("disabled");
+                        $('#SubmitOfQueryForm').val("Submit");
+                        console.log('error : data code is : ' + data.Code);
+                    }
+                });
+            }
+            return false;
+        });
     });
-
 </script>
-

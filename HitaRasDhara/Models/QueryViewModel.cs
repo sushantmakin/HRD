@@ -10,9 +10,6 @@ namespace HitaRasDhara.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Display(Name = "QueryId")]
-        public string QueryId { get; set; }
-
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -24,23 +21,12 @@ namespace HitaRasDhara.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "PhoneCountryCode")]
-        [DataType(DataType.PhoneNumber)]
-        public string PhoneCountryCode { get; set; }
-
-        [Required]
         [Display(Name = "Mobile")]
-        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Entered phone format is not valid.")]
-        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         [Required]
         [Display(Name = "City")]
         public string City { get; set; }
-
-        [Required]
-        [Display(Name = "State")]
-        public string State { get; set; }
 
         [Required]
         [Display(Name = "Country")]

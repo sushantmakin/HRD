@@ -67,6 +67,7 @@ namespace HitaRasDhara.Controllers
             ViewBag.TotalQueries = _dbContext.QueryForm.Count();
             ViewBag.PendingReplies = _dbContext.QueryForm.Count(t => t.Status == "Pending");
             ViewBag.RepliedQueries = _dbContext.QueryForm.Count(t => t.Status == "Replied");
+            ViewBag.CancelledQueries = _dbContext.QueryForm.Count(t => t.Status == "Cancelled");
             return View(viewModel);
         }
 
@@ -93,6 +94,29 @@ namespace HitaRasDhara.Controllers
                 return View(viewModel);
             }
             return RedirectToAction("Query", "Admin");
+        }
+
+        [HttpPost]
+        public ActionResult CancelQuery(string queryId)
+        {
+            try
+            {
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
+                if (queryDetails.Status == "Cancelled")
+                {
+                    return Json(new { Code = 21 }, JsonRequestBehavior.AllowGet);
+                }
+                queryDetails.Status = "Cancelled";
+                queryDetails.Response = "NA";
+                _dbContext.SaveChanges();
+                return Json(new { Code = 20 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         [HttpPost]
