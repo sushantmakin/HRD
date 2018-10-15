@@ -901,6 +901,7 @@ div#preloader {
     font-size: 14px;
     letter-spacing: 0.50px;
     line-height: 24px;
+	color:#242424;
 }
 .about-details {
     overflow: hidden;
