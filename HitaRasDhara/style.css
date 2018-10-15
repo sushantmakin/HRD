@@ -189,12 +189,14 @@ div#preloader {
     padding-left: 0px;
 }
 ::-moz-selection {
-    background: #e22a31;
+    background: #072948;
     text-shadow: none;
+	color:#FFFFFF;
 }
 ::selection {
-    background: #e22a31;
+    background: #072948;
     text-shadow: none;
+	color:#FFFFFF;
 }
 .color{
     color:#e22a31;
@@ -3267,3 +3269,24 @@ button.quote-btn {
 .rightImg img {margin-left:20px;}
 
 .page-area {padding:40px 0px;}
+
+.page-area table {width:100%;font-size:14px;color:#242424;border-color:#CCCCCC;}
+.page-area table .td1 {background-color:#072948;color:#FFFFFF;width:5%}
+.page-area table .td2 {background-color:#072948;color:#FFFFFF;width:30%;}
+.page-area table .td3 {background-color:#072948;color:#FFFFFF;width:35%;}
+
+.page-area table .grey1 {background-color:#f7f7f7;width:5%}
+.page-area table .grey2 {background-color:#f7f7f7;width:30%}
+.page-area table .grey3 {background-color:#f7f7f7;width:35%}
+.page-area table .grey4 {background-color:#f7f7f7;width:35%}
+
+.page-area table .white1 {width:5%}
+.page-area table .white2 {width:30%}
+.page-area table .white3 {width:35%}
+.page-area table .white4 {width:35%}
+
+.tableDivder {clear:both;height:15px;}
+.topIcon {font-size:16px;}
+
+.banner-content h4 {color:#FFCC33;padding-bottom:20px;}
+.banner-content p {color:#FFFFFF;font-size:18px;}
