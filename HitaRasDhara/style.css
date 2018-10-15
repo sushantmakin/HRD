@@ -189,12 +189,12 @@ div#preloader {
     padding-left: 0px;
 }
 ::-moz-selection {
-    background: #072948;
+    background: #014e53;
     text-shadow: none;
 	color:#FFFFFF;
 }
 ::selection {
-    background: #072948;
+    background: #014e53;
     text-shadow: none;
 	color:#FFFFFF;
 }
@@ -3244,8 +3244,8 @@ button.quote-btn {
 
 .viewMore {margin-top:30px;text-align:center !important;}
 .viewMore a {color:#FFFFFF;}
-.viewMore a:hover {color:#FFCC33;}
 .viewButton {width:150px;background-color:#C20001;font-size:18px;padding:10px 0px;border:1px solid #C20001;}
+.viewButton:hover {width:150px;background-color:#003366;font-size:18px;padding:10px 0px;border:1px solid #003366;}
 
 .link {color:#FFCC33;}
 .link:hover {color:#FFFFFF;}
@@ -3290,3 +3290,10 @@ button.quote-btn {
 
 .banner-content h4 {color:#FFCC33;padding-bottom:20px;}
 .banner-content p {color:#FFFFFF;font-size:18px;}
+
+.footerBG {background-color:#0a3256;padding:30px 0px;}
+
+
+.footerIconMargin {margin:0px 15px;}
+
+.footerPadding {padding-top:30px;}
