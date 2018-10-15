@@ -3250,3 +3250,20 @@ button.quote-btn {
 
 .gaanaSaavn {color:#FFFFFF;font-size:22px;padding-bottom:10px;}
 .gaanaSaavnImg a img {margin-right:15px;margin-bottom:15px;}
+
+.eventArea {background-color:#072948;padding:20px 0px;}
+.eventArea h2 {color:#F1CE1C;font-size:36px;}
+.eventArea p {color:#FFFFFF;font-size:20px;}
+.registerBtn {padding-top:15px;}
+
+.audioVideoIcon {float:left;}
+.audioVideoIconMargin {float:left;margin:0px 10px;}
+
+.headerBG {background-color:#f7f7f7;}
+.pageContent {color:#242424;font-size:16px !important;line-height:32px !important;text-align:justify;}
+.pageContent p {color:#242424;font-size:16px !important;line-height:32px !important;text-align:justify;}
+.pageContentHindi {color:#242424;font-size:18px !important;line-height:36px !important;text-align:justify;}
+
+.rightImg img {margin-left:20px;}
+
+.page-area {padding:40px 0px;}
