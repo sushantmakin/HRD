@@ -864,6 +864,13 @@ div#preloader {
 .well-services:hover .service-content h4{
     color: #e22a31;
 }
+
+.service-content h4{
+	color:#C20001;
+}
+.service-content p{
+	color:#240000;
+}
 .well-services:hover .service-btn:hover{
     color: #e22a31;
 }
@@ -3231,3 +3238,14 @@ button.quote-btn {
 /*--------------------------------*/
 /* .End CSS
 /*--------------------------------*/
+
+.viewMore {margin-top:30px;text-align:center !important;}
+.viewMore a {color:#FFFFFF;}
+.viewMore a:hover {color:#FFCC33;}
+.viewButton {width:150px;background-color:#C20001;font-size:18px;padding:10px 0px;border:1px solid #C20001;}
+
+.link {color:#FFCC33;}
+.link:hover {color:#FFFFFF;}
+
+.gaanaSaavn {color:#FFFFFF;font-size:22px;padding-bottom:10px;}
+.gaanaSaavnImg a img {margin-right:15px;margin-bottom:15px;}
