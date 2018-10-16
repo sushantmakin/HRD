@@ -200,11 +200,12 @@ background-position:0 760px
 }
 .course-col-program {
 	padding-right: 20px;
-	width: 215px
+	width: 215px;
+	font-size:15px;
 }
 .course-col-venue {
 	padding-right: 20px;
-	width: 265px
+	width: 52%;
 }
 .course-col-contact {
 	padding-right: 125px;

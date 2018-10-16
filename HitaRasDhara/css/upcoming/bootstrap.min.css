@@ -250,7 +250,6 @@ a {
 }
 a:hover, a:focus {
 	color: #23527c;
-	text-decoration: underline
 }
 a:focus {
 	outline: thin dotted;
@@ -1303,7 +1302,7 @@ pre code {
 .nav>li>a {
 	position: relative;
 	display: block;
-	padding: 10px 15px
+	padding: 10px 15px;
 }
 .nav>li>a:hover, .nav>li>a:focus {
 	text-decoration: none;
@@ -1475,7 +1474,7 @@ pre code {
 	position: relative;
 	min-height: 50px;
 	margin-bottom: 20px;
-	border: 1px solid transparent
+	
 }
 
 @media (min-width:768px) {

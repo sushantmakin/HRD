@@ -3262,6 +3262,7 @@ button.quote-btn {
 .audioVideoIconMargin {float:left;margin:0px 10px;}
 
 .headerBG {background-color:#f7f7f7;}
+
 .pageContent {color:#242424;font-size:16px !important;line-height:32px !important;text-align:justify;}
 .pageContent p {color:#242424;font-size:16px !important;line-height:32px !important;text-align:justify;}
 .pageContentHindi {color:#242424;font-size:18px !important;line-height:36px !important;text-align:justify;}
@@ -3297,3 +3298,6 @@ button.quote-btn {
 .footerIconMargin {margin:0px 15px;}
 
 .footerPadding {padding-top:30px;}
+
+.tableText {font-family:Arial;font-size:14px;}
+.kathaTitle {font-size:15px;}

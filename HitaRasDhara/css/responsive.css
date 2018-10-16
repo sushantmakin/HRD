@@ -531,7 +531,7 @@
     padding: 80px 100px 80px 100px;
 }
     
-   
+
 }
  
 table tr td {padding:8px;} 
@@ -540,4 +540,8 @@ table tr td {padding:8px;}
 	table tr td {font-size:12px !important;padding:2px;} 
 	.desktop {display:none;}
 	.mobile {display:block;}
+	
+}
+@media only screen and (min-width: 180px) and (max-width: 480px) {
+.kathaTitle {font-size:15px !important;}
 }

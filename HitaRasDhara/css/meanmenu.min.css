@@ -54,6 +54,7 @@ a.meanmenu-reveal{display:none}
   text-transform: uppercase;
   width: 90%;
   font-weight: bold;
+  font-family:Arial;
 }
 .mobile-menu-area {
   background: #323333 none repeat scroll 0 0;
