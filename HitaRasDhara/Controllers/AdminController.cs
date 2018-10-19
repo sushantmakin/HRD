@@ -66,6 +66,7 @@ namespace HitaRasDhara.Controllers
             viewModel.ContentItems.Reverse();
             ViewBag.TotalQueries = _dbContext.QueryForm.Count();
             ViewBag.PendingReplies = _dbContext.QueryForm.Count(t => t.Status == "Pending");
+            ViewBag.ImportantQueries = _dbContext.QueryForm.Count(t => t.Status == "Important");
             ViewBag.RepliedQueries = _dbContext.QueryForm.Count(t => t.Status == "Replied");
             ViewBag.CancelledQueries = _dbContext.QueryForm.Count(t => t.Status == "Cancelled");
             return View(viewModel);
@@ -86,7 +87,7 @@ namespace HitaRasDhara.Controllers
                 viewModel = new EmailViewModel
                 {
                     EmailBody = string.Format(_dbContext.SmsContent.Find("QueryReplyBody").Value, Environment.NewLine, queryDetails.Name, queryDetails.Query.Replace("<br/>",Environment.NewLine)),
-                    EmailSubject = _dbContext.SmsContent.Find("QueryReplySubject").Value,
+                    EmailSubject =string.Format(_dbContext.SmsContent.Find("QueryReplySubject").Value, queryDetails.Name),
                     EmailTo = queryDetails.Email,
                     Id = int.Parse(queryId)
                             
@@ -111,6 +112,52 @@ namespace HitaRasDhara.Controllers
                 queryDetails.Response = "NA";
                 _dbContext.SaveChanges();
                 return Json(new { Code = 20 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult MarkImportant(string queryId)
+        {
+            try
+            {
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
+                if (queryDetails.Status == "Important")
+                {
+                    return Json(new { Code = 22 }, JsonRequestBehavior.AllowGet);
+                }
+                queryDetails.Status = "Important";
+                queryDetails.Response = "NA";
+                _dbContext.SaveChanges();
+                return Json(new { Code = 23 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult MarkPending(string queryId)
+        {
+            try
+            {
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
+                if (queryDetails.Status == "Pending")
+                {
+                    return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
+                }
+                queryDetails.Status = "Pending";
+                queryDetails.Response = "NA";
+                _dbContext.SaveChanges();
+                return Json(new { Code = 25 }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {

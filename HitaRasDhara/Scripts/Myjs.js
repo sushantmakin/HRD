@@ -66,6 +66,22 @@
         case 21:
             swal('Error !', 'Query is already cancelled.', 'error');
             break;
+        case 22:
+            swal('Error !', 'Query is already Important.', 'error');
+            break;
+        case 23:
+            swal('Success !', 'You have successfully marked the query as important.', 'success').then(() => {
+                window.location.reload();
+            });
+            break;
+        case 24:
+            swal('Error !', 'Query is already Pending.', 'error');
+            break;
+        case 25:
+            swal('Success !', 'You have successfully removed the query from important.', 'success').then(() => {
+                window.location.reload();
+            });
+            break;
     }
 }
 

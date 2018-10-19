@@ -56,7 +56,7 @@
                 <div class="container">
                     <div class="panel panel-container">
                         <div class="row">
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-teal panel-widget border-right">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-question-circle color-blue"></em>
@@ -65,7 +65,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+                                <div class="panel panel-blue panel-widget border-right">
+                                    <div class="row no-padding">
+                                        <em class="fa fa-xl fa-heart color-red"></em>
+                                        <div class="large">@ViewBag.ImportantQueries</div>
+                                        <div class="text-muted">Important Queries</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-blue panel-widget border-right">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-question-circle color-red"></em>
@@ -74,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-blue panel-widget border-right">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-check-circle color-teal"></em>
@@ -83,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-blue panel-widget">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-ban color-red"></em>
@@ -92,20 +101,25 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!--/.row-->
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+                                </div>
+                            </div><!--/.row-->
                     </div>
 
                     <div class="panel panel-default articles">
                         <div class="panel-heading">
                             The current status of Queries recieved.
                             <div class="col-md-6 col-xs-12" style="float: right;">
-                                <span class="myCheckbox col-md-4 col-xs-8">
+                                <span class="myCheckbox col-md-3 col-xs-8">
+                                    <input type="checkbox" id="ImportantCheckBox" onclick="ImportantCheckboxClicked()" > Important
+                                </span>
+                                <span class="myCheckbox col-md-3 col-xs-8">
                                     <input type="checkbox" id="PendingCheckBox" onclick="PendingCheckboxClicked()" checked> Pending
                                 </span>
-                                <span class="myCheckbox col-md-4 col-xs-8">
+                                <span class="myCheckbox col-md-3 col-xs-8">
                                     <input type="checkbox" id="RepliedCheckBox" onclick="RepliedCheckboxClicked()"> Replied
                                 </span>
-                                <span class="myCheckbox col-md-4 col-xs-8">
+                                <span class="myCheckbox col-md-3 col-xs-8">
                                     <input type="checkbox" id="CancelledCheckBox" onclick="CancelledCheckboxClicked()"> Cancelled
                                 </span>
                             </div>
@@ -144,12 +158,19 @@
                                                     <div class="col-xs-12 col-md-6" style="padding-top: 10px;">
                                                         @if (item.Status == "Pending")
                                                         {
+                                                            <input type="button" class="btn btn-success" value="Important" style="float: right; margin-left: 10px;" onclick="MarkImportant(@item.ID)" />
                                                             <input type="button" class="btn btn-danger" value="Cancel" style="float: right; margin-left: 10px;" onclick="CancelQuery(@item.ID)" />
                                                             <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply </a>
                                                         }
                                                         @if (item.Status == "Replied")
                                                         {
                                                             <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply Again</a>
+                                                        }
+                                                        @if (item.Status == "Important")
+                                                        {
+                                                            <input type="button" class="btn btn-info" value="Pending" style="float: right; margin-left: 10px;" onclick="MarkPending(@item.ID)" />
+                                                            <input type="button" class="btn btn-danger" value="Cancel" style="float: right; margin-left: 10px;" onclick="CancelQuery(@item.ID)" />
+                                                            <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply </a>
                                                         }
                                                     </div>
                                                 </h4>
@@ -187,6 +208,7 @@
     function showonlyPending() {
         $(".Cancelled").addClass('HiddenBlock');
         $(".Replied").addClass('HiddenBlock');
+        $(".Important").addClass('HiddenBlock');
         $(".Pending").removeClass('HiddenBlock');
     }
 
@@ -217,6 +239,15 @@
         }
     }
 
+    function ImportantCheckboxClicked() {
+        var checkBox = $("#ImportantCheckBox");
+        if (checkBox.prop("checked") === true) {
+            $(".Important").removeClass('HiddenBlock');
+        } else {
+            $(".Important").addClass('HiddenBlock');
+        }
+    }
+
     function CancelQuery(id) {
         swal({
             title: 'Are you sure ?',
@@ -233,6 +264,70 @@
                 $.ajax({
                     type: "POST",
                     url: "/Admin/CancelQuery",
+                    data: { queryId: id },
+                    success: function (result) {
+                        console.log('data is : ' + result.Code);
+                        showPopup(result.Code);
+                    },
+                    error: function (data) {
+                        console.log('error : data code is : ' + data.Code);
+                    }
+                });
+            } else if (result.dismiss === "cancel" || result.dismiss === "esc") {
+                //Nothing
+            }
+        });
+        return false;
+    } 
+    
+    function MarkImportant(id) {
+        swal({
+            title: 'Are you sure ?',
+            text: 'Do you wish to mark this query as important?',
+            type: 'warning',
+            allowOutsideClick: false,
+            confirmButtonText: 'Yes, Mark Important',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, I wish to reconsider.'
+        }).then((result) => {
+            debugger;
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/MarkImportant",
+                    data: { queryId: id },
+                    success: function (result) {
+                        console.log('data is : ' + result.Code);
+                        showPopup(result.Code);
+                    },
+                    error: function (data) {
+                        console.log('error : data code is : ' + data.Code);
+                    }
+                });
+            } else if (result.dismiss === "cancel" || result.dismiss === "esc") {
+                //Nothing
+            }
+        });
+        return false;
+    }
+
+    function MarkPending(id) {
+        swal({
+            title: 'Are you sure ?',
+            text: 'Do you want to remove this query from important?',
+            type: 'warning',
+            allowOutsideClick: false,
+            confirmButtonText: 'Yes, Remove Important',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, I wish to reconsider.'
+        }).then((result) => {
+            debugger;
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/MarkPending",
                     data: { queryId: id },
                     success: function (result) {
                         console.log('data is : ' + result.Code);
