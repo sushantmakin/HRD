@@ -44,9 +44,6 @@
     padding: 20px 5px;
 }    
     
-    
-    
-    
 }
 
 
@@ -511,7 +508,7 @@
     background: #f9f9f9;
     padding: 80px 30px 80px 30px;
 }	
-    
+
 }
 
 /* Large Mobile :480px. */
@@ -531,17 +528,24 @@
     padding: 80px 100px 80px 100px;
 }
     
-
+.desktopKatha {display:none;}
 }
  
 table tr td {padding:8px;} 
- 
+
+
+@media only screen and (min-width: 767px) and (max-width: 1060px) {
+.desktopKatha {display:none;}	
+
+}
 @media (max-width: 480px) {
 	table tr td {font-size:12px !important;padding:2px;} 
 	.desktop {display:none;}
 	.mobile {display:block;}
-	
+	.desktopKatha {display:none;}	
 }
 @media only screen and (min-width: 180px) and (max-width: 480px) {
 .kathaTitle {font-size:15px !important;}
+
 }
+

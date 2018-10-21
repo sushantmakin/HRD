@@ -176,7 +176,7 @@ background-position:0 760px
 	color: #FFF;
 	font-size: 12px;
 	font-weight: 700;
-	padding: 12px 0;
+	padding: 12px 0px;
 	margin: 0px
 }
 #course-table thead h4 a {
@@ -196,18 +196,19 @@ background-position:0 760px
 .course-col-date {
 	padding-left: 35px;
 	padding-right: 20px;
-	width: 175px
+	width: 225px;
 }
 .course-col-program {
 	padding-left: 20px !important;
-	width: 215px
+	width: 270px !important;
+	font-size:15px;
 }
 .course-col-venue {
 	padding-right: 20px;
-	width: 265px
+	width: 24%;
 }
 .course-col-contact {
-	padding-right: 125px;
+	padding-right: 180px !important;
 	position: relative
 }
 #course-table tr td span {
