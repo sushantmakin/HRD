@@ -1,4 +1,4 @@
-﻿@model HitaRasDhara.Controllers.DbViewForQuery
+﻿﻿@model HitaRasDhara.Controllers.DbViewForQuery
 
 @functions {
     private string getMonthString(int timeStampMonth)
@@ -48,19 +48,15 @@
         <li class="active"> Query </li>
     </ol>
 </div><!--/.row-->
-@*<div class="header">
-        <h1 class="page-header">The current status of Queries recieved.</h1>
-    </div>*@
-
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm("Query", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("Query", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <div id="wrap">
                 <div class="container">
                     <div class="panel panel-container">
                         <div class="row">
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-teal panel-widget border-right">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-question-circle color-blue"></em>
@@ -69,7 +65,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+                                <div class="panel panel-blue panel-widget border-right">
+                                    <div class="row no-padding">
+                                        <em class="fa fa-xl fa-heart color-red"></em>
+                                        <div class="large">@ViewBag.ImportantQueries</div>
+                                        <div class="text-muted">Important Queries</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-blue panel-widget border-right">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-question-circle color-red"></em>
@@ -78,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-blue panel-widget border-right">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-check-circle color-teal"></em>
@@ -87,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
                                 <div class="panel panel-blue panel-widget">
                                     <div class="row no-padding">
                                         <em class="fa fa-xl fa-ban color-red"></em>
@@ -96,21 +101,28 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!--/.row-->
+                            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+                                </div>
+                            </div><!--/.row-->
                     </div>
 
                     <div class="panel panel-default articles">
                         <div class="panel-heading">
                             The current status of Queries recieved.
-                            <span class="pull-right myCheckbox">
-                                <input type="checkbox" id="CancelledCheckBox" onclick="CancelledCheckboxClicked()"> Cancelled
-                            </span>
-                            <span class="pull-right myCheckbox">
-                                <input type="checkbox" id="RepliedCheckBox" onclick="RepliedCheckboxClicked()"> Replied
-                            </span>
-                            <span class="pull-right myCheckbox">
-                                <input type="checkbox" id="PendingCheckBox" onclick="PendingCheckboxClicked()" checked> Pending
-                            </span>
+                            <div class="col-md-6 col-xs-12" style="float: right;">
+                                <span class="myCheckbox col-md-3 col-xs-8">
+                                    <input type="checkbox" id="ImportantCheckBox" onclick="ImportantCheckboxClicked()" > Important
+                                </span>
+                                <span class="myCheckbox col-md-3 col-xs-8">
+                                    <input type="checkbox" id="PendingCheckBox" onclick="PendingCheckboxClicked()" checked> Pending
+                                </span>
+                                <span class="myCheckbox col-md-3 col-xs-8">
+                                    <input type="checkbox" id="RepliedCheckBox" onclick="RepliedCheckboxClicked()"> Replied
+                                </span>
+                                <span class="myCheckbox col-md-3 col-xs-8">
+                                    <input type="checkbox" id="CancelledCheckBox" onclick="CancelledCheckboxClicked()"> Cancelled
+                                </span>
+                            </div>
                         </div>
                         @foreach (var item in Model.ContentItems)
                         {
@@ -121,50 +133,59 @@
                                             <div class="col-xs-2 col-md-2 date">
                                                 <div class="large">@item.TimeStamp.Day</div>
                                                 <div class="text-muted">@getMonthString(item.TimeStamp.Month) , @item.TimeStamp.Year</div>
-                                                @if (item.Status == "Replied")
-                                                {
-                                                    @*<img src="~/img/replied.jpg" id="StatusStamp" />*@
-                                                    <h3>
-                                                        <span class="label label-success">Replied</span>
-                                                    </h3>
-                                                }
-                                                @if (item.Status == "Pending")
-                                                {
-                                                    @*<img src="~/img/pending.jpg" id="StatusStamp" />*@
-                                                    <h3>
-                                                        <span class="label label-info">Pending</span>
-                                                    </h3>
-                                                }
-                                                @if (item.Status == "Cancelled")
-                                                {
-                                                    <h3>
-                                                        @*<img src="~/img/pending.jpg" id="StatusStamp" />*@
-                                                        <span class="label label-danger">Cancelled</span>
-                                                    </h3>
-                                                }
+
                                             </div>
                                             <div class="col-xs-10 col-md-10">
                                                 <h4>
-                                                    <a href="~/admin/QueryReply?QueryId=@item.ID">@item.Name</a>
-                                                    @if (item.Status == "Pending")
-                                                    {
-                                                        <input type="button" class="btn btn-danger" value="Cancel Query" style="float: right; margin-left: 10px;" onclick="CancelQuery(@item.ID)" />
-                                                        <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply </a>
-                                                    }
+                                                    <div class="col-xs-12 col-md-6" style="padding-top: 10px;">
+                                                        <div class="col-xs-12 col-md-12">
+                                                            <a href="~/admin/QueryReply?QueryId=@item.ID">@item.Name</a>
+
+                                                            @if (item.Status == "Replied")
+                                                            {
+                                                                <span class="label label-success">Replied</span>
+                                                            }
+                                                            @if (item.Status == "Pending")
+                                                            {
+                                                                <span class="label label-info">Pending</span>
+                                                            }
+                                                            @if (item.Status == "Cancelled")
+                                                            {
+                                                                <span class="label label-danger">Cancelled</span>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6" style="padding-top: 10px;">
+                                                        @if (item.Status == "Pending")
+                                                        {
+                                                            <input type="button" class="btn btn-success" value="Important" style="float: right; margin-left: 10px;" onclick="MarkImportant(@item.ID)" />
+                                                            <input type="button" class="btn btn-danger" value="Cancel" style="float: right; margin-left: 10px;" onclick="CancelQuery(@item.ID)" />
+                                                            <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply </a>
+                                                        }
+                                                        @if (item.Status == "Replied")
+                                                        {
+                                                            <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply Again</a>
+                                                        }
+                                                        @if (item.Status == "Important")
+                                                        {
+                                                            <input type="button" class="btn btn-info" value="Pending" style="float: right; margin-left: 10px;" onclick="MarkPending(@item.ID)" />
+                                                            <input type="button" class="btn btn-danger" value="Cancel" style="float: right; margin-left: 10px;" onclick="CancelQuery(@item.ID)" />
+                                                            <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply </a>
+                                                        }
+                                                    </div>
+                                                </h4>
+                                                <div class="col-md-12 col-xs-12">
+                                                    <h5> @Html.Raw(item.Query)</h5>
+
+                                                    <p><span class="fa fa-envelope color-blue"></span> @item.Email </p>
+                                                    <p><span class="fa fa-phone color-blue"></span> @item.Phone </p>
+                                                    <p><span class="fa fa-map-marker color-blue"></span> @item.City, @item.Country </p>
+                                                    <p><span class="fa fa-clock-o color-blue"></span> @item.TimeStamp </p>
                                                     @if (item.Status == "Replied")
                                                     {
-                                                        <a class="btn btn-primary" href='@Url.Action("QueryReply","Admin", new { QueryId = @item.ID})' style="float: right;"> <i class="fa fa-reply" aria-hidden="true"></i> Reply Again</a>
+                                                        <p style="font-family: cursive;"> @Html.Raw(item.Response) </p>
                                                     }
-                                                </h4>
-                                                <h3> @Html.Raw(item.Query)</h3>
-                                                <p><span class="fa fa-envelope color-blue"></span> @item.Email </p>
-                                                <p><span class="fa fa-phone color-blue"></span> @item.Phone </p>
-                                                <p><span class="fa fa-map-marker color-blue"></span> @item.City, @item.Country </p>
-                                                <p><span class="fa fa-clock-o color-blue"></span> @item.TimeStamp </p>
-                                                @if (item.Status == "Replied")
-                                                {
-                                                    <h4 style="font-family: cursive;"> @Html.Raw(item.Response) </h4>
-                                                }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -173,8 +194,6 @@
                             </div>
                         }
                     </div><!--End .articles-->
-
-
                 </div>
             </div>
         }
@@ -189,6 +208,7 @@
     function showonlyPending() {
         $(".Cancelled").addClass('HiddenBlock');
         $(".Replied").addClass('HiddenBlock');
+        $(".Important").addClass('HiddenBlock');
         $(".Pending").removeClass('HiddenBlock');
     }
 
@@ -216,6 +236,15 @@
             $(".Pending").removeClass('HiddenBlock');
         } else {
             $(".Pending").addClass('HiddenBlock');
+        }
+    }
+
+    function ImportantCheckboxClicked() {
+        var checkBox = $("#ImportantCheckBox");
+        if (checkBox.prop("checked") === true) {
+            $(".Important").removeClass('HiddenBlock');
+        } else {
+            $(".Important").addClass('HiddenBlock');
         }
     }
 
@@ -249,6 +278,69 @@
             }
         });
         return false;
+    } 
+    
+    function MarkImportant(id) {
+        swal({
+            title: 'Are you sure ?',
+            text: 'Do you wish to mark this query as important?',
+            type: 'warning',
+            allowOutsideClick: false,
+            confirmButtonText: 'Yes, Mark Important',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, I wish to reconsider.'
+        }).then((result) => {
+            debugger;
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/MarkImportant",
+                    data: { queryId: id },
+                    success: function (result) {
+                        console.log('data is : ' + result.Code);
+                        showPopup(result.Code);
+                    },
+                    error: function (data) {
+                        console.log('error : data code is : ' + data.Code);
+                    }
+                });
+            } else if (result.dismiss === "cancel" || result.dismiss === "esc") {
+                //Nothing
+            }
+        });
+        return false;
     }
 
+    function MarkPending(id) {
+        swal({
+            title: 'Are you sure ?',
+            text: 'Do you want to remove this query from important?',
+            type: 'warning',
+            allowOutsideClick: false,
+            confirmButtonText: 'Yes, Remove Important',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, I wish to reconsider.'
+        }).then((result) => {
+            debugger;
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/MarkPending",
+                    data: { queryId: id },
+                    success: function (result) {
+                        console.log('data is : ' + result.Code);
+                        showPopup(result.Code);
+                    },
+                    error: function (data) {
+                        console.log('error : data code is : ' + data.Code);
+                    }
+                });
+            } else if (result.dismiss === "cancel" || result.dismiss === "esc") {
+                //Nothing
+            }
+        });
+        return false;
+    }
 </script>
