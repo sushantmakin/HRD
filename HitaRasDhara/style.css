@@ -615,6 +615,103 @@ ul.sub-menu li .sub-menu2 {
     width: 160px;
     height: auto;
 }
+
+/*Menu Style*/
+ul.dropdowni {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	width: 100%;
+}
+.dropdowni ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	float: left;
+}
+ul.dropdowni li {
+	float: left;
+	zoom: 1;
+	display: block;
+	position: relative;
+	z-index: 500;
+	margin-bottom: 0px;
+}
+ul.dropdowni li a {
+	text-decoration: none;
+	display: block;
+	padding: 50px 22px 20px 22px;
+	color: #242424;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.dropdowni li a:hover {
+	color: #C20001;
+}
+ul.dropdowni li:last-child a {
+	border-right: none;
+}
+/* Doesn't work in IE */
+ul.dropdowni li.hover, ul.dropdowni li:hover {
+	position: relative;
+	color: #242424
+}
+.dropdowni ul li ul li {
+	margin-left: 0px;
+}
+/*  LEVEL TWO  */
+ul.dropdowni ul {
+	width: 200px;
+	visibility: hidden;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	color: #242424;
+	border-top: 4px solid #e22a31;
+}
+ul.dropdowni ul li {
+	color: #FFFFFF;
+	float: none;
+	text-align: left;
+	margin-bottom: 0px;
+}
+/* IE 6 & 7 Needs Inline Block */
+ul.dropdowni ul li a {
+	text-decoration: none;
+	text-transform: none;
+	padding: 8px 0px 8px 18px;
+	border: 1px solid #3d3d3d;
+	background: #242424;
+	border-top: none;
+	color: #FFFFFF;
+	border-right: none;
+	width: 100%;
+	display: inline-block;
+}
+ul.dropdowni ul li a:hover {
+	color: #FFFFFF;
+	border-right: none;
+	width: 100%;
+	display: inline-block;
+	background: #e22a31;
+}
+/*  LEVEL THREE  */
+ul.dropdowni ul ul {
+	left: 100%;
+	top: 0;
+}
+ul.dropdowni li:hover > ul {
+	visibility: visible;
+}
+.mobileMenu {
+	width: 100%;
+	height: 40px;
+}
+/* End Menu*/
+
 /*----------------------------------------*/
 /*  2.3. Mobile Menu Area
 /*----------------------------------------*/
@@ -940,6 +1037,25 @@ ul.sub-menu li .sub-menu2 {
 /*----------------------------------------*/
 /*  5. About area
 /*----------------------------------------*/
+
+.about-content1 h4 {
+    font-weight: 600;
+    line-height: 32px;
+    text-transform: uppercase;
+    font-size: 22px;
+	position: relative;
+	padding-bottom: 15px;
+}
+.about-content1 h4 ::after {
+    border: 1px solid #e22a31;
+    bottom: 0px;
+    content: "";
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    width: 12%;
+}
+
 .about-area{
     background: #f6f6f6;
 }
@@ -1758,7 +1874,7 @@ ul.sub-menu li .sub-menu2 {
 }
 .footer-area-bottom {
     background: #072948 none repeat scroll 0 0;
-    padding: 25px 0;
+    padding: 10px 0;
 	border-top: 1px solid #333;
 }
 .copyright-text a:hover{text-decoration: underline;color:#e22a31;}
@@ -3355,8 +3471,7 @@ button.quote-btn {
 
 .footerBG {background-color:#0a3256;padding:30px 0px;}
 
-
-.footerIconMargin {margin:0px 15px;}
+.footerIconMargin {margin:5px 0px;}
 
 .footerPadding {padding-top:30px;}
 
@@ -3375,3 +3490,5 @@ button.quote-btn {
 .hitaIcon {text-align:center;margin-top:30px;}
 .hitaIcon a {font-size:30px;margin:20px 18px;color:#004488;border-bottom:2px solid #CCCCCC;}
 .hitaIcon a:hover {color:#C20001;border-bottom:2px solid #C20001;}
+
+

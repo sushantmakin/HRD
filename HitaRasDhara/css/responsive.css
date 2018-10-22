@@ -529,6 +529,9 @@
 }
     
 .desktopKatha {display:none;}
+
+.about-content1 h4 {padding:20px 0px 0px 20px;}
+	.about-content1 h4 ::after {border:none;}
 }
  
 table tr td {padding:8px;} 
@@ -543,9 +546,13 @@ table tr td {padding:8px;}
 	.desktop {display:none;}
 	.mobile {display:block;}
 	.desktopKatha {display:none;}	
+	.about-content1 h4 {padding:20px 0px 0px 20px;}
+	.about-content1 h4 ::after {border:none;}
 }
 @media only screen and (min-width: 180px) and (max-width: 480px) {
 .kathaTitle {font-size:15px !important;}
+.about-content1 h4 {padding:20px 0px 0px 20px;}
+	.about-content1 h4 ::after {border:none;}
 
 }
 

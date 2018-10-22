@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.dropdownPlain.js"></script>
+<script type="text/javascript" src="js/mobilemenu.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127415323-1"></script>
 <script>
@@ -77,24 +79,34 @@
           <nav class="navbar navbar-default">
             <div class="collapse navbar-collapse" id="navbar-example">
               <div class="main-menu">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a class="pagess" href="#">About</a>
-                    <ul class="sub-menu">
-                      <li><a href="shree-radha-vallabh-ji.html">Shree Radha Vallabh Ji</a></li>
-                      <li><a href="#">Shree Hita Harivansh Mahaprabhu Ji</a></li>
-                      <li><a href="hita-ambrish-ji.html">Hita Ambrish Ji</a></li>
-                      <li><a href="hita-the-eternal.html">Hita The Eternal</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="upcoming-katha.html">Upcoming Katha</a></li>
-                  <li><a href="#">Gallery </a>
-                  	<ul class="sub-menu">
-                      <li><a href="katha-gallery.html">Katha Gallery</a></li>
-                      <li><a href="https://www.youtube.com/playlist?list=PLBdDLcI6qE-22TjdrdaaexVM4eR6gDw3N" target="_blank">Bhajan Gallery</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="http://www.hitaambrish.com/query">Query</a></li>
+                <ul class="navbar-right dropdowni" id="dropdowni">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a>
+                        <ul>
+                            <li><a href="shree-radha-vallabh-ji.html">Shree Radha Vallabh Ji</a></li>
+                            <li><a href="#">Shree Hita Harivansh Mahaprabhu Ji</a></li>
+                            <li><a href="hita-ambrish-ji.html">Hita Ambrish Ji</a></li>
+                            <li><a href="hita-the-eternal.html">Hita The Eternal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="upcoming-katha.html">Upcoming Katha</a></li>
+                    <li><a href="#">Gallery </a>
+                        <ul>
+                            <li><a href="">Video Gallery</a>
+                            	<ul>
+                                    <li><a href="katha-gallery.html">Katha Collection</a></li>
+                                    <li><a href="https://www.youtube.com/playlist?list=PLBdDLcI6qE-22TjdrdaaexVM4eR6gDw3N">Bhajan Collection</a></li>
+                        		</ul>
+                            </li>
+                            <li><a href="#" target="_blank">Audio Gallery</a>
+                            	<ul>
+                                    <li><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank">Gaana</a></li>
+                                    <li><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank">Saavn</a></li>
+                        		</ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="http://www.hitaambrish.com/query">Query</a></li>
                 </ul>
               </div>
             </div>
@@ -123,9 +135,19 @@
                   </li>
                   <li><a href="upcoming-katha.html">Upcoming Katha</a></li>
                   <li><a href="#">Gallery </a>
-                  	<ul class="sub-menu">
-                      <li><a href="katha-gallery.html">Katha Gallery</a></li>
-                      <li><a href="https://www.youtube.com/playlist?list=PLBdDLcI6qE-22TjdrdaaexVM4eR6gDw3N" target="_blank">Bhajan Gallery</a></li>
+                    <ul class="sub-menu">
+                        <li><a href="">Katha Gallery</a>
+                            <ul class="sub-menu">
+                                <li><a href="katha-gallery.html">Katha Collection</a></li>
+                                <li><a href="https://www.youtube.com/playlist?list=PLBdDLcI6qE-22TjdrdaaexVM4eR6gDw3N">Bhajan Collection</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="" target="_blank">Bhajan Gallery</a>
+                        	<ul class="sub-menu">
+                                <li><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank">Gaana</a></li>
+                                <li><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank">Saavn</a></li>
+                            </ul>
+                        </li>
                     </ul>
                   </li>
                   <li><a href="http://www.hitaambrish.com/query">Query</a></li>
@@ -158,15 +180,9 @@
   <div class="footer-area-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="copyright">
-            <p>&copy; 2018, <a href="hita-ras-dhara.html">Hita Ras Dhara</a> All Rights Reserved</p>
-            <p>Official website of Hita Ambrish</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="copyright" align="right">
-          	<div class="footerIcon">
+      	<div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="copyright" align="left">
+          	<div class="footerIconMargin">
                 <a href="https://facebook.com/ShreeHitaAmbrishJi" target="_blank"><img src="img/footer_icon01.png" border="0" alt="facebook icon" /></a> &nbsp; 
                 <a href="https://www.youtube.com/channel/UC3gnhko-qhwOdUDh_DcZaAw" target="_blank"><img src="img/footer_icon02.png" border="0" alt="youtube icon" /></a>  &nbsp; 
                 <a href="https://www.instagram.com/hitarasdhara/" target="_blank"><img src="img/footer_icon03.png" border="0" alt="instagram icon" /></a>  &nbsp; 
@@ -175,6 +191,14 @@
         	</div>
           </div>
         </div>
+        
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="copyright" align="right">
+            <p>&copy; 2018, <a href="hita-ras-dhara.html">Hita Ras Dhara</a> All Rights Reserved</p>
+            <p>Official website of Hita Ambrish</p>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
