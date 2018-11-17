@@ -51,9 +51,20 @@
 
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
-	.topbar-left ul li:last-child{
-		display: none;
-	}
+ul.dropdowni li a {
+	text-decoration: none;
+	display: block;
+	padding: 25px 8px 20px 8px;
+	color: #242424;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.topbar-left ul li:last-child{
+	display: none;
+}
 .main-menu ul.navbar-nav li a,
 .main-menu ul.navbar-nav li a, .header-area.stick .main-menu ul.navbar-nav li a {
     font-size: 13px;
