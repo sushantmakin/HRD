@@ -121,7 +121,7 @@ namespace HitaRasDhara.Controllers
         }
 
         [HttpPost]
-        public ActionResult MarkImportant(string queryId)
+        public ActionResult ToggleCategory(string queryId)
         {
             try
             {
@@ -129,35 +129,19 @@ namespace HitaRasDhara.Controllers
                 var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
                 if (queryDetails.Status == "Important")
                 {
-                    return Json(new { Code = 22 }, JsonRequestBehavior.AllowGet);
+                    queryDetails.Status = "Pending";
+                    queryDetails.Response = "NA";
+                    _dbContext.SaveChanges();
+                    return Json(new { Code = 25 }, JsonRequestBehavior.AllowGet);
                 }
-                queryDetails.Status = "Important";
-                queryDetails.Response = "NA";
-                _dbContext.SaveChanges();
-                return Json(new { Code = 23 }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
-            }
-
-        }
-
-        [HttpPost]
-        public ActionResult MarkPending(string queryId)
-        {
-            try
-            {
-                ApplicationDbContext _dbContext = new ApplicationDbContext();
-                var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
-                if (queryDetails.Status == "Pending")
+                if(queryDetails.Status == "Pending")
                 {
-                    return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
+                    queryDetails.Status = "Important";
+                    queryDetails.Response = "NA";
+                    _dbContext.SaveChanges();
+                    return Json(new { Code = 23 }, JsonRequestBehavior.AllowGet);
                 }
-                queryDetails.Status = "Pending";
-                queryDetails.Response = "NA";
-                _dbContext.SaveChanges();
-                return Json(new { Code = 25 }, JsonRequestBehavior.AllowGet);
+               return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
@@ -165,6 +149,29 @@ namespace HitaRasDhara.Controllers
             }
 
         }
+
+        //[HttpPost]
+        //public ActionResult MarkPending(string queryId)
+        //{
+        //    try
+        //    {
+        //        ApplicationDbContext _dbContext = new ApplicationDbContext();
+        //        var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
+        //        if (queryDetails.Status == "Pending")
+        //        {
+        //            return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
+        //        }
+        //        queryDetails.Status = "Pending";
+        //        queryDetails.Response = "NA";
+        //        _dbContext.SaveChanges();
+        //        return Json(new { Code = 25 }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
+        //    }
+
+        //}
 
         [HttpPost]
         public ActionResult QueryReply(EmailViewModel input)

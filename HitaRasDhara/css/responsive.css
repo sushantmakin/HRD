@@ -550,8 +550,8 @@ table tr td {padding:8px;}
 
 @media only screen and (min-width: 767px) and (max-width: 1060px) {
 .desktopKatha {display:none;}	
-
 }
+
 @media (max-width: 480px) {
 	table tr td {font-size:12px !important;padding:2px;} 
 	.desktop {display:none;}
@@ -566,4 +566,7 @@ table tr td {padding:8px;}
 	.about-content1 h4 ::after {border:none;}
 
 }
+
+
+
 

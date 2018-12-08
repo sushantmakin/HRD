@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /img/ 
+Disallow: /admin/ 
+Disallow: /css/ 
+Disallow: /fonts/ 
+Disallow: /js/ 
+Disallow: /lumino/ 
+Disallow: /Scripts/

@@ -1,0 +1,266 @@
+﻿@model HitaRasDhara.Models.UpcomingKathaViewModel
+<div class="intro-area intro-area-2 desktop">
+    <div class="main-overly"></div>
+    <div class="intro-carousel">
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slider1.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slider2.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slider3.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+    </div>
+</div>
+
+<div class="intro-area intro-area-2 mobile">
+    <div class="main-overly"></div>
+    <div class="intro-carousel">
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slide_mob01.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slide_mob02.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slide_mob03.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slide_mob04.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+        <div class="intro-content">
+            <div class="slider-images"> <img src="~/img/slide_mob05.jpg" alt="Hita Ambrish Ji"> </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="eventArea desktop">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <h2> Think HIGHER Drill DEEPER Be STRONGER</h2>
+                <p>A talk by <strong>Hita Ambrish Ji</strong> especially for the Youth</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 registerBtn">
+                <div class="applyNow"><a href="https://www.hitaambrish.com/Talk/Register">Register Now</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="eventArea mobile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <h2> Think HIGHER <br/>Drill DEEPER <br/>Be STRONGER</h2>
+                <p>A talk by <strong>Hita Ambrish Ji</strong> especially for the Youth</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 registerBtn">
+                <div class="applyNow"><a href="https://www.hitaambrish.com/Talk/Register">Register Now</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+@*<div class="fb-group"
+    data-href="https://www.facebook.com/groups/286642575306749/"
+    data-width="500"
+    data-show-social-context="true"
+    data-show-metadata="true"></div>*@
+<div class="about-area area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="about-content">
+                    <h4>About <span class="color"> Hita Ambrish</span></h4>
+                    <p>
+                        Hita Ambrish Ji is young, charismatic, spiritual teacher. An inspiring mentor who has transformed many lives and introduced them to path filled with love, devotion and selfless service. He speaks from the voice of his experience and touches the deepest chord even with a casual listener and is himself a living testimony to all that he teaches.
+                    </p><p>
+                        An inspiring mentor who has transformed many lives and introduced them to path filled with love, devotion and selfless service. He speaks from the voice of his experience and touches the deepest chord even with a casual listener and is himself a living testimony to all that he teaches.
+                    </p>
+                    <a href="@Url.Action("HitaAmbrishJi","About")">Read More &raquo;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="welcome-area area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="section-headline text-center">
+                    <h4>Upcoming <span class="color"> Katha</span></h4>
+                    <p>The sequence of upcoming katha by Shree Hita Ambrish Ji in the near future.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.KathaFeed != null && Model.KathaFeed.Count > 0)
+            {
+                foreach (var item in Model.KathaFeed)
+                {
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="well-services text-center">
+                            @if (item.ImageUrl != "null")
+                            {
+                                <div class="services-img"> <img src=@item.ImageUrl alt="Upcoming Katha"></div>
+                            }
+                            else
+                            {
+                                <div class="services-img"> <img src="" alt="Upcoming Katha"></div>
+                            }
+                            <div class="main-services">
+                                <div class="service-content">
+                                    <h4>@item.KathaTitle</h4>
+                                    <p>
+                                        <strong>@item.Dates (@item.Timings)</strong> <br />
+                                        @item.AddressLine1 <br /><strong>@item.AddressLine2</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            </div>
+
+            <div class="viewMore">
+                <button class="viewButton"><a href="@Url.Action("Index","UpcomingKathas")">View More</a></button>
+            </div>
+
+        </div>
+    </div>
+    <div class="banner-area/ area-padding greyBG">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="about-image"> <img src="~/img/hita-the-eternal-logo.png" alt="Hita Ras Dhara Logo"> </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="banner-content text-center">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="section-headline1 text-center">
+                                    <h4>Hita <span class="color"> The Eternal</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pt">What is ‘HITA’ the eternal?</p>
+                        <p>
+                            HITA - ‘unconditional love’. A divine eternal energy which enriches each and everyones life.<br />
+                            HITA the eternal  - is an initiative by Hita Ambrish ji to connect with the youth to share the joy of celebrating life. To share the this eternal happiness of staying with ‘HITA’ (unconditional love) and channelising this divine energy into our daily lives.
+                            <br /><a href="@Url.Action("HitaTheEternal","About")" class="link">Read More &raquo;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="project-area area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h4>Audio & Video <span class="color"> Gallery</span></h4>
+                        <p>Video recording of discourses delivered by Shri Hita Ambrish ji</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="project-carousel">
+                    <div class="col-md-4 col-sm-4 col-xs-12" align="left">
+                        <div><img src="~/img/madhurastak.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Madhurashtak <br /> (Gorakhpur)</h4>
+                            <p>The Madhurasthakam, composed by Sri Vallabhacharya, is a unique stotra, describing the sweetness of Lord Shree Krishna.</p><br />
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=F2aOTLmuNzo&index=2&list=PLBdDLcI6qE-3vbQ0zBcKZGCW_ilhxVFbN&t=288s" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/album/madhurashtak" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/album/hindi/Madhurashtak-2017/qHAnSVViqmc_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/uddhav-sandesh.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Uddhav Sandesh <br /> (Panchkula)</h4>
+                            <p>Shree Krishna requesting Uddhav to go to Vrindavan to pacify Nandbaba, Ma Yashoda, the Gopis his ‘Sakhas’ and all Brajvasis, by reminding them of their pastimes with Shree Krishna.</p>
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=Xev9w-rKW9g&index=2&list=PLBdDLcI6qE-2Xjt--7n7cd8ZIFHr0dYX_&t=52s" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/album/uddhav-sandesh" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/album/hindi/Uddhav-Sandesh-2017/ofS511BhIqU_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/radha-kirpa-kataksh.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Radha Kirpa Kataksh <br /> (Vrindavan)</h4>
+                            <p>A prayer for the merciful sidelong glance of Shree Radha. This stotra is given by Lord Shiva himself and believed to be from the ‘Urdhavamnaya tantra’. </p><br />
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=c1rYKGIpI4o&t=705s&list=PLBdDLcI6qE-3om6evKAVgQ6KChtb38UWU&index=2" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/album/shree-radha-kripa-kataksh" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/album/hindi/Shree-Radha-Kripa-Kataksh-2018/wxRH81L9uzA_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/gopi-geet.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Gopi Geet <br /> (Shah Auditorium, Delhi)</h4>
+                            <p>A divine composition by the Gopis in the earnest longing of just a glimpse of their beloved Shree Krishna. When Shree Krishna disappeared at the time of ‘Rasa’<strong></strong></p>
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=LIR6yKH8ddA&list=PLBdDLcI6qE-03TIsjsehtMEN-L6vskG__" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/album/gopi-geet" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/album/hindi/Gopi-Geet-2016/iTCwQ-989Yo_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/bhajan-marg.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Bhajan Marg <br /> (Faridabad)</h4>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p><br />
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=0rp6eOvtc2U&index=2&t=1425s&list=PLBdDLcI6qE-1VBccXs9mz2zX8H38My4pW" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/tulsi-das-patiala.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Goswami Tulsi Dass Ji <br /> (Patiala)</h4>
+                            <p>Goswami Tulsidas a ‘Bhakti saint’ and a philosopher renowned for his devotion for Lord Ram. Goswami Tulsidas wrote the ‘Ramcharitramanas’. </p><br />
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=ZZVKZzfqnuo&list=PLBdDLcI6qE-3AZRLNDhuDcs34cP-MFRVU&index=2&t=212s" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/album/goswami-shree-tulsi-das-ji-bhaktmaal-katha" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/album/hindi/Goswami-Shree-Tulsi-Das-Ji-Bhaktmaal-Katha-2013/8twBkRWRbpg_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/prem-diwani-meera.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Prem Diwani Meera <br /> (Iskon Temple, Delhi)</h4>
+                            <p>Meera , the foremost exponent of ‘prem bhakti’(love-filled devotion), the one whose every passion, desire, thought,  her word, her every single heartbeat was intensely devoted to her only ‘Giridhar Gopal’. </p>
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=UCY5_DkkM00&index=2&t=12s&list=PLBdDLcI6qE-0M5NeGdDxikvKqq5NJ9Jls" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/artist/shree-hita-ambrish-ji" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div><img src="~/img/radha-ashtami.jpg" alt=""></div>
+                        <div class="project-dec">
+                            <h4>Hitopasna Parvesh <br /> (Vrindavan)</h4>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p><br />
+                            <div class="audioVideoIcon"><a href="https://www.youtube.com/watch?v=Ml2ho2Rkb_Q&t=45s&list=PLBdDLcI6qE-2LqLABWOViwaXEq47flT7k&index=2" target="_blank"><img src="~/img/youtube_icon.png" border="0" alt="youtube icon" /></a></div>
+                            <div class="audioVideoIconMargin"><a href="https://gaana.com/album/shree-hita-radha-ashtami-mahotsava" target="_blank"><img src="~/img/gaana_icon2.png" border="0" alt="gaana icon" /></a></div>
+                            <div class="audioVideoIcon"><a href="https://www.saavn.com/s/album/hindi/Shree-Hita-Radha-Ashtami-Mahotsava-2017/2ZZpBObifak" target="_blank"><img src="~/img/saavan_icon2.png" border="0" alt="saavn icon" /></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="viewMore">
+                <button class="viewButton"><a href="http://www.hitaras.com" target="_blank">View More</a></button>
+            </div>
+        </div>
+    </div>

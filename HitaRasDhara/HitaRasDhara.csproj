@@ -45,6 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.0.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
@@ -82,15 +90,31 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=3.2.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.3.2.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Purplelight.Framework.Autofac.Integration.WebApi, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Purplelight.Framework.Autofac.Integration.WebApi.0.2.2\lib\net45\Purplelight.Framework.Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -200,6 +224,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -207,6 +232,7 @@
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
+    <Compile Include="Controllers\UpcomingKathasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -278,6 +304,10 @@
     <Compile Include="Migrations\201810071240305_queryformchange1.Designer.cs">
       <DependentUpon>201810071240305_queryformchange1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811250751100_upcomingkatha.cs" />
+    <Compile Include="Migrations\201811250751100_upcomingkatha.Designer.cs">
+      <DependentUpon>201811250751100_upcomingkatha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EmailViewModel.cs" />
@@ -285,6 +315,7 @@
     <Compile Include="Models\MobileVerificationViewModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\SMSContent.cs" />
+    <Compile Include="Models\UpcomingKathaViewModel.cs" />
     <Compile Include="Models\UserResponse5Aug.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -372,10 +403,10 @@
     <Content Include="form-bg-Lower.jpg" />
     <Content Include="form-bg-Upper.jpg" />
     <Content Include="Global.asax" />
-    <Content Include="hita-ambrish-ji.html" />
-    <Content Include="hita-ras-dhara.html" />
+    <Content Include="Dump\hita-ambrish-ji.html" />
+    <Content Include="Dump\hita-ras-dhara.html" />
+    <Content Include="Dump\hita-the-eternal.html" />
     <Content Include="img\ambrish-ji.jpg" />
-    <Content Include="img\ask-query.png" />
     <Content Include="img\banner.jpg" />
     <Content Include="img\banner2.jpg" />
     <Content Include="img\bg1.jpg" />
@@ -396,6 +427,7 @@
     <Content Include="img\gopi-geet.jpg" />
     <Content Include="img\hita-ras-dhara-logo.png" />
     <Content Include="img\hita-ras-dhara.jpg" />
+    <Content Include="img\hita-the-eternal-logo.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\madhurastak.jpg" />
     <Content Include="img\Pending.Jpg" />
@@ -437,6 +469,10 @@
     <Content Include="img\upcoming-katha09.jpg" />
     <Content Include="img\upcoming-katha10.jpg" />
     <Content Include="img\upcoming-katha11.jpg" />
+    <Content Include="img\upcoming-katha12.jpg" />
+    <Content Include="img\upcoming-katha13.jpg" />
+    <Content Include="img\upcoming-katha14.jpg" />
+    <Content Include="img\upcoming-katha15.jpg" />
     <Content Include="img\venubox\close.gif" />
     <Content Include="img\venubox\next.gif" />
     <Content Include="img\venubox\preload-circle.png" />
@@ -446,13 +482,14 @@
     <Content Include="img\venubox\preload.png" />
     <Content Include="img\venubox\prev.gif" />
     <Content Include="img\youtube_icon.png" />
-    <Content Include="index - Copy.html" />
-    <Content Include="index.html" />
+    <Content Include="Dump\index - Copy.html" />
+    <Content Include="Dump\index.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\form-validator.min.js" />
     <Content Include="js\isotope.pkgd.min.js" />
     <Content Include="js\jquery.countdown.js" />
     <Content Include="js\jquery.counterup.min.js" />
+    <Content Include="js\jquery.dropdownPlain.js" />
     <Content Include="js\jquery.meanmenu.js" />
     <Content Include="js\jquery.stellar.min.js" />
     <Content Include="js\js_2LSzIJ9odJcgtrvQn6btsvrneCjOqB013AtW4ihMaio.js" />
@@ -462,13 +499,14 @@
     <Content Include="js\magnific.min.js" />
     <Content Include="js\main.js" />
     <Content Include="js\mapcode.js" />
+    <Content Include="js\mobilemenu.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\plugins.js" />
     <Content Include="js\vendor\jquery-1.12.4.min.js" />
     <Content Include="js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="js\venobox.min.js" />
     <Content Include="js\waypoints.js" />
-    <Content Include="katha-gallery.html" />
+    <Content Include="Dump\katha-gallery.html" />
     <Content Include="lumino\css\bootstrap-table.css" />
     <Content Include="lumino\css\bootstrap-theme.css" />
     <Content Include="lumino\css\bootstrap-theme.min.css" />
@@ -493,7 +531,13 @@
     <Content Include="lumino\js\lumino.glyphs.js" />
     <Content Include="lumino\js\npm.js" />
     <Content Include="lumino\js\respond.min.js" />
-    <Content Include="registration.html" />
+    <Content Include="menu-scripts\ie.css" />
+    <Content Include="menu-scripts\jquery.dropdownPlain.js" />
+    <Content Include="menu-scripts\jquery.js" />
+    <Content Include="menu-scripts\menu.css" />
+    <Content Include="menu-scripts\mobilemenu.js" />
+    <Content Include="Dump\registration.html" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -562,12 +606,11 @@
     <Content Include="Scripts\sweetalert2.js" />
     <Content Include="Scripts\utils.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="shree-radha-vallabh-ji.html" />
+    <Content Include="Dump\shree-radha-vallabh-ji.html" />
     <Content Include="sitemap.xml" />
     <Content Include="style.css" />
-    <Content Include="upcoming-katha-new - Copy.html" />
-    <Content Include="upcoming-katha-new.html" />
-    <Content Include="upcoming-katha.html" />
+    <Content Include="Dump\upcoming-katha-table.html" />
+    <Content Include="Dump\upcoming-katha.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -615,11 +658,18 @@
     <Content Include="Views\Admin\Sample.cshtml" />
     <Content Include="Views\Email\Index.cshtml" />
     <Content Include="Views\Admin\QueryReply.cshtml" />
+    <Content Include="Views\About\HitaAmbrishJi.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\ShreeRadhaVallabhJi.cshtml" />
+    <Content Include="Views\About\HitaTheEternal.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\About\HitaRasDhara.cshtml" />
+    <Content Include="Views\UpcomingKathas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\color\" />
-    <Folder Include="Views\Home\" />
+    <Folder Include="Views\UpcomingKathaFeed\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -676,6 +726,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810071240305_queryformchange1.resx">
       <DependentUpon>201810071240305_queryformchange1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811250751100_upcomingkatha.resx">
+      <DependentUpon>201811250751100_upcomingkatha.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

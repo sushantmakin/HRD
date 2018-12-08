@@ -12,6 +12,9 @@ namespace HitaRasDhara.Controllers
         // GET: Query
         public ActionResult Index()
         {
+            ViewBag.Title = "Shree Hita Ambrish Ji | Spiritual Mentor | Official Website";
+            ViewBag.Description =
+                "The Official Website of Shree Hita Ambrish Ji with Upcoming Katha Schedule (Discourses), Photo Gallery, Youth Session, and all Katha & Bhajan Recordings.";
             ViewBag.Code = 0;
             var viewModel = new QueryViewModel();
             return View(viewModel);

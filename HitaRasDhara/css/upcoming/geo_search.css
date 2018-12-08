@@ -240,13 +240,15 @@ background-position:0 760px
 	padding: 8px 14px;
 	position: absolute;
 	right: 22px;
-	top: 43px
+    top: unset;
+    margin-top: 0px;
 }
 .course-col-contact .btn.learn-more {
 	color: #000;
 	font-weight: 300;
 	padding: 0;
-	top: 80px
+    top: unset;
+    margin-top: 30px;
 }
 .course-col-contact .readmore-arrow {
 	position: relative;

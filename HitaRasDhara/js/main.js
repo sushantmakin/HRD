@@ -32,7 +32,7 @@ var sticky = $('#sticker');
 
 windows.on('scroll', function() {
     var scroll = windows.scrollTop();
-    if (scroll < 300) {
+    if (scroll < 200) {
         sticky.removeClass('stick');
     }else{
         sticky.addClass('stick');

@@ -75,7 +75,7 @@
             });
             break;
         case 24:
-            swal('Error !', 'Query is already Pending.', 'error');
+            swal('Error !', 'Query is already Replied.', 'error');
             break;
         case 25:
             swal('Success !', 'You have successfully removed the query from important.', 'success').then(() => {

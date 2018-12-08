@@ -18,6 +18,7 @@ namespace HitaRasDhara
             //js  
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                 "~/Scripts/jquery-ui-{version}.js"));
+
             //css  
             bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
                 "~/Content/jquery-ui.css"));
@@ -52,6 +53,21 @@ namespace HitaRasDhara
                 "~/Content/icon.css",
                 "~/Content/style2.css",
                 "~/Content/owl.transitions"));
+
+            bundles.Add(new StyleBundle("~/Upcoming/resourcesUi").Include(
+               "~/css/upcoming/normalize.css",
+                "~/css/upcoming/geo_search.css",
+                "~/css/upcoming/font-awesome.min.css",
+                "~/css/upcoming/jquery.sidr.light.css",
+                "~/css/upcoming/search_course.css",
+                "~/css/upcoming/normalize-unity2.css",
+                "~/css/upcoming/responsive-sidebars-unity2.css"));
+
+            bundles.Add(new StyleBundle("~/Upcoming/resourcesJs").Include(
+                "~/js/Upcoming1.js",
+                "~/js/Upcoming2.js",
+                "~/js/Upcoming3.js",
+                "~/js/Upcoming4.js"));
         }
     }
 }

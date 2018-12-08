@@ -1,0 +1,113 @@
+﻿<div class="page-area">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <img src="~/img/hita-the-eternal-logo.png" alt="Hita The Eternal">
+
+                <div class="hitaIcon">
+                    <a href="https://facebook.com/HitaTheEternal" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/hitatheeternal/" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCF1UT1uJczxy_xZSLis_30A" target="_blank"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="about-content pageContent rightImg">
+                    <h4 align="left"><span class="color">Hita The Eternal - Recharge yourself with HITA</span></h4>
+                    <p>What is <strong>‘HITA’ the eternal?</strong></p>
+                    <p><strong>HITA</strong> - ‘unconditional love’. A divine eternal energy which enriches each and everyones life.</p>
+                    <p><strong>HITA the eternal</strong>  - is an initiative by Hita Ambrish ji to connect with the youth to share the joy of celebrating life. To share the this eternal happiness of staying with ‘HITA’ (unconditional love) and channelising this divine energy into our daily lives.</p>
+
+                    <p><em>HITA the eternal is ...</em></p>
+                    <p><strong>INTERACTIVE</strong>  - This platform enables the youth to interact directly with Hita Ambrish ji via posting queries on his website and receive a fresh perspective on their queries via his responses posted on HITA the eternal. These queries are responded to by Hita Ambrish on a regular basis to remain constantly connected with the youth.</p>
+                    <p><strong>EMPOWERMENT OF THOUGHT</strong>- To identify and obtain your own solutions, to become masters of your own life and the embark on the journey from confusion to conclusion. To able to craft oneself with the complications and dilemmas that surround us and tap on the positivity within to strengthen yourself.</p>
+                    <p><strong>REFLECT AND ACCEPT</strong> - To take ownership of your life and become better acquainted with your own self. Develop a better understanding of the inner self to accept both the strength and weakness within and truly embrace yourself.</p>
+                    <p><strong>EASE AND GRATITUDE</strong>- To bring back ease in the daily life and have an attitude of gratitude. To be able clear the clutter of numerous thoughts and noise of all the chaos and confusion, by drawing yourself together, by becoming centered and channelising your inner energy effectively. </p>
+                    <p><strong>MOMENTUM</strong> - To enhance the momentum of emotional and spiritual growth. To connect to that ultimate source of love and joy and celebrate each and everyday of your life.</p>
+                    <p>Hita Ambrish ji has conducted such interactive sessions with youth in Delhi with an overwhelming response. These sessions were simple yet very profound invoking a sense to drill in deeper within to unearth numerous possibilities and reduce the clutter of dilemmas and confusions. This platform  enabled the youth participants to share their concerns and questions and encourage a meaningful dialogue.</p>
+                   
+                </div>
+                <div class="blockquote1 responseHeader"><em>Participants said</em></div>
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+                    <!-- Full-width slides/quotes -->
+                    <div class="mySlides">
+                        <q>If you really want to dwell deeper & explore how beautiful your inner self is, HITA is what touches the right chords and charge your senses !! <br/> <br/> Life can be lived in many ways, HITA is one of them. Unless experienced once, that void shall keep longing for the touch of love !! <br/> <br/> Indeed an eternal source of light..... HITA !!</q>
+                        <p class="author">- Sidharth Kakkar</p>
+                    </div>
+
+                    <div class="mySlides">
+                        <q>Simply amazing way of learning how to be simple, live simple and energize your life, and give that energy a rhythmic flow.. Don't miss it</q>
+                        <p class="author">- Surya Aggarwal</p>
+                    </div>
+
+                    <div class="mySlides">
+                        <q>As the name says- Hita The Eternal which has the ability to last forever. <br/> <br/> A commendable initiative by an enlightened one to paint the colours of love and compassion for all.<br/> <br/> An attempt to create a ‘colourful’ ecosystem by sharing some encounters and experiences of life.</q>
+                        <p class="author">- Karan Setia </p>
+                    </div>   
+                    
+                    <div class="mySlides">
+                        <q>Eternity is hita...soul enhancement is only possible through hita the eternal. <br/> <br/> The rest of the feel of eternity n connection with supreme power it happened only after listening to the eternal hita</q>
+                        <p class="author">- Nisha Thakkar</p>
+                    </div>
+
+                    <!-- Next/prev buttons -->
+                    @*<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>*@
+                </div>
+
+                <!-- Dots/bullets/indicators -->
+                <div class="dot-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+                @*<div class="blockquote1"><em>“Link to queries posted on HITA the eternal”</em></div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function currentSlide(n) {
+        showSlidesOnClick(slideIndex = n);
+    }
+
+    function showSlidesOnClick(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" activeDot", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " activeDot";
+    }
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { sliadeIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" activeDot", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " activeDot";
+        setTimeout(showSlides, 5000); // Change image every 5 seconds
+    }
+</script>
