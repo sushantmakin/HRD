@@ -1,32 +1,37 @@
 ﻿﻿@model HitaRasDhara.Models.QueryViewModel
 
 <div class="container">
-    <div class="row">
-        <h3 style="color:#004488;">Have a Query ? </h3>
-        <h5> Write to us ! </h5>
+    <div class="row" style="margin-bottom: 50px">
         <div class="col-md-8 col-sm-8 col-xs-12">
+            <h3 style="color: #004488;">Have a Query ? </h3>
+            <div class="desktop">
+                <h5> Write to us ! </h5>
+            </div>
+            <div class="mobile">
+                <h6 style="color: #004488;"> Namaste! <br/> <br/> We hope you have found most of what you are looking for on our website. For anything else, we are here for you! Please send us a note. We welcome all your questions and any feed back you have regarding your experience on our site. <br/> <br/> Thank you & Shree Harivansh, <br/> Team Hita Ambrish </h6>
+            </div>
             <div class="contact-form">
                 <div class="row">
-                    <form class="form-horizontal" id="QueryEntryForm">
+                    <form class="form-horizontal" id="QueryEntryForm"  method="post">
                         @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
                         <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", type = "text", style = "margin-bottom: unset;", id = "name" })
-                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.Name, new {@class = "form-control", placeholder = "Name", type = "text", style = "margin-bottom: unset;", id = "name"})
+                            @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "margin-bottom: unset;", placeholder = "Email" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.Email, new {@class = "form-control", style = "margin-bottom: unset;", placeholder = "Email"})
+                            @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
                             <input id="phone" type="tel">
                             @*@Html.TextBoxFor(m => m.Phone, new {@class = "form-control", style="margin-bottom: unset;", id = "phone", placeholder = "Mobile", type = "tel"})
                                 @Html.ValidationMessageFor(m => m.Phone, "", new {@class = "text-danger"})*@
                         </div>
-                        @Html.HiddenFor(m => m.Phone, new { id = "ActualPhoneValue" })
+                        @Html.HiddenFor(m => m.Phone, new {id = "ActualPhoneValue"})
                         <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextBoxFor(m => m.City, new { @class = "form-control", style = "margin-bottom: unset;", placeholder = "City" })
-                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.City, new {@class = "form-control", style = "margin-bottom: unset;", placeholder = "City"})
+                            @Html.ValidationMessageFor(m => m.City, "", new {@class = "text-danger"})
                         </div>
 
                         @*<div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
@@ -38,21 +43,21 @@
                                 <select name="Country" id="address-country" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: unset;"></select>
                                 @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
                             </div>*@
-                        @Html.HiddenFor(m => m.Country, new { id = "address-country" })
+                        @Html.HiddenFor(m => m.Country, new {id = "address-country"})
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", rows = "7", style = "margin-bottom: unset;max-width: 100%;" })
-                            @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(m => m.Query, new {@class = "form-control", placeholder = "Your Query", rows = "7", style = "margin-bottom: unset;max-width: 100%;"})
+                            @Html.ValidationMessageFor(m => m.Query, "", new {@class = "text-danger"})
                         </div>
 
                         <div class="col-md-12 col-sm-12 col-xs-12 text-left" id="Submit">
-                            <input type="submit" id="SubmitOfQueryForm" class="contact-btn" value="Submit" style="width:120px;background-color:#072948;font-size:18px;padding:10px 0px;color:#FFFFFF;border:none;" />
+                            <input type="submit" id="SubmitOfQueryForm" class="contact-btn" value="Submit" style="width: 120px; background-color: #072948; font-size: 18px; padding: 10px 0px; color: #FFFFFF; border: none;"/>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <img src="~/img/hita-the-eternal-logo.png" border="0" alt="Query" />
+        <div class="col-md-4 col-sm-4 col-xs-12 desktop" style="margin-top: 83px">
+            <h6 style="color: #004488;"> Namaste! <br /> <br /> We hope you have found most of what you are looking for on our website. For anything else, we are here for you! Please send us a note. We welcome all your questions and any feed back you have regarding your experience on our site. <br /> <br /> Thank you & Shree Harivansh, <br /> Team Hita Ambrish </h6>
         </div>
     </div>
 </div>

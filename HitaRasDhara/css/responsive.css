@@ -559,7 +559,9 @@ table tr td {padding:8px;}
 	.desktopKatha {display:none;}	
 	.about-content1 h4 {padding:20px 0px 0px 20px;}
 	.about-content1 h4 ::after {border:none;}
+    .main-services { height: 225px; }
 }
+
 @media only screen and (min-width: 180px) and (max-width: 480px) {
 .kathaTitle {font-size:15px !important;}
 .about-content1 h4 {padding:20px 0px 0px 20px;}

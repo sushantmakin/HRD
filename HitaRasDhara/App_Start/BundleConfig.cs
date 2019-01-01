@@ -34,7 +34,8 @@ namespace HitaRasDhara
                       "~/Scripts/Myjs.js",
                       "~/Scripts/FileSaver.min.js",
                       "~/Scripts/jquery.binarytransport.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/js/jquery.dropdownPlain.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -43,16 +44,16 @@ namespace HitaRasDhara
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Sunil/css").Include(
-                "~/Content/owl.carousel.css",
-                "~/Content/meanmenu.min.css",
-                "~/Content/font-awesome.min.css",
-                "~/Content/icon.css",
-                "~/Content/flaticon.css",
-                "~/Content/magnific.min.css",
-                "~/Content/venobox.css",
-                "~/Content/icon.css",
-                "~/Content/style2.css",
-                "~/Content/owl.transitions"));
+                "~/css/owl.carousel.css",
+                "~/css/meanmenu.min.css",
+                "~/css/font-awesome.min.css",
+                "~/css/icon.css",
+                "~/css/flaticon.css",
+                "~/css/magnific.min.css",
+                "~/css/venobox.css",
+                "~/css/owl.transitions",
+                "~/style.css",
+                "~/css/responsive.css"));
 
             bundles.Add(new StyleBundle("~/Upcoming/resourcesUi").Include(
                "~/css/upcoming/normalize.css",
@@ -63,11 +64,27 @@ namespace HitaRasDhara
                 "~/css/upcoming/normalize-unity2.css",
                 "~/css/upcoming/responsive-sidebars-unity2.css"));
 
-            bundles.Add(new StyleBundle("~/Upcoming/resourcesJs").Include(
+            bundles.Add(new ScriptBundle("~/Upcoming/resourcesJs").Include(
                 "~/js/Upcoming1.js",
                 "~/js/Upcoming2.js",
                 "~/js/Upcoming3.js",
                 "~/js/Upcoming4.js"));
+
+            bundles.Add(new ScriptBundle("~/Lower/js").Include(
+                "~/js/bootstrap.min.js",
+                "~/js/owl.carousel.min.js",
+                "~/js/jquery.counterup.min.js",
+                "~/js/waypoints.js",
+                "~/js/isotope.pkgd.min.js",
+                "~/js/jquery.stellar.min.js",
+                "~/js/magnific.min.js",
+                "~/js/venobox.min.js",
+                "~/js/jquery.meanmenu.js",
+                "~/js/form-validator.min.js",
+                "~/Scripts/intlTelInput.min.js",
+                "~/js/plugins.js",
+                "~/js/main.js"
+                ));
         }
     }
 }

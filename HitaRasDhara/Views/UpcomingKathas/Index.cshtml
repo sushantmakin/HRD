@@ -1,4 +1,4 @@
-﻿@model HitaRasDhara.Models.UpcomingKathaViewModel
+﻿﻿@model HitaRasDhara.Models.UpcomingKathaViewModel
 <div class="content">
     <div class="about-content1">
         <h4><span class="color">Upcoming Kathas</span></h4>
@@ -109,7 +109,7 @@
                                                                 </div>
                                                                 @if (item.LocationUrl != "null")
                                                                 {
-                                                                    <a class="btn btn-orange" href="@item.LocationUrl" target="_blank">Location Map</a>
+                                                                    <a class="btn btn-primary" style="background-color:#072948" href="@item.LocationUrl" target="_blank">Location Map</a>
                                                                     <div class="detail-hide" style="display: none;"> <a class="btn learn-more" href="@item.LocationUrl" target="_blank">Click here <i class="readmore-arrow">»</i></a> </div>
                                                                 }
                                                             </td>

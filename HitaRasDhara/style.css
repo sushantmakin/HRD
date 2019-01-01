@@ -946,6 +946,7 @@ ul.dropdowni li:hover > ul {
     padding: 20px;
     position: relative;
     z-index: 1;
+    height: 170px;
 }
 .well-icon {
     width: 60px;

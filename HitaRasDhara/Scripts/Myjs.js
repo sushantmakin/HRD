@@ -82,6 +82,16 @@
                 window.location.reload();
             });
             break;
+        case 26:
+            swal('Success !', 'You have successfully added New Katha record..', 'success').then(() => {
+                window.location.href = 'http://www.hitaambrish.com/admin/KathaManagement';
+            });
+            break;
+        case 27:
+            swal('Success !', 'You have successfully edited the Katha record..', 'success').then(() => {
+                window.location.href = 'http://www.hitaambrish.com/admin/KathaManagement';
+            });
+            break;
     }
 }
 

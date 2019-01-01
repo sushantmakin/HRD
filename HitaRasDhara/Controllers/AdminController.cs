@@ -62,7 +62,7 @@ namespace HitaRasDhara.Controllers
         public ActionResult Query()
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            var viewModel = new DbViewForQuery { ContentItems = _dbContext.QueryForm.Select(m => m).ToList()  };
+            var viewModel = new DbViewForQuery { ContentItems = _dbContext.QueryForm.Select(m => m).ToList() };
             viewModel.ContentItems.Reverse();
             ViewBag.TotalQueries = _dbContext.QueryForm.Count();
             ViewBag.PendingReplies = _dbContext.QueryForm.Count(t => t.Status == "Pending");
@@ -86,15 +86,102 @@ namespace HitaRasDhara.Controllers
                 }
                 viewModel = new EmailViewModel
                 {
-                    EmailBody = string.Format(_dbContext.SmsContent.Find("QueryReplyBody").Value, Environment.NewLine, queryDetails.Name, queryDetails.Query.Replace("<br/>",Environment.NewLine)),
-                    EmailSubject =string.Format(_dbContext.SmsContent.Find("QueryReplySubject").Value, queryDetails.Name),
+                    EmailBody = string.Format(_dbContext.SmsContent.Find("QueryReplyBody").Value, Environment.NewLine, queryDetails.Name, queryDetails.Query.Replace("<br/>", Environment.NewLine)),
+                    EmailSubject = string.Format(_dbContext.SmsContent.Find("QueryReplySubject").Value, queryDetails.Name),
                     EmailTo = queryDetails.Email,
                     Id = int.Parse(queryId)
-                            
+
                 };
                 return View(viewModel);
             }
             return RedirectToAction("Query", "Admin");
+        }
+
+        public ActionResult AddKatha()
+        {
+            var viewModel = new UpcomingKathaItem();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public JsonResult AddKatha(UpcomingKathaItem input)
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(input.ImageUrl))
+                {
+                    input.ImageUrl = "null";
+                }
+                if (string.IsNullOrWhiteSpace(input.LocationUrl))
+                {
+                    input.LocationUrl = "null";
+                }
+                _dbContext.UpcomingKathaFeed.Add(input);
+                _dbContext.SaveChanges();
+                return Json(new { Code = 26 }, JsonRequestBehavior.AllowGet); //Successfully Added
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet); //Tech Error
+            }
+        }
+
+        public ActionResult EditKathaEntry()
+        {
+            var kathaId = HttpContext.Request.QueryString["KathaId"];
+            if (!string.IsNullOrEmpty(kathaId))
+            {
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                var viewModel = new UpcomingKathaItem();
+                var kathaDetails = _dbContext.UpcomingKathaFeed.Find(Convert.ToInt32(kathaId));
+                if (kathaDetails == null)
+                {
+                    return RedirectToAction("Query", "Admin");
+                }
+                viewModel = kathaDetails;
+                return View(viewModel);
+            }
+            return RedirectToAction("Query", "Admin");
+        }
+
+        [HttpPost]
+        public JsonResult UpdateKatha(UpcomingKathaItem input)
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(input.ImageUrl))
+                {
+                    input.ImageUrl = "null";
+                }
+                if (string.IsNullOrWhiteSpace(input.LocationUrl))
+                {
+                    input.LocationUrl = "null";
+                }
+
+                var kathaRecord = _dbContext.UpcomingKathaFeed.Find(input.KathaId);
+                if (kathaRecord != null)
+                {
+                    kathaRecord.GoogleCalenderUrl = input.GoogleCalenderUrl;
+                    kathaRecord.ImageUrl = input.ImageUrl;
+                    kathaRecord.LocationUrl = input.LocationUrl;
+                    kathaRecord.AddressLine1 = input.AddressLine1;
+                    kathaRecord.AddressLine2 = input.AddressLine2;
+                    kathaRecord.AddressLine3 = input.AddressLine3;
+                    kathaRecord.Dates = input.Dates;
+                    kathaRecord.Timings = input.Timings;
+                    kathaRecord.KathaTitle = input.KathaTitle;
+                    kathaRecord.UnpublishDate = input.UnpublishDate;
+                    _dbContext.SaveChanges();
+                    return Json(new { Code = 27 }, JsonRequestBehavior.AllowGet); //Successfully Edited
+                }
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet); //Tech Error
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet); //Tech Error
+            }
         }
 
         [HttpPost]
@@ -134,14 +221,14 @@ namespace HitaRasDhara.Controllers
                     _dbContext.SaveChanges();
                     return Json(new { Code = 25 }, JsonRequestBehavior.AllowGet);
                 }
-                if(queryDetails.Status == "Pending")
+                if (queryDetails.Status == "Pending")
                 {
                     queryDetails.Status = "Important";
                     queryDetails.Response = "NA";
                     _dbContext.SaveChanges();
                     return Json(new { Code = 23 }, JsonRequestBehavior.AllowGet);
                 }
-               return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
+                return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
@@ -149,29 +236,6 @@ namespace HitaRasDhara.Controllers
             }
 
         }
-
-        //[HttpPost]
-        //public ActionResult MarkPending(string queryId)
-        //{
-        //    try
-        //    {
-        //        ApplicationDbContext _dbContext = new ApplicationDbContext();
-        //        var queryDetails = _dbContext.QueryForm.Find(Convert.ToInt32(queryId));
-        //        if (queryDetails.Status == "Pending")
-        //        {
-        //            return Json(new { Code = 24 }, JsonRequestBehavior.AllowGet);
-        //        }
-        //        queryDetails.Status = "Pending";
-        //        queryDetails.Response = "NA";
-        //        _dbContext.SaveChanges();
-        //        return Json(new { Code = 25 }, JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
-        //    }
-
-        //}
 
         [HttpPost]
         public ActionResult QueryReply(EmailViewModel input)
@@ -184,7 +248,7 @@ namespace HitaRasDhara.Controllers
                 msg.To.Add(new MailAddress("info@hitaambrish.com"));
                 msg.From = new MailAddress("info@hitaambrish.com", "Hita Ambrish");
                 msg.Subject = input.EmailSubject;
-                msg.Body = input.EmailBody.Replace(Environment.NewLine, "<br/>"); 
+                msg.Body = input.EmailBody.Replace(Environment.NewLine, "<br/>");
                 msg.IsBodyHtml = true;
 
                 SmtpClient client = new SmtpClient();
@@ -207,7 +271,17 @@ namespace HitaRasDhara.Controllers
                 Console.WriteLine(e);
                 return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet); //registration already cancelled.
             }
-            
+
+        }
+
+        public ActionResult KathaManagement()
+        {
+            var viewModel = new UpcomingKathaViewModel();
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            var currTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
+                TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
+            viewModel = new UpcomingKathaViewModel { KathaFeed = _dbContext.UpcomingKathaFeed.Select(m => m).Where(x => x.UnpublishDate > currTime).OrderBy(a => a.UnpublishDate).ToList() };
+            return View(viewModel);
         }
 
         public void WriteTsv<T>(IEnumerable<T> data, TextWriter output)

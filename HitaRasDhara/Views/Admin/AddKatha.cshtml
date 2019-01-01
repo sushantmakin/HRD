@@ -1,0 +1,129 @@
+﻿﻿﻿@model HitaRasDhara.Models.UpcomingKathaItem
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active"> Add New Katha </li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-md-12" style="padding-bottom:15px;">
+        <form class="form-horizontal" id="NewKathaForm" method="post">
+            <div id="wrap">
+                <div class="container">
+                    <div class="panel panel-default articles" style="padding: 10px">
+                        <div class="panel-heading">
+                            Add new Katha
+                        </div>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.KathaTitle, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.KathaTitle, new { @class = "form-control", placeholder = "Shree Bhaktmaal Katha" })
+                                @Html.ValidationMessageFor(m => m.KathaTitle, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Dates, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.Dates, new { @class = "form-control", placeholder = "24,25,26 April 2019" })
+                                @Html.ValidationMessageFor(m => m.Dates, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Timings, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.Timings, new { @class = "form-control", placeholder = "4:00 - 7:00 PM" })
+                                @Html.ValidationMessageFor(m => m.Timings, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.AddressLine1, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", placeholder = "Purna Shree Krishna Mandir, KothalGate" })
+                                @Html.ValidationMessageFor(m => m.AddressLine1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.AddressLine2, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control", placeholder = "Dehradun" })
+                                @Html.ValidationMessageFor(m => m.AddressLine2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.AddressLine3, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.AddressLine3, new { @class = "form-control", placeholder = "Pin - 248001" })
+                                @Html.ValidationMessageFor(m => m.AddressLine3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LocationUrl, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.LocationUrl, new { @class = "form-control", Value= "null" })
+                                @Html.ValidationMessageFor(m => m.LocationUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", Value="null" })
+                                @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UnpublishDate, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.UnpublishDate, new { @class = "form-control", placeholder = "City" })
+                                @Html.ValidationMessageFor(m => m.UnpublishDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @Html.Hidden("GoogleCalenderUrl", "null")
+                        <div class="form-group" id="Submit">
+                            <div class="col-md-offset-3 col-md-9">
+                                <input type="submit" id="SubmitOfAddKathaForm" value="Add Katha" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('#SubmitOfAddKathaForm').click(function () {
+        var $form = $('#NewKathaForm');
+        if (!$form.valid()) {
+            return false;
+        } else {
+            $('#SubmitOfAddKathaForm').attr("disabled", "disabled");
+            $('#SubmitOfAddKathaForm').val("Please wait...");
+            $.ajax({
+                type: "POST",
+                url: "/Admin/AddKatha",
+                data: $('#NewKathaForm').serialize(),
+                success: function (result) {
+                    $('#SubmitOfNewForm').removeAttr("disabled");
+                    $('#SubmitOfNewForm').val("Add Katha");
+                    console.log('data is : ' + result.Code);
+                    showPopup(result.Code);
+                },
+                error: function (data) {
+                    $('#SubmitOfNewForm').removeAttr("disabled");
+                    $('#SubmitOfNewForm').val("Add Katha");
+                    showPopup(data.Code);
+                    console.log('error : data code is : ' + data.Code);
+                }
+            });
+        }
+        return false;
+    });
+</script>

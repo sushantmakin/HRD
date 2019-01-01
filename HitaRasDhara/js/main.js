@@ -34,8 +34,12 @@ windows.on('scroll', function() {
     var scroll = windows.scrollTop();
     if (scroll < 200) {
         sticky.removeClass('stick');
+        $("#FAQHeader").removeClass('scrolled');
+        //$("#FaqQuestions").removeClass('scrolled175');
     }else{
         sticky.addClass('stick');
+        $("#FAQHeader").addClass('scrolled');
+       // $("#FaqQuestions").addClass('scrolled175');
     }
 });
 /*----------------------------
