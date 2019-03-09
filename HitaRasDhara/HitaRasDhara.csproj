@@ -439,6 +439,7 @@
     <Content Include="Dump\hita-ras-dhara.html" />
     <Content Include="Dump\hita-the-eternal.html" />
     <Content Include="img\ambrish-ji.jpg" />
+    <Content Include="img\background-01.jpg" />
     <Content Include="img\banner.jpg" />
     <Content Include="img\banner2.jpg" />
     <Content Include="img\bg1.jpg" />
@@ -513,6 +514,17 @@
     <Content Include="img\upcoming-katha19.jpg" />
     <Content Include="img\upcoming-katha20.jpg" />
     <Content Include="img\upcoming-katha21.jpg" />
+    <Content Include="img\upcoming-katha22.jpg" />
+    <Content Include="img\upcoming-katha23.jpg" />
+    <Content Include="img\upcoming-katha24.jpg" />
+    <Content Include="img\upcoming-katha25.jpg" />
+    <Content Include="img\upcoming-katha26.jpg" />
+    <Content Include="img\upcoming-katha27.jpg" />
+    <Content Include="img\upcoming-katha28.jpg" />
+    <Content Include="img\upcoming-katha29.jpg" />
+    <Content Include="img\upcoming-katha30.jpg" />
+    <Content Include="img\upcoming-katha31.jpg" />
+    <Content Include="img\upcoming-katha32.jpg" />
     <Content Include="img\venubox\close.gif" />
     <Content Include="img\venubox\next.gif" />
     <Content Include="img\venubox\preload-circle.png" />
@@ -577,6 +589,8 @@
     <Content Include="menu-scripts\menu.css" />
     <Content Include="menu-scripts\mobilemenu.js" />
     <Content Include="Dump\registration.html" />
+    <Content Include="OneSignalSDKUpdaterWorker.js" />
+    <Content Include="OneSignalSDKWorker.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -694,6 +708,7 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="DeekshaNivedanForm.pdf" />
+    <Content Include="manifest.json" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />

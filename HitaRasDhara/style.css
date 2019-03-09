@@ -922,7 +922,8 @@ ul.dropdowni li:hover > ul {
 /* 4.Welcome Services Area
 /*--------------------------------*/
 .welcome-area{
-    background: #fff;
+    /*background: #fff;*/
+    background: url(//hitaambrish.com/img/background-01.jpg);
 }
 .section-headline h4 {
     font-size: 24px;
@@ -947,6 +948,7 @@ ul.dropdowni li:hover > ul {
     position: relative;
     z-index: 1;
     height: 170px;
+    background: #fff
 }
 .well-icon {
     width: 60px;
@@ -1058,7 +1060,7 @@ ul.dropdowni li:hover > ul {
 }
 
 .about-area{
-    background: #f6f6f6;
+    background: #fff;
 }
 .about-content h4 {
     font-weight: 600;
@@ -1280,7 +1282,8 @@ ul.dropdowni li:hover > ul {
 /*  8.project Area
 /*--------------------------------*/
 .project-area {
-    background: #fff none repeat scroll 0 0;
+    /*background: #fff none repeat scroll 0 0;*/
+    background: url(//hitaambrish.com/img/background-01.jpg);
 }
 .single-awesome-project {
     float: left;
