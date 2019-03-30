@@ -1060,7 +1060,7 @@ ul.dropdowni li:hover > ul {
 }
 
 .about-area{
-    background: #fff;
+    background: url(//hitaambrish.com/img/background-01.jpg);
 }
 .about-content h4 {
     font-weight: 600;
@@ -3442,7 +3442,7 @@ button.quote-btn {
 .audioVideoIcon {float:left;}
 .audioVideoIconMargin {float:left;margin:0px 10px;}
 
-.headerBG {background-color:#f7f7f7;}
+.headerBG { background: url(//hitaambrish.com/img/background-01.jpg);}
 
 .pageContent {color:#242424;font-size:16px !important;line-height:32px !important;text-align:justify;}
 .pageContent p {color:#242424;font-size:16px !important;line-height:32px !important;text-align:justify;}
