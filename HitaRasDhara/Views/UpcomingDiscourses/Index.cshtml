@@ -1,0 +1,143 @@
+﻿<div class="inner-page-cover overlay" style="background-image: url('../../img/header_bg.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" id="section-home">
+</div>
+﻿@model HitaRasDhara.Models.UpcomingKathaViewModel
+<div class="site-section content">
+    <div class="container about-content1">
+        <div class="row mb-5">
+            <div class="col-md-12 order-md-1" data-aos="fade">
+                <div class="text-left pb-1 border-primary mb-4">
+                    <h2 class="text-primary">Upcoming Discourses</h2>
+                </div>
+                <div id="b-w" class="template-find-course">
+                    <div style="padding-top:60px;">
+                        <div id="course-banner-2/" class="div_PageRow_Full/">
+                            <div class="PageColumn_1_of_1 zg-column">
+                                <div class="div_PageRow_Nested">
+                                    <div class="PageColumn_1_of_1 zg-column">
+                                        <div class="search-container">
+                                            <div class="course-search-filed">
+                                                <div class="course-input-col">
+                                                    <div id="coldata-2" style="display:none" class="coldata">
+                                                        <div class="form-item select-custom">
+                                                            <label>Katha &amp; Events:</label>
+                                                            <div class="tmp bandai-select-p">
+                                                                <div class="bandai-select">
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="coldata-0" class="coldata" style="display: none;">
+                                                        <div class="form-item select-custom">
+                                                            <label>Katha &amp; Events:</label>
+                                                            <div class="tmp bandai-select-p">
+                                                                <div class="bandai-select">
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end inner column -->
+                                </div>
+                                <!-- end inner row -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div_PageRow">
+                        <div class="PageColumn_1_of_1 zg-column">
+                            <div id="geo-search-results" class="clearfix  unity-2-ui" style="">
+                                <div id="gs-plain-search" style="position: relative;">
+                                    <div class="search-listing-head">
+                                        <div class="div_PageRow">
+                                            <div class="PageColumn_1_of_1 zg-column">
+                                                <div class="gs-plain-search-row"></div>
+                                                <table id="course-table" class="mobile-nogutter tableText">
+                                                    <thead>
+                                                        <tr class="course-row" style="background-color:#f16821;">
+                                                            <th class="course-col-program"><h4>KATHA</h4></th>
+                                                            <th class="course-col-date"><h4>DATE &amp; TIME</h4></th>
+                                                            <th class="course-col-venue"><h4 style="padding-left: 8px;">VENUE</h4></th>
+                                                            <th class="course-col-contact"><h4> </h4></th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody id="gs-plain-search-rows">
+                                                        @if (Model.KathaFeed != null && Model.KathaFeed.Count > 0)
+                                                        {
+                                                            foreach (var item in Model.KathaFeed)
+                                                            {
+                                                                <tr class="course-row">
+                                                                    <td class="kathaTitle" id="kathaTitle">@item.KathaTitle</td>
+
+                                                                    <td class="course-col-date">
+                                                                        <div class="desktopKatha">@item.Dates</div>
+                                                                        <div class="detail-hide" style="display: none;">
+                                                                            <span>Time: <br />@item.Timings</span>
+                                                                        </div>
+                                                                    </td>
+
+                                                                    <td class="course-col-venue">
+                                                                        <div class="detail-hide" style="display: none;">
+                                                                            <span class="course-detail">
+                                                                                @item.AddressLine1,
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="desktopKatha">@item.AddressLine2</div>
+                                                                        <div class="detail-hide" style="display: none;">
+                                                                            <span class="course-detail">
+                                                                                @item.AddressLine3
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+
+                                                                    <td class="course-col-contact">
+                                                                        <div class="contact-info">
+                                                                            <div class="detail-hide" style="display: none;"> <span class="course-detail teacher-name"></span> </div>
+                                                                            @*<span class="teacher-phone no-tablet-down"></span><span class="teacher-email no-tablet-down"><a href="#">Google Calendar</a></span>*@
+                                                                            <!-- mobile only -->
+                                                                            <span class="teacher-name show-tablet-down"><strong>Date & Time</strong></span>
+                                                                            <span class="course-detail-small course-hours show-tablet-down">
+                                                                                <span class="course-day2"></span>
+                                                                                <span class="course-hour2">@item.Dates</span> <br />
+                                                                                <span class="course-day1">Time: </span> <span class="course-hour1">@item.Timings</span>
+                                                                            </span>
+                                                                            <span class="teacher-name show-tablet-down">At : @item.AddressLine1, @item.AddressLine2 @item.AddressLine3</span>
+                                                                            @*<span class="teacher-phone show-tablet-down"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.hitaambrish.com%2F&amp;src=sdkpreparse" target="_blank"><i class="fa fa-share-alt"></i>Share</a></span>*@
+                                                                            @*<span class="teacher-email show-tablet-down"><a href="#"><i class="fa fa-calendar-o"></i>Add to Google Calendar</a></span>*@
+                                                                            <!-- end mobile only -->
+
+                                                                        </div>
+                                                                        @if (item.LocationUrl != "null")
+                                                                        {
+                                                                            <a class="btn btn-primary"href="@item.LocationUrl" target="_blank">Location Map</a>
+                                                                            <div class="detail-hide" style="display: none;"> <a class="btn learn-more" href="@item.LocationUrl" target="_blank">Click here <i class="readmore-arrow">»</i></a> </div>
+                                                                        }
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- end table content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/js_vIYJMoKYoMWkVusn3iML8i0Lt7Is3CRaFcqWuXJaFrM.js"></script>
+    <script type="text/javascript" src="~/js/js_JuW6U3XOVJ2c7FByc_-XpM2evYL5cz8qOj0YyuNVuF8.js"></script>
+    <script type="text/javascript" src="~/js/js_2LSzIJ9odJcgtrvQn6btsvrneCjOqB013AtW4ihMaio.js"></script>
+    <script type="text/javascript" src="~/js/js_eRNl6m2_VH65aLu-Z6CvcgEpYwBtt7xhBh9yyR_XYhw.js"></script>
+}

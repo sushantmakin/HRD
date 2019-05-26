@@ -1,0 +1,56 @@
+﻿<div class="inner-page-cover overlay" style="background-image: url('../../img/header_bg.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" id="section-home">
+</div>
+
+<div class="site-section bg-light" id="section-contact">
+    ﻿@model HitaRasDhara.Models.QueryViewModel
+    <div class="container">
+        <div class="row mb-5 ml-2 mr-2">
+            <div class="order-md-1" data-aos="fade" style="background-color: rgba(69, 46, 27, 0.89); border-style: hidden; border-radius: 0 100px; padding: 70px; transition: all 700ms ease-in 0s; margin: 0px; border-color: transparent; box-shadow: none;">
+                <div class="text-left pb-1 border-primary mb-4">
+                    <h2 class="text-primary">Subscribe</h2>
+                    <h5 class="color-black-opacity-5"> Get Updates ! </h5>
+                </div>
+                <div class="row">
+                    <div class="mb-5">
+                        <form class="p-5 form-horizontal" id="QueryEntryForm" method="post">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", type = "text", id = "name" })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <input id="phone" type="tel">
+                                </div>
+                                @Html.HiddenFor(m => m.Phone, new { id = "ActualPhoneValue" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+                                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @Html.HiddenFor(m => m.Country, new { id = "address-country" })
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", cols = "30", rows = "7", style = "margin-bottom: unset;max-width: 100%;" })
+                                    @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12" id="Submit">
+                                    <input type="submit" id="SubmitOfQueryForm" value="Submit" class="btn btn-primary py-2 px-4 text-white">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

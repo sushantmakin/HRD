@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace HitaRasDhara
 {
@@ -19,14 +18,20 @@ namespace HitaRasDhara
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                 "~/Scripts/jquery-ui-{version}.js"));
 
-            //css  
-            bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
-                "~/Content/jquery-ui.css"));
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            bundles.Add(new StyleBundle("~/bundles/ResourceCss").Include(
+            "~/Resources/fonts/icomoon/style.css",
+            "~/Resources/css/bootstrap.min.css",
+            "~/Resources/css/magnific-popup.css",
+            "~/Resources/css/jquery-ui.css",
+            "~/Resources/css/owl.carousel.min.css",
+            "~/Resources/css/owl.theme.default.min.css",
+            "~/Resources/css/bootstrap-datepicker.css",
+            "~/Resources/fonts/flaticon/font/flaticon.css",
+            "~/Content/MyCss.css",
+            "~/Content/intlTelInput.css",
+            "~/Resources/css/font-awesome.min.css",
+            "~/Resources/css/aos.css",
+            "~/Resources/css/style.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
@@ -37,54 +42,14 @@ namespace HitaRasDhara
                       "~/Scripts/respond.js",
                       "~/js/jquery.dropdownPlain.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/MyCss.css",
-                      "~/Content/intlTelInput.css",
-                      "~/Content/site.css"));
-
-            bundles.Add(new StyleBundle("~/Sunil/css").Include(
-                "~/css/owl.carousel.css",
-                "~/css/meanmenu.min.css",
-                "~/css/font-awesome.min.css",
-                "~/css/icon.css",
-                "~/css/flaticon.css",
-                "~/css/magnific.min.css",
-                "~/css/venobox.css",
-                "~/css/owl.transitions",
-                "~/style.css",
-                "~/css/responsive.css"));
-
             bundles.Add(new StyleBundle("~/Upcoming/resourcesUi").Include(
-               "~/css/upcoming/normalize.css",
-                "~/css/upcoming/geo_search.css",
-                "~/css/upcoming/font-awesome.min.css",
-                "~/css/upcoming/jquery.sidr.light.css",
-                "~/css/upcoming/search_course.css",
-                "~/css/upcoming/normalize-unity2.css",
-                "~/css/upcoming/responsive-sidebars-unity2.css"));
-
-            bundles.Add(new ScriptBundle("~/Upcoming/resourcesJs").Include(
-                "~/js/Upcoming1.js",
-                "~/js/Upcoming2.js",
-                "~/js/Upcoming3.js",
-                "~/js/Upcoming4.js"));
-
-            bundles.Add(new ScriptBundle("~/Lower/js").Include(
-                "~/js/bootstrap.min.js",
-                "~/js/owl.carousel.min.js",
-                "~/js/jquery.counterup.min.js",
-                "~/js/waypoints.js",
-                "~/js/isotope.pkgd.min.js",
-                "~/js/jquery.stellar.min.js",
-                "~/js/magnific.min.js",
-                "~/js/venobox.min.js",
-                "~/js/jquery.meanmenu.js",
-                "~/js/form-validator.min.js",
-                "~/Scripts/intlTelInput.min.js",
-                "~/js/plugins.js",
-                "~/js/main.js"
-                ));
+                "~/Resources/css/upcoming/normalize.css",
+                "~/Resources/css/upcoming/geo_search.css",
+                "~/Resources/css/upcoming/font-awesome.min.css",
+                "~/Resources/css/upcoming/jquery.sidr.light.css",
+                "~/Resources/css/upcoming/search_course.css",
+                "~/Resources/css/upcoming/normalize-unity2.css",
+                "~/Resources/css/upcoming/responsive-sidebars-unity2.css"));
         }
     }
 }

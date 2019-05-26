@@ -1,67 +1,87 @@
-﻿﻿@model HitaRasDhara.Models.QueryViewModel
+﻿@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+}
 
-<div class="container">
-    <div class="row" style="margin-bottom: 50px">
-        <div class="col-md-8 col-sm-8 col-xs-12">
-            <h3 style="color: #004488;">Have a Query ? </h3>
-            <div class="desktop">
-                <h5> Write to us ! </h5>
-            </div>
-            <div class="mobile">
-                <h6 style="color: #004488;"> Namaste! <br/> <br/> We hope you have found most of what you are looking for on our website. For anything else, we are here for you! Please send us a note. We welcome all your questions and any feed back you have regarding your experience on our site. <br/> <br/> Thank you & Shree Harivansh, <br/> Team Hita Ambrish </h6>
-            </div>
-            <div class="contact-form">
+@*<div class="inner-page-cover overlay" style="background-image: url('../../img/header_bg.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" id="section-home">
+</div>
+<div class="site-section bg-light" id="section-contact">
+    ﻿@model HitaRasDhara.Models.QueryViewModel
+    <div class="container">
+        <div class="row justify-content-center mb-5 ml-2 mr-2">
+            <div class="order-md-1" data-aos="fade">
+                <div class="text-left pb-1 border-primary mb-4">
+                    <h2 class="text-primary">Have a Query ?</h2>
+                    <h5 class="color-black-opacity-5"> Write to us ! </h5>
+                </div>
                 <div class="row">
-                    <form class="form-horizontal" id="QueryEntryForm"  method="post">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextBoxFor(m => m.Name, new {@class = "form-control", placeholder = "Name", type = "text", style = "margin-bottom: unset;", id = "name"})
-                            @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextBoxFor(m => m.Email, new {@class = "form-control", style = "margin-bottom: unset;", placeholder = "Email"})
-                            @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
-                            <input id="phone" type="tel">
-                            @*@Html.TextBoxFor(m => m.Phone, new {@class = "form-control", style="margin-bottom: unset;", id = "phone", placeholder = "Mobile", type = "tel"})
-                                @Html.ValidationMessageFor(m => m.Phone, "", new {@class = "text-danger"})*@
-                        </div>
-                        @Html.HiddenFor(m => m.Phone, new {id = "ActualPhoneValue"})
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextBoxFor(m => m.City, new {@class = "form-control", style = "margin-bottom: unset;", placeholder = "City"})
-                            @Html.ValidationMessageFor(m => m.City, "", new {@class = "text-danger"})
-                        </div>
+                    <div class="col-md-5 mobile">
+                        <div class="p-4 mb-3 bg-white">
+                            <h3 class="h5 text-black mb-3">Namaste! </h3>
+                            <p>We hope you have found most of what you are looking for on our website. For anything else, we are here for you! Please send us a note. We welcome all your questions and any feed back you have regarding your experience on our site. <br /> <br /> Thank you & Shree Harivansh, <br /> Team Hita Ambrish</p>
+                            @*<p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>*@ 
+                        @*</div>
+                    </div>
+                    <div class="col-md-7 mb-5">
+                        <form class="p-5 bg-white form-horizontal" id="QueryEntryForm" method="post">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", type = "text", id = "name" })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <input id="phone" type="tel">
+                                </div>
+                                @Html.HiddenFor(m => m.Phone, new { id = "ActualPhoneValue" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+                                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @Html.HiddenFor(m => m.Country, new { id = "address-country" })
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(m => m.Query, new { @class = "form-control", placeholder = "Your Query", cols = "30", rows = "7", style = "margin-bottom: unset;max-width: 100%;" })
+                                    @Html.ValidationMessageFor(m => m.Query, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12" id="Submit">
+                                    <input type="submit" id="SubmitOfQueryForm" value="Submit" class="btn btn-primary py-2 px-4 text-white">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="p-4 mb-3 bg-white desktop">
+                            <h3 class="h5 text-black mb-3">Namaste! </h3>
+                            <p>We hope you have found most of what you are looking for on our website. For anything else, we are here for you! Please send us a note. We welcome all your questions and any feed back you have regarding your experience on our site. <br /> <br /> Thank you & Shree Harivansh, <br /> Team Hita Ambrish</p>
+                            @*<p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>*@
+                        @*</div>
+                        <div class="p-4 mb-3 bg-white">
+                            <p class="mb-0 font-weight-bold">Address</p>
+                            <p class="mb-4">Hita Ras Dhara, 123, Dogran Mohalla, Behind Main Post Office, Hisar, Haryana, India</p>
 
-                        @*<div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", style="margin-bottom: unset;", placeholder = "State" })
-                                @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
-                            </div>*@
+                            <p class="mb-0 font-weight-bold">Phone</p>
+                            <p class="mb-4"><a href="#">+91 9034571838</a></p>
 
-                        @*<div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 15px;">
-                                <select name="Country" id="address-country" class="form-control" style="border-radius:0px;height:44px;color:#999c9f;margin-bottom: unset;"></select>
-                                @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
-                            </div>*@
-                        @Html.HiddenFor(m => m.Country, new {id = "address-country"})
-                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">
-                            @Html.TextAreaFor(m => m.Query, new {@class = "form-control", placeholder = "Your Query", rows = "7", style = "margin-bottom: unset;max-width: 100%;"})
-                            @Html.ValidationMessageFor(m => m.Query, "", new {@class = "text-danger"})
-                        </div>
+                            <p class="mb-0 font-weight-bold">Email Address</p>
+                            <p class="mb-0"><a href="#">info@hitaambrish.com</a></p>
 
-                        <div class="col-md-12 col-sm-12 col-xs-12 text-left" id="Submit">
-                            <input type="submit" id="SubmitOfQueryForm" class="contact-btn" value="Submit" style="width: 120px; background-color: #072948; font-size: 18px; padding: 10px 0px; color: #FFFFFF; border: none;"/>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12 desktop" style="margin-top: 83px">
-            <h6 style="color: #004488;"> Namaste! <br /> <br /> We hope you have found most of what you are looking for on our website. For anything else, we are here for you! Please send us a note. We welcome all your questions and any feed back you have regarding your experience on our site. <br /> <br /> Thank you & Shree Harivansh, <br /> Team Hita Ambrish </h6>
-        </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         var input = document.querySelector("#phone"),
@@ -142,4 +162,4 @@
             return false;
         });
     });
-</script>
+</script>*@
