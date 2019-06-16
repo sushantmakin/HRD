@@ -12,17 +12,17 @@ namespace HitaRasDhara.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var viewModel = new UpcomingKathaViewModel();
+            var viewModel = new HomeViewModel();
             ApplicationDbContext _dbContext = new ApplicationDbContext();
             var currTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
                 TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
-            viewModel = new UpcomingKathaViewModel
+            viewModel.KathaFeed = new UpcomingKathaViewModel
             {
                 KathaFeed = 
                     _dbContext.UpcomingKathaFeed.Select(m => m).Where(x => x.UnpublishDate > currTime).
                         OrderBy(a => a.UnpublishDate).ToList().GetRange(0, 3)
             };
-            ViewBag.SadhakSanjeevaniFeed = new SadhakSanjeevaniViewModel
+            viewModel.SadhakSanjeevaniFeed = new SadhakSanjeevaniViewModel
             {
                 SadhakSanjeevaniFeed =
                     _dbContext.SadhakSanjeevaniFeed.Select(a => a).Where(s => s.VisibleOnHome).ToList()

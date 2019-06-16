@@ -1,4 +1,4 @@
-﻿@model HitaRasDhara.Models.UpcomingKathaViewModel
+﻿@model HitaRasDhara.Models.HomeViewModel
 <!--
 <div class="eventArea desktop">
     <div class="container">
@@ -72,9 +72,9 @@
             </div>
         </div>
         <div class="row">
-            @if (Model.KathaFeed != null && Model.KathaFeed.Count > 0)
+            @if (Model.KathaFeed != null && Model.KathaFeed.KathaFeed.Count > 0)
             {
-                foreach (var item in Model.KathaFeed)
+                foreach (var item in Model.KathaFeed.KathaFeed)
                 {
                     <div class="col-md-4 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
                         <div class="person rounded" style="background: transparent;border: white 1px solid; text-align: center;height: 425px;">
@@ -94,6 +94,47 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-12 text-center aos-init aos-animate" style="margin-top: 25px;" data-aos="fade-up" data-aos-delay="300">
+            <a class="btn btn-primary py-3 px-5 text-white" href="@Url.Action("Index","UpcomingKathas")">View More</a>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-image overlay" style="background-image: url('//www.hitaambrish.com/img/bg1.jpg');" id="section-how-it-works">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center border-primary">
+                <h2 class="font-weight-light text-primary" data-aos="fade">Upcoming Discourses</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.SadhakSanjeevaniFeed != null && Model.SadhakSanjeevaniFeed.SadhakSanjeevaniFeed.Count > 0)
+            {
+                foreach (var item in Model.SadhakSanjeevaniFeed.SadhakSanjeevaniFeed)
+                {
+                    <div class="col-md-4 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
+                        <a href=@item.YoutubeLink>
+                            <div class="person rounded" style="background: transparent;border: white 1px solid; text-align: center;height: 425px;">
+                                @if (item.ThumbnailUrl != "null")
+                                {
+                                    <img src=@item.ThumbnailUrl class="img-fluid rounded" alt="Upcoming Katha">
+                                }
+                                else
+                                {
+                                    <img src="" class="img-fluid rounded mb-5 w-75 rounded-circle" alt="Upcoming Katha">
+                                }
+                                <div class="katha-desc" style="padding: 20px; color: white;">
+                                    <h3 style="font-size: 16px;font-weight: 700;margin-bottom: 0;padding: 0 0 10px;text-transform: uppercase;color: #C20001;">@item.Title</h3>
+                                    <p class="mb-4">
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 }
             }
