@@ -3862,6 +3862,7 @@
 }
 .icon-menu:before {
   content: "\e5d2";
+  color: white;
 }
 .icon-message:before {
   content: "\e0c9";

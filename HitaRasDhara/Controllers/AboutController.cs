@@ -20,7 +20,7 @@ namespace HitaRasDhara.Controllers
         public ActionResult HitaAmbrishJi()
         {
             ViewBag.Title = "About Shree Hita Ambrish Ji | Spiritual Mentor";
-            ViewBag.Description = "Shree Hita Ambrish ji is a charismatic young spiritual Mentor from Vrindavan, with a refreshing take on devotion to the divine.";
+            ViewBag.Description = " Shree Hita Ambrish is a spiritual mentor, youth icon and an exponent of Hit Ras Dhara. His spiritual wisdom has illuminated a path filled with eternal love and devotion. Dedicated to the holistic well-being of humanity he has been an influential voice at various forums.";
             return View();
         }
 

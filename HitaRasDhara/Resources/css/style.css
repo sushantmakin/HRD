@@ -303,7 +303,7 @@ h1, h2, h3, h4, h5,
       padding: 10px 10px; }
       .site-navbar .site-navigation .site-menu > li > a {
         padding: 10px 0px;
-        color: #fff;
+        color: #fff !important;
         text-decoration: none !important; }
         .site-navbar .site-navigation .site-menu > li > a:hover {
           color: #f16821; }
@@ -400,7 +400,7 @@ h1, h2, h3, h4, h5,
           visibility: visible;
           opacity: 1; }
   .site-navbar.scrolled {
-    background-color: #fff;
+    background-color: #003A45;
     position: fixed;
     width: 100%;
     left: 0;
@@ -1527,3 +1527,17 @@ h1, h2, h3, h4, h5,
         padding-left: unset !important;
     }
 }
+
+/*@media (min-width: 781px) {
+    #mainLogo {
+        margin-left: 150px;
+    }*/
+}
+
+@media (max-width: 480px) {
+    #AboutImage {
+        width: 100%;
+        padding-left: unset !important;
+    }
+}
+

@@ -30,6 +30,7 @@ namespace HitaRasDhara.Models
         public DbSet<EventFeedbackViewModel> Feedback5August { get; set; }
         public DbSet<QueryViewModel> QueryForm { get; set; }
         public DbSet<UpcomingKathaItem> UpcomingKathaFeed { get; set; }
+        public DbSet<SadhakSanjeevaniItem> SadhakSanjeevaniFeed { get; set; }
 
         public static ApplicationDbContext Create()
         {

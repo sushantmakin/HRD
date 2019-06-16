@@ -230,12 +230,17 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InsightsController.cs" />
+    <Compile Include="Controllers\PracticeController.cs" />
+    <Compile Include="Controllers\PrivacyController.cs" />
+    <Compile Include="Controllers\SadbhaavController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Controllers\UpcomingDiscoursesController.cs" />
     <Compile Include="Controllers\UpcomingKathasController.cs" />
+    <Compile Include="Controllers\VisionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -311,12 +316,17 @@
     <Compile Include="Migrations\201811250751100_upcomingkatha.Designer.cs">
       <DependentUpon>201811250751100_upcomingkatha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906161021206_SadhakSanjeevani.cs" />
+    <Compile Include="Migrations\201906161021206_SadhakSanjeevani.Designer.cs">
+      <DependentUpon>201906161021206_SadhakSanjeevani.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\EventFeedBackViewModel.cs" />
     <Compile Include="Models\MobileVerificationViewModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
+    <Compile Include="Models\SadhakSanjeevaniViewModel.cs" />
     <Compile Include="Models\SMSContent.cs" />
     <Compile Include="Models\UpcomingKathaViewModel.cs" />
     <Compile Include="Models\UserResponse5Aug.cs" />
@@ -437,15 +447,33 @@
     <Content Include="Content\Login\vendor\tilt\tilt.jquery.min.js" />
     <Content Include="Content\MyCss.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\About\1.jpg" />
+    <Content Include="img\About\10.jpg" />
+    <Content Include="img\About\11.jpg" />
+    <Content Include="img\About\12.jpg" />
+    <Content Include="img\About\13.jpg" />
+    <Content Include="img\About\14.jpg" />
+    <Content Include="img\About\15.jpg" />
+    <Content Include="img\About\16.jpg" />
+    <Content Include="img\About\2.jpg" />
+    <Content Include="img\About\3.jpg" />
+    <Content Include="img\About\4.jpg" />
+    <Content Include="img\About\5.jpg" />
+    <Content Include="img\About\6.jpg" />
+    <Content Include="img\About\7.jpg" />
+    <Content Include="img\About\8.jpg" />
+    <Content Include="img\About\9.jpg" />
     <Content Include="img\facebook-profile-pic.jpg" />
     <Content Include="img\header_bg.jpg" />
     <Content Include="img\hita-ambrish-white-logo.png" />
+    <Content Include="img\hita-ras-logo.png" />
     <Content Include="img\RadhaVallabh\1.jpg" />
     <Content Include="img\RadhaVallabh\2.jpg" />
     <Content Include="img\RadhaVallabh\3.JPG" />
     <Content Include="img\RadhaVallabh\4.jpg" />
     <Content Include="img\RadhaVallabh\5.jpg" />
     <Content Include="img\RadhaVallabh\6.jpg" />
+    <Content Include="img\slider1.jpg" />
     <Content Include="img\slider4.jpg" />
     <Content Include="img\slider5.jpg" />
     <Content Include="js\js_2LSzIJ9odJcgtrvQn6btsvrneCjOqB013AtW4ihMaio.js" />
@@ -868,6 +896,19 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Shared\_LayoutBlank.cshtml" />
     <Content Include="Views\Subscribe\Index.cshtml" />
+    <Content Include="Views\Vision\Index.cshtml" />
+    <Content Include="Views\Insights\Index.cshtml" />
+    <Content Include="Views\Insights\HitaSpot.cshtml" />
+    <Content Include="Views\Insights\Quotes.cshtml" />
+    <Content Include="Views\Insights\Articles.cshtml" />
+    <Content Include="Views\Insights\Videos.cshtml" />
+    <Content Include="Views\Insights\Audios.cshtml" />
+    <Content Include="Views\Practice\Index.cshtml" />
+    <Content Include="Views\Practice\Triveni.cshtml" />
+    <Content Include="Views\Practice\RadhaVallabhRasReeti.cshtml" />
+    <Content Include="Views\Practice\HitaTheEternal.cshtml" />
+    <Content Include="Views\Sadbhaav\Index.cshtml" />
+    <Content Include="Views\Privacy\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -930,6 +971,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811250751100_upcomingkatha.resx">
       <DependentUpon>201811250751100_upcomingkatha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906161021206_SadhakSanjeevani.resx">
+      <DependentUpon>201906161021206_SadhakSanjeevani.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

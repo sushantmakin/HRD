@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127415323-1"></script>
+    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127415323-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -18,7 +18,7 @@
                 appId: "4440898f-55b2-4438-8f22-eb42752fb3cb",
             });
         });
-    </script>
+    </script>*@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
@@ -56,42 +56,46 @@
             <div class="row align-items-center">
 
                 <div class="col-11 col-xl-2 site-logo">
-                    <div class="mb-0"><a href="/" class="text-white h2 mb-0"><img src="~/img/hita-ambrish-white-logo.png" id="mainLogo" alt="Hita Ambrish Ji" style="width: 275px !important;max-width: unset;"></a></div>
+                    <div class="mb-0"><a href="/" class="text-white h2 mb-0"><img src="~/img/hita-ras-logo.png" id="mainLogo" alt="Hita Ambrish Ji" style="height:75px !important;margin-top: 4px; max-width: unset;"></a></div>
                 </div>
                 <div class="col-12 col-md-10 d-none d-xl-block">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
                             <li><a href="/" class="nav-link">Home</a></li>
                             <li class="has-children">
-                                <a href="#" class="nav-link">About</a>
+                                <a href="#" class="nav-link">Hita Ambrish</a>
                                 <ul class="dropdown">
-                                    <li><a href="@Url.Action("ShreeRadhaVallabhJi", "About")" class="nav-link">Shree Radhavallabh Lal</a></li>
-                                    <!--<li><a href="#">Shree Hita Harivansh Mahaprabhu</a></li>-->
-                                    <li><a href="@Url.Action("HitaAmbrishJi", "About")" class="nav-link">Hita Ambrish</a></li>
+                                    @*<li><a href="@Url.Action("ShreeRadhaVallabhJi", "About")" class="nav-link">Shree Radhavallabh Lal</a></li>*@
+                                    <li><a href="@Url.Action("HitaAmbrishJi", "About")" class="nav-link">About</a></li>
+                                    <li><a href="@Url.Action("Index", "Vision")" class="nav-link">Vision</a></li>
                                     @*<li><a href="@Url.Action("HitaTheEternal","About")" class="nav-link">Hita The Eternal</a></li>*@
                                 </ul>
                             </li>
+                            <li><a href="@Url.Action("Index", "UpcomingKathas")" class="nav-link">Meet Hita Ambrish</a></li>
                             <li class="has-children">
-                                <a href="#" class="nav-link">Gallery</a>
+                                <a href="#" class="nav-link">Insights</a>
                                 <ul class="dropdown">
-                                    <li class="has-children">
-                                        <a href="#" class="nav-link">Video Gallery</a>
-                                        <ul class="dropdown">
-                                            <li><a href="http://hitaras.com" class="nav-link">Katha Collection</a></li>
-                                            <li><a href="https://www.youtube.com/playlist?list=PLBdDLcI6qE-22TjdrdaaexVM4eR6gDw3N" class="nav-link">Bhajan Collection</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children">
-                                        <a href="#" class="nav-link">Audio Gallery</a>
-                                        <ul class="dropdown">
-                                            <li><a href="https://gaana.com/artist/shree-hita-ambrish-ji/albums" class="nav-link">Gaana</a></li>
-                                            <li><a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" class="nav-link">Saavn</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="@Url.Action("HitaSpot", "Insights")" class="nav-link">Hita Spot</a></li>
+                                    <li><a href="@Url.Action("Quotes", "Insights")" class="nav-link">Quotes</a></li>
+                                    <li><a href="@Url.Action("Articles", "Insights")" class="nav-link">Articles</a></li>
+                                    <li><a href="@Url.Action("Videos", "Insights")" class="nav-link">Videos</a></li>
+                                    <li><a href="@Url.Action("Audios", "Insights")" class="nav-link">Audios</a></li>
                                 </ul>
                             </li>
-                            <li><a href="@Url.Action("Index", "UpcomingKathas")" class="nav-link">Upcoming Discourses</a></li>
-                          @*  <li><a href="@Url.Action("Index", "Query")" class="nav-link">Query</a></li>*@
+                            <li class="has-children">
+                                <a href="#" class="nav-link">Practice</a>
+                                <ul class="dropdown">
+                                    <li><a href="@Url.Action("Triveni", "Practice")" class="nav-link">Hitopasana</a></li>
+                                    <li><a href="@Url.Action("RadhaVallabhRasReeti", "Practice")" class="nav-link">Radhavallabh Ras Reeti</a></li>
+                                    @*<li><a href="@Url.Action("HitaTheEternal", "Practice")" class="nav-link">Hita - The Eternal</a></li>*@
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="#" class="nav-link">Outreach</a>
+                                <ul class="dropdown">
+                                    <li><a href="@Url.Action("Index", "Sadbhaav")" class="nav-link">Sadbhaav</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -114,7 +118,7 @@
                         <a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" class="pl-3 pr-3" target="_blank"><img src="~/img/footer_icon05.png" border="0" alt="saavn icon" /></a>
                     </div>
                     <div class="border-top pt-5">
-                        <p>&copy; @DateTime.Now.Year, <a href="@Url.Action("HitaRasDhara", "About")">Hita Ras Dhara</a> All Rights Reserved</p>
+                        <p>&copy; @DateTime.Now.Year, <a href="@Url.Action("HitaRasDhara", "About")">Hita Ras Dhara</a> All Rights Reserved | <a href="@Url.Action("Index", "Privacy")">Privacy Policy</a></p>
                         <p>Official website of <a href="@Url.Action("HitaAmbrishJi", "About")">Hita Ambrish</a></p>
                     </div>
                 </div>
