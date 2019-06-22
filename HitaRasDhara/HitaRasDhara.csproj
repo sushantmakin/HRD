@@ -317,6 +317,7 @@
     <Compile Include="Models\EventFeedBackViewModel.cs" />
     <Compile Include="Models\MobileVerificationViewModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
+    <Compile Include="Models\SadhakSanjeevaniViewModel.cs" />
     <Compile Include="Models\SMSContent.cs" />
     <Compile Include="Models\UpcomingKathaViewModel.cs" />
     <Compile Include="Models\UserResponse5Aug.cs" />
