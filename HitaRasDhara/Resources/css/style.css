@@ -1432,6 +1432,10 @@ h1, h2, h3, h4, h5,
     background: none;
     border: 2px solid #fff; }
 
+#section-how-it-works2 .btn:hover {
+    color: #fff !important;
+    background: none;
+    border: 2px solid #fff; }
 /*----------------------------------------*/
 /*  Query page
 /*----------------------------------------*/
@@ -1541,3 +1545,10 @@ h1, h2, h3, h4, h5,
     }
 }
 
+#myHeader {
+    padding-top: 5px !important;
+}
+
+.katha-35, .katha-36, .katha-37, .katha-38 {
+    background-color: lightgray;
+}

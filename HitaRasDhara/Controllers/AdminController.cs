@@ -340,6 +340,24 @@ namespace HitaRasDhara.Controllers
                 //Ignore
             }
         }
+
+        public void ExportListFromTsvQuery()
+        {
+            try
+            {
+                ApplicationDbContext _DbContextForDownloadExcel = new ApplicationDbContext();
+                var data = _DbContextForDownloadExcel.QueryForm.Select(m => m).ToList();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment;filename=FeedbackDashboard.xls");
+                Response.AddHeader("Content-Type", "application/vnd.ms-excel");
+                WriteTsv(data, Response.Output);
+                Response.End();
+            }
+            catch
+            {
+                //Ignore
+            }
+        }
     }
     public class DbViewForDashboard
     {
