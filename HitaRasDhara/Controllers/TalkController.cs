@@ -187,7 +187,8 @@ namespace HitaRasDhara.Controllers
                     msg.To.Add(new MailAddress(UserDetails.Email));
                     msg.From = new MailAddress("info@hitaambrish.com", "Hita Ambrish");
                     msg.Subject = "Registration Confirmation - " + UserDetails.Name;
-                    msg.Body = "<p>Dear " + UserDetails.Name + " ,</p> <p>Thank you for your interest in 'Think HIGHER, Drill DEEPER, Be STRONGER' - A talk by Hita Ambrish Ji designed especially for the youth.</p> <p> Your registration is <u>confirmed</u> and your entry pass is attached with this email.</p> <p> Please note that entry would only be allowed only on presenting this entry pass along with a valid government-issued ID-Card. It is our kind request that you strictly adhere to the instructions mentioned in the entry pass, to ensure your entry in the auditorium.</p><p> Thanks <br/> Team Hita Ras Dhara </p> ";
+                    msg.Body = string.Format(_dbContext.SmsContent.Find("EmailContent").Value, UserDetails.Name);
+                    //msg.Body = "<p>Dear " + UserDetails.Name + " ,</p> <p>Thank you for your interest in 'Think HIGHER, Drill DEEPER, Be STRONGER' - A talk by Hita Ambrish Ji designed especially for the youth.</p> <p> Your registration is <u>confirmed</u> and your entry pass is attached with this email.</p> <p> Please note that entry would only be allowed only on presenting this entry pass along with a valid government-issued ID-Card. It is our kind request that you strictly adhere to the instructions mentioned in the entry pass, to ensure your entry in the auditorium.</p><p> Thanks <br/> Team Hita Ras Dhara </p> ";
                     msg.IsBodyHtml = true;
                     msg.Attachments.Add(new Attachment(new MemoryStream(bytes), UserDetails.Name + ".pdf"));
 

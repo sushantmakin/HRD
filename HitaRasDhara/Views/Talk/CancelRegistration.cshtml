@@ -1,47 +1,73 @@
-﻿<div class="inner-page-cover overlay" style="background-image: url('../../img/header_bg.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" id="section-home">
-</div>
-@model HitaRasDhara.Models.MobileVerificationViewModel
-<div class="row">
-    <div class="col-md-8">
-        <h3 style="color:#004488;">Cancel Registration</h3>
-        <form class="form-horizontal" id="CancelForm">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Enter your registered mobile number" })
-                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                    <p style="width: 290px"> If you have successfully registered yourself and due to some reasons you are unable to attend the discourse, we request you to kindly cancel your seat by entering your registered mobile number above, so that your seat can be alotted to someone else.</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" id="SubmitBtnOfCancelForm" value="Cancel Registration" class="btn btn-primary" />
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-4" id="imgBlock">
-        <img src="~/img/registration-img.jpg" border="0" alt="" />
-    </div>
-</div>
+﻿<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(https://www.hitaambrish.com/img/uk_bangalore.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
 
+            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
+                <h1 class="text-white font-weight-light text-uppercase font-weight-bold">Decoding Geeta with Hita</h1>
+                <p class="breadcrumb-custom">Registration<span class="mx-2">&gt;</span> <span>Cancel</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section bg-light" id="section-contact">
+    @model HitaRasDhara.Models.MobileVerificationViewModel
+    <div class="container">
+        <div class="row justify-content-center mb-5 ml-2 mr-2" id="MainBlock">
+            <div class="order-md-1" data-aos="fade">
+                <div class="text-left pb-1 border-primary mb-4">
+                    <h2 class="text-primary">Cancel</h2>
+                    <h5 class="color-black-opacity-5">Cancel your registration! </h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 mb-5">
+                        <form class="p-5 bg-white form-horizontal" id="CancelForm" method="post">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone" })
+                                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12" id="Submit">
+                                    <input type="submit" id="SubmitBtnOfCancelForm" value="Cancel Registration" class="btn btn-primary py-2 px-4 text-white w-100">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="p-4 mb-3 bg-white">
+                            <div class="col-md-12">
+                                <button id="ReprintButton" type="button" class="btn btn-primary py-2 px-4 text-white w-100" onclick="location.href = '@Url.Action("Register", "Talk")'">
+                                    <span class="fa fa-registered" aria-hidden="true"></span> Register
+                                </button>
+                                <button id="CancelButton" type="button" class="btn btn-primary my-2 py-2 px-4 text-white w-100" onclick="location.href = '@Url.Action("Reprint", "Talk")'">
+                                    <span class="fa fa-print" aria-hidden="true"></span> Reprint Entry Pass
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function cancelNow(formData) {
-            $.ajax({
-                type: "POST",
-                url: "/Talk/CancelRegistration",
-                data: formData,
-                success: function (result) {
-                    console.log('data is : ' + result.Code);
-                    showPopup(result.Code);
-                },
-                error: function (data) {
-                    console.log('error : data code is : ' + data.Code);
-                }
-            });
-            return false;
+        $.ajax({
+            type: "POST",
+            url: "/Talk/CancelRegistration",
+            data: formData,
+            success: function (result) {
+                console.log('data is : ' + result.Code);
+                showPopup(result.Code);
+            },
+            error: function (data) {
+                console.log('error : data code is : ' + data.Code);
+            }
+        });
+        return false;
     }
 
     $('#SubmitBtnOfCancelForm').click(function () {
@@ -56,16 +82,16 @@
                 data: $('#CancelForm').serialize(),
                 success: function (result) {
                     $('#SubmitBtnOfCancelForm').removeAttr("disabled");
-                   swal("Please enter the OTP sent to your mobile", {
+                    swal("Please enter the OTP sent to your mobile", {
                         content: "input"
                     })
-                        .then((value) => {
-                            if (result.OTPCode === `${value}`) {
-                                cancelNow($('#CancelForm').serialize());
-                            } else {
-                                swal("Failure!", "The OTP you entered is invalid", "error");
-                            }
-                        });
+                         .then((value) => {
+                             if (result.OTPCode === `${value}`) {
+                                 cancelNow($('#CancelForm').serialize());
+                             } else {
+                                 swal("Failure!", "The OTP you entered is invalid", "error");
+                             }
+                         });
                 },
                 error: function (data) {
                     $('#SubmitBtnOfCancelForm').removeAttr("disabled");
