@@ -1,4 +1,4 @@
-﻿@model HitaRasDhara.Controllers.DbViewForDashboard
+﻿﻿@model HitaRasDhara.Controllers.DbViewForDashboard
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -14,7 +14,7 @@
 </div><!--/.row-->
 <div class="container" style="padding-top: 30px;">
     <div class="header">
-        <h1 class="page-header">The current status of Event Registration for 2nd October.</h1>
+        <h1 class="page-header">The current status of Event Registration for 28th September.</h1>
     </div>
 
     <div class="row">
@@ -24,7 +24,7 @@
                 <div id="wrap">
                     <div class="container">
                         <div class="form-group">
-                            <input value="HRD03" class ="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search.." title="Type in a search parameter">
+                            <input value="HRDG01" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search.." title="Type in a search parameter">
                         </div>
                         <div class="form-group">
                             <table id="myTable" class="datatable table table-striped table-bordered table-hover">
@@ -109,7 +109,14 @@
                     data: { 'Mobile': "" + phone },
                     success: function (result) {
                         console.log('data is : ' + result.Code);
-                        showPopup(result.Code);
+                        if(result.Code == '18'){
+                            swal('Success!', 'Listener has been allowed entry into the auditorium.', 'success').then(() => {
+                window.location.reload();
+            });
+                        }else{
+                            showPopup(result.Code);
+                        }
+
                     },
                     error: function (data) {
                         console.log('error : data code is : ' + data.Code);

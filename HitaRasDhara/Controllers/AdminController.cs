@@ -28,12 +28,16 @@ namespace HitaRasDhara.Controllers
             return View(viewModel);
         }
 
-        public bool Reseed()
+        public bool Reseed(string val)
         {
             try
             {
+                if (string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val))
+                {
+                    val = "0";
+                }
                 ApplicationDbContext dbContext = new ApplicationDbContext();
-                dbContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('UserResponse5Aug', RESEED, 0)");
+                dbContext.Database.ExecuteSqlCommand($"DBCC CHECKIDENT('UserResponse5Aug', RESEED, {int.Parse(val)})");
                 return true;
             }
             catch (Exception e)

@@ -14,7 +14,7 @@
             swal('Technical Error !', 'An error has occured, please try again.', 'error');
             break;
         case 5:
-            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been successfully downloaded to your system as well as mailed to the provided email address. \n \n Kindly take a printout of the same and bring it to the event.', 'success');
+            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been successfully downloaded to your system as well as mailed to the provided email address. \n \n Kindly show this pass along with a valid government-issued ID card to gain entry into the discourse.', 'success');
             break;
         case 7:
             swal('Error !',
@@ -22,7 +22,7 @@
                 'error');
             break;
         case 9:
-            swal('Success !', 'Your registration pass has been regenerated. \n It has been downloaded to your system as well as resent to your registered email address successfully. \n \n Kindly take a printout of the same.', 'success');
+            swal('Success !', 'Your registration pass has been regenerated. \n It has been downloaded to your system as well as resent to your registered email address successfully. \n \n Kindly show this pass along with a valid government-issued ID card to gain entry into the discourse.', 'success');
             break;
         case 11:
             swal('Error !', 'No registration exists with the provided mobile number.', 'error');

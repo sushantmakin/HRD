@@ -327,6 +327,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="android-icon-144x144.png" />
+    <Content Include="android-icon-192x192.png" />
+    <Content Include="android-icon-36x36.png" />
+    <Content Include="android-icon-48x48.png" />
+    <Content Include="android-icon-72x72.png" />
+    <Content Include="android-icon-96x96.png" />
+    <Content Include="apple-icon-114x114.png" />
+    <Content Include="apple-icon-120x120.png" />
+    <Content Include="apple-icon-144x144.png" />
+    <Content Include="apple-icon-152x152.png" />
+    <Content Include="apple-icon-180x180.png" />
+    <Content Include="apple-icon-57x57.png" />
+    <Content Include="apple-icon-60x60.png" />
+    <Content Include="apple-icon-72x72.png" />
+    <Content Include="apple-icon-76x76.png" />
+    <Content Include="apple-icon-precomposed.png" />
+    <Content Include="apple-icon.png" />
+    <Content Include="browserconfig.xml" />
     <Content Include="bundles\fonts\icomoon.svg" />
     <Content Include="Content\flags%402x.png" />
     <Content Include="Content\flags.png" />
@@ -438,7 +456,12 @@
     <Content Include="Content\Login\vendor\tilt\tilt.jquery.min.js" />
     <Content Include="Content\MyCss.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
+    <Content Include="favicon-96x96.png" />
     <Content Include="img\facebook-profile-pic.jpg" />
+    <Content Include="img\hapurnew.jpg" />
+    <Content Include="img\hapur_new.jpg" />
     <Content Include="img\header_bg.jpg" />
     <Content Include="img\hita-ambrish-white-logo.png" />
     <Content Include="img\RadhaVallabh\1.jpg" />
@@ -449,10 +472,28 @@
     <Content Include="img\RadhaVallabh\6.jpg" />
     <Content Include="img\slider4.jpg" />
     <Content Include="img\slider5.jpg" />
+    <Content Include="img\talkbg.jpg" />
+    <Content Include="img\Uk_Bangalore.jpg" />
+    <Content Include="img\uk_janamasthami.jpg" />
+    <Content Include="img\uk_kalanaur.jpg" />
+    <Content Include="img\UK_SewakVani.jpg" />
+    <Content Include="img\upcoming-katha37.jpg" />
+    <Content Include="img\upcoming-katha38.jpg" />
+    <Content Include="img\upcoming-katha39.jpg" />
+    <Content Include="img\upcoming-katha39a.jpg" />
+    <Content Include="img\upcoming-katha40a.jpg" />
+    <Content Include="img\upcoming-katha41.jpg" />
+    <Content Include="img\upcoming-katha43.jpg" />
+    <Content Include="img\upcoming-katha44.jpg" />
+    <Content Include="img\upcomingKathaHapur.jpg" />
     <Content Include="js\js_2LSzIJ9odJcgtrvQn6btsvrneCjOqB013AtW4ihMaio.js" />
     <Content Include="js\js_eRNl6m2_VH65aLu-Z6CvcgEpYwBtt7xhBh9yyR_XYhw.js" />
     <Content Include="js\js_JuW6U3XOVJ2c7FByc_-XpM2evYL5cz8qOj0YyuNVuF8.js" />
     <Content Include="js\js_vIYJMoKYoMWkVusn3iML8i0Lt7Is3CRaFcqWuXJaFrM.js" />
+    <Content Include="ms-icon-144x144.png" />
+    <Content Include="ms-icon-150x150.png" />
+    <Content Include="ms-icon-310x310.png" />
+    <Content Include="ms-icon-70x70.png" />
     <Content Include="Resources\css\faq.css" />
     <Content Include="Resources\css\font-awesome.min.css" />
     <Content Include="Resources\css\upcoming\bootstrap.min.css" />
@@ -869,6 +910,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Shared\_LayoutBlank.cshtml" />
     <Content Include="Views\Subscribe\Index.cshtml" />
+    <Content Include="sdmanifest.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

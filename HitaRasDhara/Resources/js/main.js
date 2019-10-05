@@ -293,7 +293,7 @@ jQuery(document).ready(function($) {
       if ( st < 350 ) {
         if ( navbar.hasClass('awake') ) {
             navbar.removeClass('awake');
-            logo.src = window.location.protocol + '//' + window.location.host + /img/ + "/hita-ambrish-white-logo.png";
+            logo.src = window.location.protocol + '//' + window.location.host + /img/ + "hita-ambrish-white-logo.png";
           navbar.addClass('sleep');
         }
         if(sd.length > 0) {

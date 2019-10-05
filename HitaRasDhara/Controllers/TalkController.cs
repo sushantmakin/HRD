@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -59,7 +60,7 @@ namespace HitaRasDhara.Controllers
                     userDetails.Email = input.Email;
                     _dbContext.SaveChanges();
                     string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,
-                        input.Name);
+                        input.Name, getVisualRegistrationId(userDetails.RegistrationID), input.YearOfBirth);
                     bool smsSent = sendSMS(input.Phone, smsData);
                     return PrintPDF(input.Phone);
                 }
@@ -128,7 +129,7 @@ namespace HitaRasDhara.Controllers
                     Byte[] bytes;
 
                     #region documentDefinitionStart
-                    Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                    Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
                     Response.ContentType = "application/pdf";
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
                     Response.AddHeader("content-disposition", "attachment;filename=test.pdf");
@@ -283,7 +284,7 @@ namespace HitaRasDhara.Controllers
         public JsonResult SemiFilledForm(UserResponse5Aug input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            var OTP = GenerateOtp(4);
+            var OTP = GenerateOtp(int.Parse(_dbContext.SmsContent.Find("OtpLength").Value));
             string smsTemplate = _dbContext.SmsContent.Find("OTP")?.Value;
             string smsContent = string.Format(smsTemplate, OTP);
             bool smsSent = sendSMS(input.Phone, smsContent);
@@ -294,7 +295,7 @@ namespace HitaRasDhara.Controllers
         public JsonResult SemiFilledForm2(MobileVerificationViewModel input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            var OTP = GenerateOtp(4);
+            var OTP = GenerateOtp(int.Parse(_dbContext.SmsContent.Find("OtpLength").Value));
             string smsTemplate = _dbContext.SmsContent.Find("OTP")?.Value;
             string smsContent = string.Format(smsTemplate, OTP);
             bool smsSent = sendSMS(input.Phone, smsContent);
@@ -305,7 +306,7 @@ namespace HitaRasDhara.Controllers
         public JsonResult SemiFilledForm3(EventFeedbackViewModel input)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            var OTP = GenerateOtp(4);
+            var OTP = GenerateOtp(int.Parse(_dbContext.SmsContent.Find("OtpLength").Value));
             string smsTemplate = _dbContext.SmsContent.Find("OTP")?.Value;
             string smsContent = string.Format(smsTemplate, OTP);
             bool smsSent = sendSMS(input.Phone, smsContent);
@@ -336,7 +337,7 @@ namespace HitaRasDhara.Controllers
         public ActionResult AllowEntry(string Mobile)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            var userDetails = _dbContext.UserResponse5Aug.Find(Mobile);
+            var userDetails = _dbContext.UserResponse5Aug.SingleOrDefault(user => user.RegistrationID == Int32.Parse(Mobile)); ;
             if (userDetails == null)
             {
                 return Json(new { Code = 11 }, JsonRequestBehavior.AllowGet); //No seat registered.
