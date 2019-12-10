@@ -98,6 +98,10 @@
       <HintPath>..\packages\Purplelight.Framework.Autofac.Integration.WebApi.0.2.2\lib\net45\Purplelight.Framework.Autofac.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.6\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -311,12 +315,17 @@
     <Compile Include="Migrations\201811250751100_upcomingkatha.Designer.cs">
       <DependentUpon>201811250751100_upcomingkatha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911241150143_EventQuestions.cs" />
+    <Compile Include="Migrations\201911241150143_EventQuestions.Designer.cs">
+      <DependentUpon>201911241150143_EventQuestions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\EventFeedBackViewModel.cs" />
     <Compile Include="Models\MobileVerificationViewModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
+    <Compile Include="Models\QuestionsViewModel.cs" />
     <Compile Include="Models\SadhakSanjeevaniViewModel.cs" />
     <Compile Include="Models\SMSContent.cs" />
     <Compile Include="Models\UpcomingKathaViewModel.cs" />
@@ -345,6 +354,8 @@
     <Content Include="apple-icon-precomposed.png" />
     <Content Include="apple-icon.png" />
     <Content Include="browserconfig.xml" />
+    <Content Include="bundles\flags%402x.png" />
+    <Content Include="bundles\flags.png" />
     <Content Include="bundles\fonts\icomoon.svg" />
     <Content Include="Content\flags%402x.png" />
     <Content Include="Content\flags.png" />
@@ -459,9 +470,10 @@
     <Content Include="favicon-16x16.png" />
     <Content Include="favicon-32x32.png" />
     <Content Include="favicon-96x96.png" />
+    <Content Include="img\closed.jpg" />
+    <Content Include="img\EntryPassBg.jpg" />
     <Content Include="img\facebook-profile-pic.jpg" />
-    <Content Include="img\hapurnew.jpg" />
-    <Content Include="img\hapur_new.jpg" />
+    <Content Include="img\Geeta1Post.jpg" />
     <Content Include="img\header_bg.jpg" />
     <Content Include="img\hita-ambrish-white-logo.png" />
     <Content Include="img\RadhaVallabh\1.jpg" />
@@ -473,19 +485,7 @@
     <Content Include="img\slider4.jpg" />
     <Content Include="img\slider5.jpg" />
     <Content Include="img\talkbg.jpg" />
-    <Content Include="img\Uk_Bangalore.jpg" />
-    <Content Include="img\uk_janamasthami.jpg" />
-    <Content Include="img\uk_kalanaur.jpg" />
-    <Content Include="img\UK_SewakVani.jpg" />
-    <Content Include="img\upcoming-katha37.jpg" />
-    <Content Include="img\upcoming-katha38.jpg" />
-    <Content Include="img\upcoming-katha39.jpg" />
-    <Content Include="img\upcoming-katha39a.jpg" />
-    <Content Include="img\upcoming-katha40a.jpg" />
-    <Content Include="img\upcoming-katha41.jpg" />
-    <Content Include="img\upcoming-katha43.jpg" />
-    <Content Include="img\upcoming-katha44.jpg" />
-    <Content Include="img\upcomingKathaHapur.jpg" />
+    <Content Include="js\jquery.scannerdetection.js" />
     <Content Include="js\js_2LSzIJ9odJcgtrvQn6btsvrneCjOqB013AtW4ihMaio.js" />
     <Content Include="js\js_eRNl6m2_VH65aLu-Z6CvcgEpYwBtt7xhBh9yyR_XYhw.js" />
     <Content Include="js\js_JuW6U3XOVJ2c7FByc_-XpM2evYL5cz8qOj0YyuNVuF8.js" />
@@ -565,42 +565,6 @@
     <Content Include="img\slide_mob05.jpg" />
     <Content Include="img\tulsi-das-patiala.jpg" />
     <Content Include="img\uddhav-sandesh.jpg" />
-    <Content Include="img\upcoming-katha01.jpg" />
-    <Content Include="img\upcoming-katha02.jpg" />
-    <Content Include="img\upcoming-katha03.jpg" />
-    <Content Include="img\upcoming-katha04.jpg" />
-    <Content Include="img\upcoming-katha05.jpg" />
-    <Content Include="img\upcoming-katha06.jpg" />
-    <Content Include="img\upcoming-katha07.jpg" />
-    <Content Include="img\upcoming-katha08.jpg" />
-    <Content Include="img\upcoming-katha09.jpg" />
-    <Content Include="img\upcoming-katha10.jpg" />
-    <Content Include="img\upcoming-katha11.jpg" />
-    <Content Include="img\upcoming-katha12.jpg" />
-    <Content Include="img\upcoming-katha13.jpg" />
-    <Content Include="img\upcoming-katha14.jpg" />
-    <Content Include="img\upcoming-katha15.jpg" />
-    <Content Include="img\upcoming-katha16.jpg" />
-    <Content Include="img\upcoming-katha17.jpg" />
-    <Content Include="img\upcoming-katha18.jpg" />
-    <Content Include="img\upcoming-katha19.jpg" />
-    <Content Include="img\upcoming-katha20.jpg" />
-    <Content Include="img\upcoming-katha21.jpg" />
-    <Content Include="img\upcoming-katha22.jpg" />
-    <Content Include="img\upcoming-katha23.jpg" />
-    <Content Include="img\upcoming-katha24.jpg" />
-    <Content Include="img\upcoming-katha25.jpg" />
-    <Content Include="img\upcoming-katha26.jpg" />
-    <Content Include="img\upcoming-katha27.jpg" />
-    <Content Include="img\upcoming-katha28.jpg" />
-    <Content Include="img\upcoming-katha29.jpg" />
-    <Content Include="img\upcoming-katha30.jpg" />
-    <Content Include="img\upcoming-katha31.jpg" />
-    <Content Include="img\upcoming-katha32.jpg" />
-    <Content Include="img\upcoming-katha33.jpg" />
-    <Content Include="img\upcoming-katha34.jpg" />
-    <Content Include="img\upcoming-katha35.jpg" />
-    <Content Include="img\upcoming-katha36.jpg" />
     <Content Include="img\venubox\close.gif" />
     <Content Include="img\venubox\next.gif" />
     <Content Include="img\venubox\preload-circle.png" />
@@ -826,6 +790,7 @@
     <Content Include="Resources\scss\_site-base.scss" />
     <Content Include="Resources\scss\_site-blocks.scss" />
     <Content Include="Resources\scss\_site-navbar.scss" />
+    <Content Include="EntryPassBg.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\FileSaver.min.js" />
@@ -845,6 +810,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\sweetalert.js" />
     <Content Include="Scripts\sweetalert2.js" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="sitemap.xml" />
     <Content Include="style.css" />
     <Content Include="Web.config">
@@ -911,6 +877,9 @@
     <Content Include="Views\Shared\_LayoutBlank.cshtml" />
     <Content Include="Views\Subscribe\Index.cshtml" />
     <Content Include="sdmanifest.json" />
+    <Content Include="Views\Admin\EntryManager.cshtml" />
+    <Content Include="Views\Talk\Questions.cshtml" />
+    <Content Include="Views\Admin\EventQuestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -973,6 +942,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811250751100_upcomingkatha.resx">
       <DependentUpon>201811250751100_upcomingkatha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241150143_EventQuestions.resx">
+      <DependentUpon>201911241150143_EventQuestions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

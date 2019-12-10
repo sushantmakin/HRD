@@ -51,6 +51,14 @@
                                                         {
                                                             <span class="label label-danger">Location Link Missing!</span>
                                                         }
+                                                        @if (item.GoogleCalenderUrl != "null")
+                                                        {
+                                                            <a class="btn btn-primary" href="@item.GoogleCalenderUrl" style="margin-bottom: 10px;" target="_blank">Google Calender</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="label label-danger">Google Calendar Missing!</span>
+                                                        }
                                                         <h5><span class="fa fa-user-times color-blue fa-2x"></span> @item.UnpublishDate </h5>
                                                     </div>
                                                 <div class="col-md-4 col-xs-12">

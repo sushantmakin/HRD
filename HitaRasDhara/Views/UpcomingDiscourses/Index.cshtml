@@ -114,7 +114,11 @@
                                                                         @if (item.LocationUrl != "null")
                                                                         {
                                                                             <a class="btn btn-primary"href="@item.LocationUrl" target="_blank">Location Map</a>
-                                                                            <div class="detail-hide" style="display: none;"> <a class="btn learn-more" href="@item.LocationUrl" target="_blank">Click here <i class="readmore-arrow">»</i></a> </div>
+                                                                        }
+                                                                        @if (item.GoogleCalenderUrl != "null")
+                                                                        {
+                                                                            <a class="btn btn-primary googleCal desktop" href="@item.GoogleCalenderUrl" target="_blank" style="position: inherit;">Add to Google Calendar</a>
+                                                                            <a class="btn btn-primary googleCal mobile" href="@item.GoogleCalenderUrl" target="_blank">Add to Google Calendar</a>
                                                                         }
                                                                     </td>
                                                                 </tr>

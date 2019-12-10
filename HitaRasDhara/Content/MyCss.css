@@ -13,24 +13,24 @@
 }
 
 @media (max-width: 480px) {
-    .desktop {display:none;}
-    .mobile {display:block;}
-    .tablet {display: none;}
-    .desktopKatha {display:none;}	
+    .desktop {display:none !important;}
+    .mobile {display:block !important;}
+    .tablet {display: none !important;}
+    .desktopKatha {display:none !important;}	
 }
 
 @media (min-width: 481px) and (max-width: 1023px) {
-    .desktop {display:none;}
-    .mobile {display:none;}
-    .tablet {display: block;}
-    .desktopKatha {display:none;}	
+    .desktop {display:none !important;}
+    .mobile {display:none !important;}
+    .tablet {display: block !important;}
+    .desktopKatha {display:none !important;}	
 }
 
 @media (min-width: 1024px) {
-    .mobile {display:none;}
-    .desktop {display:block;}
-    .tablet {display: none;}
-    .desktopKatha {display:none;}	
+    .mobile {display:none !important;}
+    .desktop {display:block !important;}
+    .tablet {display: none !important;}
+    .desktopKatha {display:none !important;}	
 }
 
 #StatusStamp {

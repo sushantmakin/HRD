@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -12,6 +14,8 @@ using System.Web.Mvc;
 using HitaRasDhara.Models;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using QRCoder;
+using Image = iTextSharp.text.Image;
 
 namespace HitaRasDhara.Controllers
 {
@@ -19,7 +23,7 @@ namespace HitaRasDhara.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("Register","Talk");
+            return RedirectToAction("Register", "Talk");
         }
 
         public ActionResult Register()
@@ -44,7 +48,7 @@ namespace HitaRasDhara.Controllers
                     _dbContext.SaveChanges();
                     var UpdatedUserDetails = _dbContext.UserResponse5Aug.Find(input.Phone);
                     string smsData = string.Format(_dbContext.SmsContent.Find("RegisteredSuccessfully").Value,
-                        input.Name, getVisualRegistrationId(UpdatedUserDetails.RegistrationID),input.YearOfBirth);
+                        input.Name, getVisualRegistrationId(UpdatedUserDetails.RegistrationID), input.YearOfBirth);
                     bool smsSent = sendSMS(input.Phone, smsData);
                     return PrintPDF(input.Phone);
                 }
@@ -116,6 +120,15 @@ namespace HitaRasDhara.Controllers
             return File(doc, "application/pdf", phone + ".pdf");
         }
 
+        private static Byte[] BitmapToBytes(Bitmap img)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                img.Save(stream, ImageFormat.Png);
+                return stream.ToArray();
+            }
+        }
+
         //[HttpPost]
         public byte[] GeneratePDF(string mobile)
         {
@@ -125,84 +138,80 @@ namespace HitaRasDhara.Controllers
                 UserResponse5Aug UserDetails = _dbContext.UserResponse5Aug.Find(mobile);
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
-                    //We'll dump our PDF into these when done
-                    Byte[] bytes;
-
                     #region documentDefinitionStart
-                    Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+                    var pgSize = new iTextSharp.text.Rectangle(560, 1090);
+                    Document pdfDoc = new Document(pgSize, 0f, 0f, 0f, 0f);
                     Response.ContentType = "application/pdf";
-                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
-                    Response.AddHeader("content-disposition", "attachment;filename=test.pdf");
+                    var writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                    var baseFont = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 24, iTextSharp.text.Font.NORMAL);
+                    Response.AddHeader("content-disposition", "attachment;filename="+ UserDetails?.Name +".pdf");
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
                     #endregion
 
-                    #region ImageHeaderStart
-                    string imageFilePath = Server.MapPath("~") + "/form-bg-Upper.jpg";
-                    Image jpgUpper = Image.GetInstance(imageFilePath);
-                    jpgUpper.ScaleAbsoluteWidth(PageSize.A4.Width);
-                    jpgUpper.ScaleAbsoluteHeight(PageSize.A4.Height / 3);
+                    #region BgImageStarts
+                    string imageFilePath = Server.MapPath("~") + "/EntryPassBg.jpg";
+                    Image bgImage = Image.GetInstance(imageFilePath);
+                    bgImage.Alignment = Image.UNDERLYING;
                     #endregion
 
-                    #region TextStarts
-
-                    PdfPTable table = new PdfPTable(2);
-                    table.DefaultCell.FixedHeight = 25f;
-                    table.DefaultCell.Padding = 5f;
-                    table.AddCell("Registration Number");
-                    table.AddCell(getVisualRegistrationId(UserDetails.RegistrationID));
-                    table.AddCell("Name");
-                    table.AddCell(UserDetails.Name);
-                    table.AddCell("Year Of Birth");
-                    table.AddCell(UserDetails.YearOfBirth);
-                    table.AddCell("City");
-                    table.AddCell(UserDetails.City);
-                    table.AddCell("Contact No.");
-                    table.AddCell(UserDetails.Phone);
-                    table.AddCell("Registration Date & Time");
-                    table.AddCell(UserDetails.TimeStamp.ToString());
-
-                    #endregion
-
-                    #region ImageLowerStart
-                    string imageFilePathLower = Server.MapPath("~") + "/form-bg-Lower.jpg";
-                    Image jpgLower = Image.GetInstance(imageFilePathLower);
-                    jpgLower.ScaleAbsoluteWidth(PageSize.A4.Width);
-                    jpgLower.ScaleAbsoluteHeight(PageSize.A4.Height / 3);
-                    jpgLower.Alignment = Image.UNDERLYING;
+                    #region QrCodeStarts
+                    var qrCodeImage = Image.GetInstance(GenerateQrCode(UserDetails.Phone));
+                    qrCodeImage.ScaleAbsoluteWidth(250);
+                    qrCodeImage.ScaleAbsoluteHeight(250);
+                    qrCodeImage.Alignment = Element.ALIGN_CENTER;
+                    qrCodeImage.SetAbsolutePosition(155, 200);
                     #endregion
 
                     #region build
                     pdfDoc.Open();
                     pdfDoc.NewPage();
-                    pdfDoc.Add(jpgUpper);
-                    pdfDoc.Add(table);
-                    pdfDoc.Add(jpgLower);
+                    pdfDoc.Add(bgImage);
+                    for (int i = 0; i < Convert.ToInt32(_dbContext.SmsContent.Find("LineGapAbove").Value); i++)
+                    {
+                        pdfDoc.Add(new Paragraph("\n"));
+                    }
+                    pdfDoc.Add(new Paragraph(UserDetails.Name + " - " + UserDetails.YearOfBirth, font)
+                    {
+                        Alignment = Element.ALIGN_CENTER
+                    });
+                    for (int i = 0; i < Convert.ToInt32(_dbContext.SmsContent.Find("LineGapBottom").Value); i++)
+                    {
+                        pdfDoc.Add(new Paragraph("\n"));
+
+                    }
+                    pdfDoc.Add(new Paragraph(getVisualRegistrationId(UserDetails.RegistrationID), font)
+                    {
+                        Alignment = Element.ALIGN_CENTER
+                    });
+                    pdfDoc.Add(qrCodeImage);
                     pdfDoc.Close();
                     //Finalize the contents of the stream into an array
-                    bytes = memoryStream.ToArray();
+                    var bytes = memoryStream.ToArray();
                     #endregion
 
                     #region email
+
                     MailMessage msg = new MailMessage();
                     msg.To.Add(new MailAddress(UserDetails.Email));
                     msg.From = new MailAddress("info@hitaambrish.com", "Hita Ambrish");
                     msg.Subject = "Registration Confirmation - " + UserDetails.Name;
                     msg.Body = string.Format(_dbContext.SmsContent.Find("EmailContent").Value, UserDetails.Name);
-                    //msg.Body = "<p>Dear " + UserDetails.Name + " ,</p> <p>Thank you for your interest in 'Think HIGHER, Drill DEEPER, Be STRONGER' - A talk by Hita Ambrish Ji designed especially for the youth.</p> <p> Your registration is <u>confirmed</u> and your entry pass is attached with this email.</p> <p> Please note that entry would only be allowed only on presenting this entry pass along with a valid government-issued ID-Card. It is our kind request that you strictly adhere to the instructions mentioned in the entry pass, to ensure your entry in the auditorium.</p><p> Thanks <br/> Team Hita Ras Dhara </p> ";
                     msg.IsBodyHtml = true;
                     msg.Attachments.Add(new Attachment(new MemoryStream(bytes), UserDetails.Name + ".pdf"));
 
-                    SmtpClient client = new SmtpClient();
-                    client.Credentials = new NetworkCredential("info@hitaambrish.com", "Sushant@123");
-                    client.Port = 25;
-                    client.Host = "relay-hosting.secureserver.net";
+                    SmtpClient client = new SmtpClient
+                    {
+                        Credentials = new NetworkCredential("info@hitaambrish.com", "Sushant@123"),
+                        Port = 25,
+                        Host = "relay-hosting.secureserver.net"
+                    };
                     client.Send(msg);
                     #endregion
 
                     Response.Write(pdfDoc);
                     Response.End();
-                    string pdfName = "User";
                     return memoryStream.ToArray();
                 }
             }
@@ -211,6 +220,15 @@ namespace HitaRasDhara.Controllers
                 throw ex;
             }
 
+        }
+
+        private byte[] GenerateQrCode(string userRegistrationId)
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(_dbContext.SmsContent.Find("QrCodePrefix")?.Value + userRegistrationId, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            return BitmapToBytes(qrCode.GetGraphic(20));
         }
 
         public ActionResult CancelRegistration()
@@ -280,6 +298,30 @@ namespace HitaRasDhara.Controllers
 
         }
 
+        public ActionResult Questions()
+        {
+            var viewModel = new QuestionsViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Questions(QuestionsViewModel input)
+        {
+            try
+            {
+                ApplicationDbContext _dbContext = new ApplicationDbContext();
+                _dbContext.EventQuestionsForm.Add(input);
+                _dbContext.SaveChanges();
+                return Json(new { Code = 28 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return Json(new { Code = 3 }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
         [HttpPost]
         public JsonResult SemiFilledForm(UserResponse5Aug input)
         {
@@ -329,7 +371,7 @@ namespace HitaRasDhara.Controllers
             ApplicationDbContext dbContext = new ApplicationDbContext();
             var prefix = "";
             prefix = dbContext.SmsContent.Find("RegistrationTemplate")?.Value;
-            string decimatedId =String.Format("{0:D4}", id);
+            string decimatedId = String.Format("{0:D4}", id);
             return prefix + decimatedId;
         }
 
@@ -337,7 +379,7 @@ namespace HitaRasDhara.Controllers
         public ActionResult AllowEntry(string Mobile)
         {
             ApplicationDbContext _dbContext = new ApplicationDbContext();
-            var userDetails = _dbContext.UserResponse5Aug.SingleOrDefault(user => user.RegistrationID == Int32.Parse(Mobile)); ;
+            var userDetails = _dbContext.UserResponse5Aug.Find(Mobile) ;
             if (userDetails == null)
             {
                 return Json(new { Code = 11 }, JsonRequestBehavior.AllowGet); //No seat registered.
@@ -355,6 +397,31 @@ namespace HitaRasDhara.Controllers
             string smsContent = string.Format(_dbContext.SmsContent.Find("EntrySms").Value, userDetails.Name);
             bool smsSent = sendSMS(Mobile, smsContent);
             return Json(new { Code = 18 }, JsonRequestBehavior.AllowGet);//Listener successfully entered.
+        }
+
+
+        [HttpPost]
+        public ActionResult AllowEntryFromQR(string mobile)
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            var userDetails = _dbContext.UserResponse5Aug.Find(mobile);
+            if (userDetails == null)
+            {
+                return Json(new { Code = "11qr" }, JsonRequestBehavior.AllowGet); //No seat registered.
+            }
+            if (userDetails.SeatStatus.Equals("Cancelled"))
+            {
+                return Json(new { Code = "12qr" }, JsonRequestBehavior.AllowGet); //registration already cancelled.
+            }
+            if (userDetails.SeatStatus.Equals("Entered"))
+            {
+                return Json(new { Code = "17qr" }, JsonRequestBehavior.AllowGet); //registration already allowed entry.
+            }
+            userDetails.SeatStatus = "Entered";
+            _dbContext.SaveChanges();
+            string smsContent = string.Format(_dbContext.SmsContent.Find("EntrySms").Value, userDetails.Name);
+            bool smsSent = sendSMS(userDetails.Phone, smsContent);
+            return Json(new { Code = "18qr" }, JsonRequestBehavior.AllowGet);//Listener successfully entered.
         }
 
     }

@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<input type="text" id="something" autofocus>
+
+<script>
+    var barcodeRead = '';
+    var readingBarcode = false;
+
+    var handleKeyPress = (e) => {
+        if (e.keyCode === 36) {
+            // Start of barcode with $
+            readingBarcode = true;
+            e.preventDefault();
+            return;
+        }
+        if (readingBarcode) {
+            e.preventDefault();
+
+            if (e.keyCode === 13) { // Enter
+                readingBarcode = false;
+                var evt = $.Event('barcodeScan');
+                evt.state = {
+                    code: barcodeRead
+                };
+                $(window).trigger(evt);
+                barcodeRead = '';
+                return;
+            }
+
+            // Append the next key to the end of the list
+            barcodeRead += e.key;
+        }
+    }
+
+    function AllowQrEntry(mobile) {
+        $.ajax({
+            type: "POST",
+            url: "/Talk/AllowEntryFromQR",
+            data: { 'mobile': "" + mobile },
+            success: function (result) {
+                console.log('data is : ' + result.Code);
+                showPopup(result.Code);
+                $('#something').val('');
+                $('#something').focus();
+            },
+            error: function (data) {
+                console.log('error : data code is : ' + data.Code);
+                $('#something').val('');
+                $('#something').focus();
+            }
+        });
+        return false;
+    }
+
+    $(document).ready(function () {
+        $(window).bind('keypress', handleKeyPress);
+
+        $(window).bind('barcodeScan', (e) => {
+            AllowQrEntry(e.state.code);
+        });
+    });
+</script>

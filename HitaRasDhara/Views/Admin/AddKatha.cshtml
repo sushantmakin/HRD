@@ -73,6 +73,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            @Html.LabelFor(m => m.GoogleCalenderUrl, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.GoogleCalenderUrl, new { @class = "form-control", Value= "null" })
+                                @Html.ValidationMessageFor(m => m.GoogleCalenderUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
                             @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
                                 @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", Value="null" })
@@ -86,7 +93,7 @@
                                 @Html.ValidationMessageFor(m => m.UnpublishDate, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        @Html.Hidden("GoogleCalenderUrl", "null")
+                        
                         <div class="form-group" id="Submit">
                             <div class="col-md-offset-3 col-md-9">
                                 <input type="submit" id="SubmitOfAddKathaForm" value="Add Katha" class="btn btn-primary" />

@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 
 namespace HitaRasDhara.Controllers
 {
@@ -73,6 +72,14 @@ namespace HitaRasDhara.Controllers
             ViewBag.ImportantQueries = _dbContext.QueryForm.Count(t => t.Status == "Important");
             ViewBag.RepliedQueries = _dbContext.QueryForm.Count(t => t.Status == "Replied");
             ViewBag.CancelledQueries = _dbContext.QueryForm.Count(t => t.Status == "Cancelled");
+            return View(viewModel);
+        }
+
+        public ActionResult EventQuestions()
+        {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            var viewModel = new DbViewForEventQuestions { ContentItems = _dbContext.EventQuestionsForm.Select(m => m).ToList() };
+            ViewBag.TotalQuestions = _dbContext.EventQuestionsForm.Count();
             return View(viewModel);
         }
 
@@ -288,6 +295,11 @@ namespace HitaRasDhara.Controllers
             return View(viewModel);
         }
 
+        public ActionResult EntryManager()
+        {
+            return View();
+        }
+
         public void WriteTsv<T>(IEnumerable<T> data, TextWriter output)
         {
             PropertyDescriptorCollection props = TypeDescriptor.GetProperties(typeof(T));
@@ -344,6 +356,24 @@ namespace HitaRasDhara.Controllers
                 //Ignore
             }
         }
+
+        public void ExportListFromTsvEventFeedback()
+        {
+            try
+            {
+                ApplicationDbContext _DbContextForDownloadExcel = new ApplicationDbContext();
+                var data = _DbContextForDownloadExcel.EventQuestionsForm.Select(m => m).ToList();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment;filename=EventQuestions.xls");
+                Response.AddHeader("Content-Type", "application/vnd.ms-excel");
+                WriteTsv(data, Response.Output);
+                Response.End();
+            }
+            catch
+            {
+                //Ignore
+            }
+        }
     }
     public class DbViewForDashboard
     {
@@ -357,4 +387,11 @@ namespace HitaRasDhara.Controllers
     {
         public List<QueryViewModel> ContentItems { get; set; }
     }
+
+    public class DbViewForEventQuestions
+    {
+        public List<QuestionsViewModel> ContentItems { get; set; }
+    }
+
+    
 }

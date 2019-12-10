@@ -1,0 +1,103 @@
+﻿<div style="background: #f8f9fa;">
+    <div class="site-blocks-cover inner-page-cover desktop" style="background-image: url(https://www.hitaambrish.com/img/ch2Desktop.jpg);min-height: 520px;background-position: 100% 0px;">
+    </div>
+    <div class="site-blocks-cover inner-page-cover tablet" style="background-image: url(https://www.hitaambrish.com/img/ch2Desktop.jpg);min-height: 100px;background-position: 100% 0px;">
+    </div>
+    <div class="site-blocks-cover inner-page-cover mobile" style="background-image: url(https://www.hitaambrish.com/img/ch2Mobile.jpg);min-height: 520px;background-position: 100% 0px;">
+    </div>
+</div>
+<div class="site-section bg-light" id="section-contact">
+    ﻿@model HitaRasDhara.Models.QuestionsViewModel
+    <div class="container">
+        <div class="row justify-content-center mb-5 ml-2 mr-2">
+            <div class="order-md-1" data-aos="fade">
+                <div class="text-left pb-1 border-primary mb-4">
+                    <h2 class="text-primary">Ask Hita</h2>
+                    <h5 class="color-black-opacity-5"> Questions related to Chapter 2 - SAANKHYA YOGA </h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mobile">
+                        <div class="p-4 mb-3 bg-white">
+                            <h3 class="h5 text-black mb-3">Namaste! </h3>
+                            <p>If you have any query regarding Decoding Gita by Hita- from Confusion to Conclusion, you can send it to Hita Ambrish Ji on this portal and it will be addressed in the upcoming sessions. <br /> <br /> Thank you & Shree Harivansh, <br /> Team Hita Ambrish</p>
+                        </div>
+                    </div>
+                    <div class="col-md-7 mb-5">
+                        <form class="p-5 bg-white form-horizontal" id="QuestionsEntryForm" method="post">
+                            @*@{
+                                List<SelectListItem> ListenOptions = new List<SelectListItem>();
+                                ListenOptions.Add(new SelectListItem{Text = "Live",Value = "Live"});
+                                ListenOptions.Add(new SelectListItem{Text = "Youtube",Value = "Youtube"});
+                            }*@
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    @Html.TextBoxFor(m => m.Name, new {@class = "form-control", placeholder = "Name", type = "text", id = "name", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.City, new {@class = "form-control", placeholder = "City", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.City, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            @*<div class="row form-group">
+                                <div class="col-md-12">
+                                    @Html.DropDownListFor(model => model.ListenedAt, ListenOptions, "Where did you listen to the session ?", new {@class = "form-control", required = "required"})
+                                    @Html.ValidationMessageFor(m => m.ListenedAt, "", new {@class = "text-danger"})
+                                </div>
+                            </div>*@
+                            @Html.Hidden("ListenedAt", "null")
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(m => m.Question, new {@class = "form-control", placeholder = "Your Query related to Chapter 2 - SAANKHYA YOGA", cols = "30", rows = "7", style = "margin-bottom: unset;max-width: 100%;", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Question, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12" id="Submit">
+                                    <input type="submit" id="SubmitOfQuestionForm" value="Submit" class="btn btn-primary py-2 px-4 text-white">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="p-4 mb-3 bg-white desktop">
+                            <h3 class="h5 text-black mb-3">Namaste! </h3>
+                            <p>If you have any query regarding Decoding Gita by Hita- from Confusion to Conclusion, you can send it to Hita Ambrish Ji on this portal and it will be addressed in the upcoming sessions. <br /> <br /> Thank you & Shree Harivansh, <br /> Team Hita Ambrish</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#SubmitOfQuestionForm').click(function () {
+            var $form = $('#QuestionsEntryForm');
+            if (!$form.valid()) {
+                return false;
+            } else {
+                $('#SubmitOfQuestionForm').attr("disabled", "disabled");
+                $('#SubmitOfQuestionForm').val("Please wait...");
+                $.ajax({
+                    type: "POST",
+                    url: "/Talk/Questions",
+                    data: $('#QuestionsEntryForm').serialize(),
+                    success: function (result) {
+                        $('#SubmitOfQuestionForm').val("Submit");
+                        console.log('data is : ' + result.Code);
+                        showPopup(result.Code);
+                    },
+                    error: function (data) {
+                        $('#SubmitOfQuestionForm').removeAttr("disabled");
+                        $('#SubmitOfQuestionForm').val("Submit");
+                        console.log('error : data code is : ' + data.Code);
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>

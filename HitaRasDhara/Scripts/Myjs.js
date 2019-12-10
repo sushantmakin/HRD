@@ -14,7 +14,7 @@
             swal('Technical Error !', 'An error has occured, please try again.', 'error');
             break;
         case 5:
-            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been successfully downloaded to your system as well as mailed to the provided email address. \n \n Kindly show this pass along with a valid government-issued ID card to gain entry into the discourse.', 'success');
+            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been successfully downloaded to your system as well as mailed to the provided email address. \n \n Kindly show this pass along with a valid government-issued ID card to gain entry into the premises.', 'success');
             break;
         case 7:
             swal('Error !',
@@ -34,10 +34,12 @@
             swal('Success !', 'Registration has been cancelled Successfully.', 'success');
             break;
         case 14:
-            swal('Success !', 'Your Feedback has been successfully captured.', 'success');
+            swal('Success !', 'Your question related to Chapter 2 - SAANKHYA YOGA has been successfully recorded.', 'success').then(() => {
+                window.location.href = 'http://www.hitaambrish.com';
+            });
             break;
         case 15:
-            swal('Error !', 'You have already provided your Feedback.', 'error');
+            swal('Error !', 'You have already provided your Chapter 2 - SAANKHYA YOGA.', 'error');
             break;
             //16 at last
         case 17:
@@ -90,6 +92,28 @@
         case 27:
             swal('Success !', 'You have successfully edited the Katha record..', 'success').then(() => {
                 window.location.href = 'http://www.hitaambrish.com/admin/KathaManagement';
+            });
+            break;
+        case 28:
+            swal('Success !', 'Your question related to Chapter 2 - SAANKHYA YOGA has been successfully recorded.', 'success').then(() => {
+                window.location.href = 'http://www.hitaambrish.com';
+            });
+            break;
+        case "11qr":
+            swal('Error !', 'No registration exists with the provided mobile number.', 'error');
+            break;
+        case "12qr":
+            swal('Registration Cancelled !', 'This registration was cancelled in the past.', 'error');
+            break;
+        case "17qr":
+            swal('Already entered!', 'This listener has already been allowed entry into the auditorium.', 'error');
+            break;
+        case "18qr":
+            swal({
+                type: 'success',
+                title: 'Listener has been allowed entry into the auditorium.',
+                showConfirmButton: false,
+                timer: 2500
             });
             break;
     }

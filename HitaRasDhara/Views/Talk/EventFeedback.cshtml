@@ -1,19 +1,20 @@
 ﻿<div style="background: #f8f9fa;">
-    <div class="site-blocks-cover inner-page-cover desktop" style="background-image: url(https://www.hitaambrish.com/img/Geeta1Post.jpg);min-height: 520px;background-position: 100% 0px;">
+    <div class="site-blocks-cover inner-page-cover desktop" style="background-image: url(https://www.hitaambrish.com/img/Geeta1Post.jpg);background-position: top center;background-repeat:no-repeat;background-color:#140604;min-height: 520px;">
     </div>
     <div class="site-blocks-cover inner-page-cover tablet" style="background-image: url(https://www.hitaambrish.com/img/Geeta1Post.jpg);min-height: 100px;background-position: 100% 0px;">
     </div>
     <div class="site-blocks-cover inner-page-cover mobile" style="background-image: url(https://www.hitaambrish.com/img/Geeta1PostMobile.jpg);min-height: 520px;background-position: 100% 0px;">
     </div>
 </div>
+
 <div class="site-section bg-light" id="section-contact">
     @model HitaRasDhara.Models.EventFeedbackViewModel
     <div class="container">
         <div class="row justify-content-center mb-5 ml-2 mr-2" id="MainBlock">
             <div class="order-md-1" data-aos="fade">
                 <div class="text-left pb-1 border-primary mb-4">
-                    <h2 class="text-primary">Feedback</h2>
-                    <h5 class="color-black-opacity-5">Share your thoughts with us! </h5>
+                    <h2 class="text-primary">Questions</h2>
+                    <h5 class="color-black-opacity-5">Related to Chapter 2 - SAANKHYA YOGA </h5>
                 </div>
                 <div class="row">
                     <div class="col-md-5 mobile">
@@ -27,13 +28,13 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone", required = "required" })
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone Number", required = "required" })
                                     @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    @Html.TextAreaFor(m => m.Feedback, new { @class = "form-control", @rows = "5", placeholder = "Your Experience", required = "required" })
+                                    @Html.TextAreaFor(m => m.Feedback, new { @class = "form-control", @rows = "5", placeholder = "Question related to Chapter 2 - SAANKHYA YOGA", required = "required" })
                                     @Html.ValidationMessageFor(m => m.Feedback, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -80,30 +81,31 @@
         } else {
             $('#SubmitBtnOfFeedbackForm').attr("disabled", "disabled");
             $('#SubmitBtnOfFeedbackForm').val("Please Wait...");
-            $.ajax({
-                type: "POST",
-                url: "/Talk/SemiFilledForm3",
-                data: $('#FeedbackForm').serialize(),
-                success: function (result) {
-                    $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");
-                    swal("Please enter the OTP sent to your mobile", {
-                        content: "input"
-                    })
-                            .then((value) => {
-                                if (result.OTPCode === `${value}`) {
-                                    FeedbackSubmitNow($('#FeedbackForm').serialize());
-                                } else {
-                                    $('#SubmitBtnOfFeedbackForm').val("Submit");
-                                    swal("Failure!", "The OTP you entered is invalid", "error");
-                                }
-                            });
-                },
-                error: function (data) {
-                    $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");
-                    $('#SubmitBtnOfFeedbackForm').val("Submit");
-                    console.log('error : data code is : ' + data.Code);
-                }
-            });
+            //$.ajax({
+            //    type: "POST",
+            //    url: "/Talk/SemiFilledForm3",
+            //    data: $('#FeedbackForm').serialize(),
+            //    success: function (result) {
+            //        $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");
+            //        swal("Please enter the OTP sent to your mobile", {
+            //            content: "input"
+            //        })
+            //                .then((value) => {
+            //                    if (result.OTPCode === `${value}`) {
+            //                        FeedbackSubmitNow($('#FeedbackForm').serialize());
+            //                    } else {
+            //                        $('#SubmitBtnOfFeedbackForm').val("Submit");
+            //                        swal("Failure!", "The OTP you entered is invalid", "error");
+            //                    }
+            //                });
+            //    },
+            //    error: function (data) {
+            //        $('#SubmitBtnOfFeedbackForm').removeAttr("disabled");
+            //        $('#SubmitBtnOfFeedbackForm').val("Submit");
+            //        console.log('error : data code is : ' + data.Code);
+            //    }
+            //});
+            FeedbackSubmitNow($('#FeedbackForm').serialize());
         }
         return false;
     });

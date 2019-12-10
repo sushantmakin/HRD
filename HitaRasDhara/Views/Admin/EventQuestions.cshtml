@@ -1,0 +1,51 @@
+﻿﻿
+@model HitaRasDhara.Controllers.DbViewForEventQuestions
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="header">
+    <h2>Dashboard</h2>
+    <p>The current status of Queries related to session 2 of DGBG.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Feedback", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <div id="wrap">
+                <div class="container">
+                    <div class="panel panel-container">
+                        <p style="padding: 0px 0px 15px 10px;">  <b>Total Questions : @ViewBag.TotalQuestions </b></p>
+                        <button id="ExportButton" type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("ExportListFromTsvEventFeedback", "Admin")'" style="float:right; margin: -50px 10px 10px 10px;">
+                            <span class="glyphicon glyphicon-save"></span> Download
+                        </button>
+                    </div>
+                    <div class="panel panel-container">
+                        @foreach (var item in Model.ContentItems)
+                        {
+                            <div class="panel-body articles-container">
+                                <div class="article border-bottom">
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <div class="col-xs-10 col-md-10">
+                                                <div class="col-md-12 col-xs-12">
+                                                    <h5> @item.Question</h5>
+                                                    <span class="col-md-4"><span class="fa fa-user color-blue"></span> @item.Name</span>
+                                                    <span class="col-md-4"><span class="fa fa-map-marker color-blue"></span> @item.City </span>
+                                                    @*<span class="col-md-4"><span class="fa fa-ticket  color-blue"></span> @item.ListenedAt </span>*@
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div><!--End .article-->
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

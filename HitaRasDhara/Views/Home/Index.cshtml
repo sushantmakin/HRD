@@ -1,5 +1,4 @@
-﻿
-<!--
+﻿<!--
 <div class="eventArea desktop">
     <div class="container">
         <div class="row">
@@ -40,13 +39,14 @@
             </div>
         </div>*@
 </div>
-﻿@model HitaRasDhara.Models.UpcomingKathaViewModel
-@*<div class="site-section bg-image overlay" id="section-event" style="background-image: url('https://www.hitaambrish.com/img/talkbg.jpg');">
+<div class="site-section bg-image overlay" id="section-event" style="background-image: url('https://www.hitaambrish.com/img/talkbg.jpg');">
     <div class="container">
         <div class="eventArea">
             <div class="row" data-aos="fade-up" data-aos-delay="400">
                 <div class="col-md-6 col-sm-9 col-xs-12">
-                    <h3 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">Decoding Gita by Hita</h3>
+                    <img class="desktop" src="https://www.hitaambrish.com/img/desktop_logo.png">
+                    <img class="mobile" src="https://www.hitaambrish.com/img/mobile_logo.png">
+
                     <h4 class="mb-3 text-white" data-aos="fade-up" data-aos-delay="100">From CONFUSION To CONCLUSION! </h4>
                     <table class="mb-5">
                         <tr class="mb-2 text-white aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
@@ -54,7 +54,7 @@
                                 <span class="fa fa-calendar"></span>
                             </td>
                             <td>
-                                <h5 class="mx-2">28<sup>th</sup> September, 2019  </h5>
+                                <h5 class="mx-2">25<sup>th</sup> January, 2020  </h5>
                             </td>
                         </tr>
                         <tr class="mb-2 text-white aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
@@ -62,7 +62,7 @@
                                 <span class="fa fa-clock-o"></span>
                             </td>
                             <td>
-                                <h5 class="mx-2">4:30 PM to 7:00 PM</h5>
+                                <h5 class="mx-2">5:00 PM to 7:30 PM</h5>
                             </td>
                         </tr>
                         <tr class="mb-2 text-white aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
@@ -89,7 +89,8 @@
             </div>
         </div>
     </div>
-</div>*@
+</div>
+@model HitaRasDhara.Models.UpcomingKathaViewModel
 
 <div class="site-section" id="section-about">
     <div class="container">
@@ -103,9 +104,7 @@
                     <h2 class="text-primary">About Hita Ambrish</h2>
                 </div>
                 <p>
-                    Hita Ambrish Ji is young, charismatic, spiritual teacher. An inspiring mentor who has transformed many lives and introduced them to path filled with love, devotion and selfless service. He speaks from the voice of his experience and touches the deepest chord even with a casual listener and is himself a living testimony to all that he teaches.
-                </p><p>
-                    An inspiring mentor who has transformed many lives and introduced them to path filled with love, devotion and selfless service. He speaks from the voice of his experience and touches the deepest chord even with a casual listener and is himself a living testimony to all that he teaches.
+                    Shree Hita Ambrish Ji is a spiritual mentor from Vrindavan, India with a refreshing take on devotion to divine. He spent his childhood and completed his education in Hisar. As a child also, Ambrish ji always had an inclination towards spirituality. At a very tender age, he was an avid reader of scriptures like Ram Charitra Manas, Shrimad Bhagwat and Gurbaani. He has been delivering spiritual discourses, since 2006 on 'Bhakti Yoga'. He elucidates 'Seva' as the purest form of love towards the divine power.  He has been actively conducting interactive sessions for youth on various forums encouraging them to be master of their own self.  
                 </p>
                 <a href="@Url.Action("HitaAmbrishJi","About")">Read More &raquo;</a>
             </div>
@@ -375,14 +374,14 @@
             }
         });
 
-         $('#jcountdown').countdown('2019/09/24 20:00:00', function (event) {
+         $('#jcountdown').countdown('2020/01/21 20:00:00', function (event) {
             var $this = $(this).html(event.strftime(''
                 + '<span>%-D</span> days '
                 + '<span>%H</span> hr '
                 + '<span>%M</span> min '
                 + '<span>%S</span> sec'));
         });
-        var countDownDate = new Date("Sep 24, 2019 20:00:00").getTime();
+        var countDownDate = new Date("Jan 21, 2020 20:00:00").getTime();
 
         // Update the count down every 1 second
         var x = setInterval(function () {
