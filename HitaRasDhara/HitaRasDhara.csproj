@@ -234,6 +234,7 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrivacyController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -880,6 +881,7 @@
     <Content Include="Views\Admin\EntryManager.cshtml" />
     <Content Include="Views\Talk\Questions.cshtml" />
     <Content Include="Views\Admin\EventQuestions.cshtml" />
+    <Content Include="Views\Privacy\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

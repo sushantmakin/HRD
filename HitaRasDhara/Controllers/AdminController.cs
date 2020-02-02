@@ -128,6 +128,10 @@ namespace HitaRasDhara.Controllers
                 {
                     input.LocationUrl = "null";
                 }
+                if (string.IsNullOrWhiteSpace(input.NearbyHotelsUrl))
+                {
+                    input.LocationUrl = "null";
+                }
                 _dbContext.UpcomingKathaFeed.Add(input);
                 _dbContext.SaveChanges();
                 return Json(new { Code = 26 }, JsonRequestBehavior.AllowGet); //Successfully Added
@@ -170,6 +174,10 @@ namespace HitaRasDhara.Controllers
                 {
                     input.LocationUrl = "null";
                 }
+                if (string.IsNullOrWhiteSpace(input.NearbyHotelsUrl))
+                {
+                    input.NearbyHotelsUrl = "null";
+                }
 
                 var kathaRecord = _dbContext.UpcomingKathaFeed.Find(input.KathaId);
                 if (kathaRecord != null)
@@ -184,6 +192,7 @@ namespace HitaRasDhara.Controllers
                     kathaRecord.Timings = input.Timings;
                     kathaRecord.KathaTitle = input.KathaTitle;
                     kathaRecord.UnpublishDate = input.UnpublishDate;
+                    kathaRecord.NearbyHotelsUrl = input.NearbyHotelsUrl;
                     _dbContext.SaveChanges();
                     return Json(new { Code = 27 }, JsonRequestBehavior.AllowGet); //Successfully Edited
                 }

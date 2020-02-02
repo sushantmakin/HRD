@@ -19,7 +19,7 @@
                                                 <div class="course-input-col">
                                                     <div id="coldata-2" style="display:none" class="coldata">
                                                         <div class="form-item select-custom">
-                                                            <label>Discourses:</label>
+                                                            <label>DISCOURSE:</label>
                                                             <div class="tmp bandai-select-p">
                                                                 <div class="bandai-select">
                                                                     <div>&nbsp;</div>
@@ -29,7 +29,7 @@
                                                     </div>
                                                     <div id="coldata-0" class="coldata" style="display: none;">
                                                         <div class="form-item select-custom">
-                                                            <label>Discourses:</label>
+                                                            <label>DISCOURSES:</label>
                                                             <div class="tmp bandai-select-p">
                                                                 <div class="bandai-select">
                                                                     <div>&nbsp;</div>
@@ -58,7 +58,7 @@
                                                 <table id="course-table" class="mobile-nogutter tableText">
                                                     <thead>
                                                         <tr class="course-row" style="background-color:#f16821;">
-                                                            <th class="course-col-program"><h4>Discourse</h4></th>
+                                                            <th class="course-col-program"><h4>DISCOURSE</h4></th>
                                                             <th class="course-col-date"><h4>DATE &amp; TIME</h4></th>
                                                             <th class="course-col-venue"><h4 style="padding-left: 8px;">VENUE</h4></th>
                                                             <th class="course-col-contact"><h4> </h4></th>
@@ -71,7 +71,7 @@
                                                             foreach (var item in Model.KathaFeed)
                                                             {
                                                                 <tr class="course-row">
-                                                                    <td class="kathaTitle" id="kathaTitle">@item.KathaTitle</td>
+                                                                    <td class="kathaTitle" id="kathaTitle" style="text-transform: uppercase;">@item.KathaTitle</td>
 
                                                                     <td class="course-col-date">
                                                                         <div class="desktop">@item.Dates</div>
@@ -113,12 +113,19 @@
                                                                         </div>
                                                                         @if (item.LocationUrl != "null")
                                                                         {
-                                                                            <a class="btn btn-primary"href="@item.LocationUrl" target="_blank">Location Map</a>
+                                                                            <a class="btn btn-primary" href="@item.LocationUrl" target="_blank">Location Map</a>
+                                                                        }
+                                                                        @if (item.NearbyHotelsUrl != "null" && !string.IsNullOrEmpty(item.NearbyHotelsUrl))
+                                                                        {
+                                                                            <a class="btn btn-primary desktop " href="javascript:void(0);" onclick="invokeUpcomingHotels('@item.NearbyHotelsUrl'); return false;" style="position: inherit; margin-bottom: 1rem">Nearby Hotels</a>
+                                                                            <a class="btn btn-primary tablet " href="javascript:void(0);" onclick="invokeUpcomingHotels('@item.NearbyHotelsUrl'); return false;" style="position: inherit; margin-bottom: 1rem">Nearby Hotels</a>
+                                                                            <a class="btn btn-primary mobile" href="javascript:void(0);" onclick="invokeUpcomingHotels('@item.NearbyHotelsUrl'); return false;" style="position: inherit;">Nearby Hotels</a>
                                                                         }
                                                                         @if (item.GoogleCalenderUrl != "null")
                                                                         {
                                                                             <a class="btn btn-primary googleCal desktop" href="@item.GoogleCalenderUrl" target="_blank" style="position: inherit;">Add to Google Calendar</a>
-                                                                            <a class="btn btn-primary googleCal mobile" href="@item.GoogleCalenderUrl" target="_blank">Add to Google Calendar</a>
+                                                                            <a class="btn btn-primary googleCal tablet" href="@item.GoogleCalenderUrl" target="_blank" style="position: inherit; margin-right: 1rem">Add to Google Calendar</a>
+                                                                            <a class="btn btn-primary googleCal mobile" href="@item.GoogleCalenderUrl" target="_blank" style="width: 97%!important;">Add to Google Calendar</a>
                                                                         }
                                                                     </td>
                                                                 </tr>
@@ -144,4 +151,39 @@
     <script type="text/javascript" src="~/js/js_JuW6U3XOVJ2c7FByc_-XpM2evYL5cz8qOj0YyuNVuF8.js"></script>
     <script type="text/javascript" src="~/js/js_2LSzIJ9odJcgtrvQn6btsvrneCjOqB013AtW4ihMaio.js"></script>
     <script type="text/javascript" src="~/js/js_eRNl6m2_VH65aLu-Z6CvcgEpYwBtt7xhBh9yyR_XYhw.js"></script>
+    <script type="text/javascript">
+        function invokeUpcomingHotels(url) {
+            swal({
+                title: 'Important information!',
+                text:
+                    "You are about to be redirected to a third-party website. We do not endorse, represent or have any association, supervision or control on the quality, content, reliability or security of the information provided by the third-party website.",
+                icon: 'info',
+                buttons: {
+                    cancel: true,
+                    agree: {
+                        text: "Okay, I agree!",
+                        value: "agreed"
+                    }
+                }
+            }).then((result) => {
+                if (result === 'agreed') {
+                    window.open(url);
+                }
+            });
+        }
+    </script>
 }
+
+<style>
+    button.swal-button.swal-button--agree {
+        color: #fff !important;
+        background-color: #d2500d;
+        border-color: #c64c0c;
+    }
+
+    button.swal-button.swal-button--agree:hover {
+        color: #fff !important;
+        background-color: #de550e;
+        border-color: #d2500d;
+    }
+</style>

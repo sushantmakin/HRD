@@ -59,6 +59,14 @@
                                                         {
                                                             <span class="label label-danger">Google Calendar Missing!</span>
                                                         }
+                                                        @if (item.NearbyHotelsUrl != "null")
+                                                        {
+                                                            <a class="btn btn-primary" href="@item.NearbyHotelsUrl" style="margin-bottom: 10px;" target="_blank">Nearby Hotels</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="label label-danger">Nearby Hotels Link Missing!</span>
+                                                        }
                                                         <h5><span class="fa fa-user-times color-blue fa-2x"></span> @item.UnpublishDate </h5>
                                                     </div>
                                                 <div class="col-md-4 col-xs-12">

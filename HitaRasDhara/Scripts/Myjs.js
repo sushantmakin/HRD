@@ -14,7 +14,7 @@
             swal('Technical Error !', 'An error has occured, please try again.', 'error');
             break;
         case 5:
-            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been successfully downloaded to your system as well as mailed to the provided email address. \n \n Kindly show this pass along with a valid government-issued ID card to gain entry into the premises.', 'success');
+            swal('Success !', 'You have successfully registered for the event. \n Your registration pass has been downloaded to your system successfully as well as mailed to the provided email address. \n \n Kindly show this pass along with a valid government-issued ID card to get entry into the premises.', 'success');
             break;
         case 7:
             swal('Error !',

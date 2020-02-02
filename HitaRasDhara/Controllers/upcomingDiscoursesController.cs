@@ -16,8 +16,8 @@ namespace HitaRasDhara.Controllers
             var currTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow,
                 TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
             viewModel = new UpcomingKathaViewModel { KathaFeed = _dbContext.UpcomingKathaFeed.Select(m => m).Where(x => x.UnpublishDate > currTime).OrderBy(a => a.UnpublishDate).ToList() };
-            ViewBag.Title = "Upcoming Katha Schedule | Shree Hita Ambrish Ji";
-            ViewBag.Description = "Find the details of upcoming katha Schedule by Shree Hita Ambrish Ji.";
+            ViewBag.Title = "Upcoming Discourses | Shree Hita Ambrish Ji";
+            ViewBag.Description = "Find the details of upcoming discourses by Shree Hita Ambrish Ji.";
             return View(viewModel);
         }
     }

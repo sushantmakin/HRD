@@ -161,7 +161,7 @@ namespace HitaRasDhara.Controllers
                     qrCodeImage.ScaleAbsoluteWidth(250);
                     qrCodeImage.ScaleAbsoluteHeight(250);
                     qrCodeImage.Alignment = Element.ALIGN_CENTER;
-                    qrCodeImage.SetAbsolutePosition(155, 200);
+                    qrCodeImage.SetAbsolutePosition(float.Parse(_dbContext.SmsContent.Find("qrCodeXCoordinate").Value), float.Parse(_dbContext.SmsContent.Find("qrCodeYCoordinate").Value));
                     #endregion
 
                     #region build
@@ -357,8 +357,8 @@ namespace HitaRasDhara.Controllers
 
         public bool sendSMS(string mobile, string sms)
         {
-            string URL =
-                "http://sms.wishsolution.com/Api.aspx?usr=HITRASAPI&pwd=india123&smstype=TextSMS&to={0}&msg={1}&rout=Transactional&from=HITRAS";
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+            string URL = _dbContext.SmsContent.Find("smsApiEndpoint").Value;
             var urlToHit = string.Format(URL, mobile, sms);
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

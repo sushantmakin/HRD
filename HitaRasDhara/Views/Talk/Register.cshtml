@@ -13,7 +13,6 @@
             <div class="order-md-1">
                 <div class="text-left pb-1 border-primary mb-4">
                     <h2 class="text-primary">Registration</h2>
-                    @*<h5 class="color-black-opacity-5"> Register your seat </h5>*@
                 </div>
                 <div class="row">
                     <div class="col-md-5 mobile">
@@ -29,7 +28,7 @@
                     <div class="col-md-7 mb-5">
                         @if (Request.QueryString["isAdmin"] == "true")
                         {
-                            <form class="p-5 bg-white form-horizontal" id="NewEntryForm" method="post">
+                            <form class="p-5 bg-white form-horizontal" id="NewEntryForm" method="post" >
                                 @{
                                     List<SelectListItem> AllowedYearOfBirth = new List<SelectListItem>();
                                     for (int i = 2006; i >= 1920; i--)
@@ -51,7 +50,7 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone", required = "required" })
+                                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Mobile", required = "required" })
                                         @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -83,7 +82,7 @@
                                     }
                                     else
                                     {
-                                        <form class="p-5 bg-white form-horizontal HiddenBlock" id="NewEntryForm" method="post">
+                                        <form class="p-5 bg-white form-horizontal" id="NewEntryForm" method="post" style="width: 100%; display:none;">
                                             @{
                                                 List<SelectListItem> AllowedYearOfBirth = new List<SelectListItem>();
                                                 for (int i = 2005; i >= 1919; i--)
@@ -134,7 +133,8 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <img src="http://www.hitaambrish.com/img/session.jpg" id="closedBlock"style="width: 100%;">
+                                       
+                                        <img src="http://static.hitaambrish.com/img/talk/closed.jpg" id="HouseFullBlock"style="width: 100%;">
                                     }
                     </div>
                     <div class="col-md-5">
@@ -249,25 +249,5 @@
             });
         }
         return false;
-    });
-
-
-    $(window).load(function () {
-        var countDownDate = new Date("Jan 21, 2020 20:00:00").getTime();
-
-        var x = setInterval(function () {
-
-            // Get todays date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-
-            // If the count down is over, remove count down and show button
-            if (distance < 0) {
-                $("#closedBlock").addClass("HiddenBlock");
-                $("#NewEntryForm").removeClass("HiddenBlock");
-            }
-        }, 1000);
     });
 </script>

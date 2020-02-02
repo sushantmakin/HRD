@@ -2,23 +2,57 @@
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127415323-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127415323-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-127415323-1');
     </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '856473191463780');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display: none"
+             src="https://www.facebook.com/tr?id=856473191463780&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
     <link rel="manifest" href="https://www.hitaambrish.com/sdmanifest.json" />
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
         var OneSignal = window.OneSignal || [];
         OneSignal.push(function () {
             OneSignal.init({
-                appId: "4440898f-55b2-4438-8f22-eb42752fb3cb",
+                appId: "4440898f-55b2-4438-8f22-eb42752fb3cb"
             });
         });
-    </script>*@
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js" defer></script>
+    <script src="~/Resources/js/jquery-ui.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.js" defer></script>
+    <script src="~/Resources/js/popper.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js" defer></script>
+    <script src="~/Resources/js/aos.js" defer></script>
+    <script src="~/Resources/js/main.js" defer></script>
+    <script src="~/js/form-validator.min.js" defer></script>
+    <script src="~/Scripts/intlTelInput.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js" defer></script>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
@@ -73,9 +107,7 @@
                                 <a href="#" class="nav-link">About</a>
                                 <ul class="dropdown">
                                     <li><a href="@Url.Action("ShreeRadhaVallabhJi", "About")" class="nav-link">Shree Radhavallabh Lal</a></li>
-                                    <!--<li><a href="#">Shree Hita Harivansh Mahaprabhu</a></li>-->
                                     <li><a href="@Url.Action("HitaAmbrishJi", "About")" class="nav-link">Hita Ambrish</a></li>
-                                    @*<li><a href="@Url.Action("HitaTheEternal","About")" class="nav-link">Hita The Eternal</a></li>*@
                                 </ul>
                             </li>
                             <li class="has-children">
@@ -114,7 +146,6 @@
                                     </li>
                                 </ul>
                             </li>
-                           @* <li><a href="@Url.Action("Index", "UpcomingKathas")" class="nav-link">Upcoming Discourses</a></li>*@
                             <li><a href="@Url.Action("Index", "Query")" class="nav-link">Query</a></li>
                         </ul>
                     </nav>
@@ -131,35 +162,18 @@
                 <div class="col-md-12">
                     <div class="pb-5">
                         <h2 class="footer-heading mb-4">Follow Us</h2>
-                        <a href="https://facebook.com/ShreeHitaAmbrishJi" class="pl-0 pr-3" target="_blank"><img src="~/img/footer_icon01.png" border="0" alt="fb icon" /></a>
-                        <a href="https://www.youtube.com/HitaAmbrish" class="pl-3 pr-3" target="_blank"><img src="~/img/footer_icon02.png" border="0" alt="yt icon" /></a>
-                        <a href="https://www.instagram.com/hitaambrish" class="pl-3 pr-3" target="_blank"><img src="~/img/footer_icon03.png" border="0" alt="insta icon" /></a>
-                        <a href="https://gaana.com/artist/shree-hita-ambrish-ji" class="pl-3 pr-3" target="_blank"><img src="~/img/footer_icon04.png" border="0" alt="gaana icon" /></a>
-                        <a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" class="pl-3 pr-3" target="_blank"><img src="~/img/footer_icon05.png" border="0" alt="saavn icon" /></a>
+                        <a href="https://facebook.com/ShreeHitaAmbrishJi" class="pl-0 pr-3" target="_blank"><img src="https://static.hitaambrish.com/img/layout/footer_icon01.png" border="0" alt="fb icon" /></a>
+                        <a href="https://www.youtube.com/HitaAmbrish" class="pl-3 pr-3" target="_blank"><img src="https://static.hitaambrish.com/img/layout/footer_icon02.png" border="0" alt="yt icon" /></a>
+                        <a href="https://www.instagram.com/hitaambrish" class="pl-3 pr-3" target="_blank"><img src="https://static.hitaambrish.com/img/layout/footer_icon03.png" border="0" alt="insta icon" /></a>
+                        <a href="https://gaana.com/artist/shree-hita-ambrish-ji" class="pl-3 pr-3" target="_blank"><img src="https://static.hitaambrish.com/img/layout/footer_icon04.png" border="0" alt="gaana icon" /></a>
+                        <a href="https://www.saavn.com/s/artist/shree-hita-ambrish-ji-albums/sJ4JzG6Wd6k_" class="pl-3 pr-3" target="_blank"><img src="https://static.hitaambrish.com/img/layout/footer_icon05.png" border="0" alt="saavn icon" /></a>
                     </div>
                     <div class="border-top pt-5">
-                        <p>&copy; @DateTime.Now.Year, <a href="@Url.Action("HitaRasDhara", "About")">Hita Ras Dhara</a> All Rights Reserved</p>
-                        <p>Official website of <a href="@Url.Action("HitaAmbrishJi", "About")">Hita Ambrish</a></p>
+                        <p>&copy; @DateTime.Now.Year, <a href="@Url.Action("HitaRasDhara", "About")">Hita Ras Dhara</a> All Rights Reserved | Official website of <a href="@Url.Action("HitaAmbrishJi", "About")">Hita Ambrish</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js"></script>
-    <script src="~/Resources/js/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.js"></script>
-    <script src="~/Resources/js/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-    <script src="~/Resources/js/aos.js"></script>
-    <script src="~/Resources/js/main.js"></script>
-    <script src="~/js/form-validator.min.js"></script>
-    <script src="~/Scripts/intlTelInput.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
 </body>
 </html>

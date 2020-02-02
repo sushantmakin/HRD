@@ -57,6 +57,10 @@ namespace HitaRasDhara.Models
         public string ImageUrl { get; set; }
 
         [Required]
+        [Display(Name = "NearbyHotelsUrl")]
+        public string NearbyHotelsUrl { get; set; }
+
+        [Required]
         [Display(Name = "UnpublishDate")]
         public DateTime UnpublishDate { get; set; }
     }
